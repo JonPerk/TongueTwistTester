@@ -1,0 +1,9 @@
+{
+  "name": "tongue-twist-tester",
+  "version": "1.0.0",
+  "description": "POC for a larger story-telling Alexa skill meant to test Alexa's capabilities in reading large blocks of text.",
+  "dependencies": {
+    "alexa-sdk": "1.0.5"
+  },
+  "author": "Jon Perkowski"
+}
