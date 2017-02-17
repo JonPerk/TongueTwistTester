@@ -1,0 +1,16 @@
+{
+  "name": "simple-calculator-test",
+  "version": "1.0.0",
+  "author": {
+    "name": "Jon Perkowski",
+    "email": "perkowski.jon@gmail.com"
+  },
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "alexa-sdk": "1.0.x",
+    "aws-lambda-mock-context": "3.0.x",
+    "htmlparser2": "3.9.x",
+    "jasmine-node": "1.14.x",
+    "underscore": "1.8.x"
+  }
+}

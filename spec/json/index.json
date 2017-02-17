@@ -1,0 +1,78 @@
+{
+	"tests": {
+		"testLaunchIntent": {
+			"request": {
+				"session": {
+					"sessionId": "testLaunchIntent",
+					"application": {
+						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "LaunchIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> Welcome to TongueTwistTester. Try this tongue twister. Repeat after me. She sells seashells by the seashore </speak>"
+					},
+					"shouldEndSession": true
+				},
+				"sessionAttributes": {
+					"speechOutput": "Welcome to TongueTwistTester. Try this tongue twister. Repeat after me. She sells seashells by the seashore",
+					"repromptSpeech": "Try this tongue twister. Repeat after me. She sells seashells by the seashore"
+				}
+			}
+		},
+		"testBadIntent": {
+			"request": {
+				"session": {
+					"sessionId": "testBadIntent",
+					"application": {
+						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "BadIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> Welcome to TongueTwistTester. Try this tongue twister. Repeat after me. She sells seashells by the seashore </speak>"
+					},
+					"shouldEndSession": true
+				},
+				"sessionAttributes": {
+					"speechOutput": "Welcome to TongueTwistTester. Try this tongue twister. Repeat after me. She sells seashells by the seashore",
+					"repromptSpeech": "Try this tongue twister. Repeat after me. She sells seashells by the seashore"
+				}
+			}
+		}
+	}
+}

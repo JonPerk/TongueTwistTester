@@ -1,9 +1,18 @@
 {
   "name": "tongue-twist-tester",
   "version": "1.0.0",
+	"main": "src/index.js",
   "description": "POC for a larger story-telling Alexa skill meant to test Alexa's capabilities in reading large blocks of text.",
+	"author": {
+		"name": "Jon Perkowski",
+		"email": "perkowski.jon@gmail.com"
+	},
+	"license": "GPL-3.0",
   "dependencies": {
-    "alexa-sdk": "1.0.5"
+    "alexa-sdk": "1.0.x"
   },
-  "author": "Jon Perkowski"
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/JonPerk/TongueTwistTester/"
+  }
 }
