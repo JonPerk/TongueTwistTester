@@ -11,16 +11,23 @@
  
 var Alexa = require('alexa-sdk');
 var config = require('./configuration');
+var statelessHandlers = require('./statelessHandlers');
+var gameModeIntentHandlers = require('./gameModeIntentHandlers');
+var repeatModeIntentHandlers = require('./repeatModeIntentHandlers');
+var continueModeIntentHandlers = require('./continueModeIntentHandlers');
 var eventHandlers = require('./eventHandlers');
-var intentHandlers = require('./intentHandlers');
-var sessionHandlers = require('./sessionHandlers');
 var speechHandlers = require('./speechHandlers');
 
 /** Alexa skill handler */
 exports.handler = function(event, context, callback){
-	console.log("new session: " + event.session.sessionId);
+	console.info("new session: " + JSON.stringify(event.session.sessionId));
     var alexa = Alexa.handler(event, context);
     alexa.appId = config.appId;
-    alexa.registerHandlers(intentHandlers.statelessHandlers);
+    alexa.registerHandlers(statelessHandlers, 
+		gameModeIntentHandlers, 
+		repeatModeIntentHandlers, 
+		continueModeIntentHandlers,
+		eventHandlers,
+		speechHandlers);
     alexa.execute();
 };

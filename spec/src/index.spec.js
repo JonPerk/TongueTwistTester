@@ -8,7 +8,7 @@
  *
  */
 var index = require('../../src/index'),
-	intentHandlers = require('../../src/intentHandlers'),
+	statelessHandlers = require('../../src/statelessHandlers'),
     framework = require('../alexa-test-framework'),
 	context = require('aws-lambda-mock-context'),
 	tests = framework.json.index.tests;
@@ -29,7 +29,6 @@ describe('index - connectivity test', function() {
 			var ctx = context();
 			ctx.Promise
 				.then(resp => {
-					console.log("succeeded: " + resp);
 					response = resp;
 					done();
 				})
@@ -39,7 +38,7 @@ describe('index - connectivity test', function() {
 					done();
 				});
 			intent = tests[test].request;
-			spyOn(intentHandlers.statelessHandlers, tests[test].request.request.intent.name).andCallFake(function(){ ctx.succeed(tests[test].response); });
+			spyOn(statelessHandlers, tests[test].request.request.intent.name).andCallFake(function(){ ctx.succeed(tests[test].response); });
 			index.handler(intent, ctx, response);
 	});
     it('testLaunchIntent - get any response', function() {
@@ -48,7 +47,7 @@ describe('index - connectivity test', function() {
 		expect(error).toBeUndefined();
     });
 	afterEach(function(){
-		reponse = undefined;
+		response = undefined;
 		error = undefined;
 		i++;
 	});
@@ -68,7 +67,6 @@ describe('index - unhandled intent test', function() {
 			var ctx = context();
 			ctx.Promise
 				.then(resp => {
-					console.log("succeeded: " + resp);
 					response = resp;
 					done();
 				})
@@ -78,14 +76,17 @@ describe('index - unhandled intent test', function() {
 					done();
 				});
 			intent = tests[test].request;
+			spyOn(statelessHandlers, 'Unhandled').andCallFake(function(){ ctx.succeed(tests[test].response); });
 			index.handler(intent, ctx, response);
 	});
-	it('testBadIntent - should throw type error', function() {
-		expect(response).toBeUndefined();
-		expect(error).not.toBeUndefined();
+	it('testBadIntent - should return speech output', function() {
+		expect(response).not.toBeUndefined();
+		expect(response.response.outputSpeech.ssml).not.toBeNull();
+		expect(error).toBeUndefined();
     });
 	afterEach(function(){
-		reponse = undefined;
+		response = undefined;
 		error = undefined;
+		i++;
 	});
 });
