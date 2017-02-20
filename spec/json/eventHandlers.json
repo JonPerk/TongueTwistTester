@@ -1,0 +1,172 @@
+{
+	"tests": {
+		"testNewSession": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testNewSession",
+					"application": {
+						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "LaunchIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"resolvePromise": true,
+			"requestHandlerType": "stateless",
+			"requestName": "newSession",
+			"requestState": null,
+			"eventStateHandler": "statelessHandlers",
+			"response": {
+				"handlerType": "speech",
+				"stateHandler":"gameModeHandlers",
+				"intent": "welcomeSpeech",
+				"state": "_GAME_MODE",
+				"twister": "She sells sea shells by the seashore",
+				"score": 0
+			}
+		},
+		"testNewSessionGameMode": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testNewSessionGameMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "LaunchIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "gameMode",
+			"requestName": "newSession",
+			"requestState": "_GAME_MODE",
+			"eventStateHandler": "gameModeHandlers",
+			"response": {
+				"handlerType": "gameMode",
+				"stateHandler": null,
+				"intent": "Unhandled",
+				"state": "_GAME_MODE"
+			}
+		},
+		"testNewSessionRepeatMode": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testNewSessionRepeatMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "LaunchIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "repeatMode",
+			"requestName": "newSession",
+			"requestState": "_REPEAT_MODE",
+			"eventStateHandler": "repeatModeHandlers",
+			"response": {
+				"handlerType": "repeatMode",
+				"stateHandler": null,
+				"intent": "Unhandled",
+				"state": "_REPEAT_MODE"
+			}
+		},
+		"testNewSessionContinueMode": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testNewSessionContinueMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "LaunchIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "continueMode",
+			"requestName": "newSession",
+			"requestState": "_CONTINUE_MODE",
+			"eventStateHandler": "continueModeHandlers",
+			"response": {
+				"handlerType": "continueMode",
+				"stateHandler": null,
+				"intent": "Unhandled",
+				"state": "_CONTINUE_MODE"
+			}
+		},
+		"testNewSessionTwisterError": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testNewSessionTwisterError",
+					"application": {
+						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "LaunchIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "stateless",
+			"requestName": "newSession",
+			"requestState": null,
+			"eventStateHandler": "statelessHandlers",
+			"response": {
+				"handlerType": "speech",
+				"stateHandler":"statelessHandlers",
+				"intent": "fatalSpeech",
+				"state": null
+			}
+		}
+	}
+}

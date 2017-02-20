@@ -27,7 +27,13 @@ exports.handler = function(event, context, callback){
 		gameModeIntentHandlers, 
 		repeatModeIntentHandlers, 
 		continueModeIntentHandlers,
-		eventHandlers,
-		speechHandlers);
+		eventHandlers.statelessHandlers,
+		eventHandlers.gameModeHandlers,
+		eventHandlers.repeatModeHandlers,
+		eventHandlers.continueModeHandlers,
+		speechHandlers.statelessHandlers,
+		speechHandlers.gameModeHandlers,
+		speechHandlers.repeatModeHandlers,
+		speechHandlers.continueModeHandlers);
     alexa.execute();
 };

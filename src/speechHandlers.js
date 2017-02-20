@@ -25,5 +25,16 @@ speechHandlers[constants.speeches.CONTINUE_SPEECH] = function(){console.error(JS
 speechHandlers[constants.speeches.SCORE_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
 speechHandlers[constants.speeches.GOODBYE_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
 speechHandlers[constants.speeches.UNHANDLED_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
+speechHandlers[constants.speeches.FATAL_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
+speechHandlers[constants.speeches.WIN_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
  
-module.exports = speechHandlers;
+var gameMode = Object.assign({}, speechHandlers);
+var repeatMode = Object.assign({}, speechHandlers);
+var continueMode = Object.assign({}, speechHandlers);
+ 
+module.exports = {
+	statelessHandlers : speechHandlers,
+	gameModeHandlers : Alexa.CreateStateHandler(constants.states.GAME_MODE, gameMode),
+	repeatModeHandlers : Alexa.CreateStateHandler(constants.states.REPEAT_MODE, repeatMode),
+	continueModeHandlers : Alexa.CreateStateHandler(constants.states.CONTINUE_MODE, continueMode)	
+};

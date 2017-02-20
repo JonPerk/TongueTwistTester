@@ -3,7 +3,7 @@
  * @copyright Jon Perkowski 2017
  */
 /**
- * Handles Intent requests from Amazon Alexa for REPEAT_MODE state
+ * Handles Intent requests from Amazon Alexa for CONTINUE_MODE state
  * @module continueModeIntentHandlers
  *
  */
@@ -23,7 +23,7 @@ intents[constants.intents.STOP_INTENT] = function(){console.error(JSON.stringify
 intents[constants.intents.CANCEL_INTENT] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
 intents[constants.intents.UNHANDLED_INTENT] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
 
-/** handlers for Intents in REPEAT_MODE */
-var continueModeIntentHandlers = Alexa.CreateStateHandler(constants.states.REPEAT_MODE, intents);
+/** handlers for Intents in CONTINUE_MODE */
+var continueModeIntentHandlers = Alexa.CreateStateHandler(constants.states.CONTINUE_MODE, intents);
 
 module.exports = continueModeIntentHandlers;

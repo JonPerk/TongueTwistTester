@@ -36,7 +36,9 @@ module.exports = Object.freeze({
 		CONTINUE_SPEECH: 'continueSpeech',
 		SCORE_SPEECH: 'scoreSpeech',
 		GOODBYE_SPEECH: 'goodbyeSpeech',
-		UNHANDLED_SPEECH: 'unhandledSpeech'
+		UNHANDLED_SPEECH: 'unhandledSpeech',
+		FATAL_SPEECH: 'fatalSpeech',
+		WIN_SPEECH: 'winSpeech'
 	},
 	
     //  Custom constants

@@ -32,7 +32,7 @@ describe('statelessHandlers - positive tests', function() {
     framework.beforeEachMatchers();
 	
 	beforeEach(function(done){
-			test = testNames[i];
+			test = tests[testNames[i]];
 			var ctx = context();
 			ctx.Promise
 				.then(resp => {
@@ -45,13 +45,13 @@ describe('statelessHandlers - positive tests', function() {
 					error = err;
 					done();
 				});
-			intent = tests[test].request;
-			//spyOn(statelessHandlers, tests[test].request.request.intent.name).andCallThrough();
+			intent = test.request;
+			//spyOn(statelessHandlers, test.request.request.intent.name).andCallThrough();
 			
-			if(tests[test].handlerType === 'event'){
-				spyOn(eventHandlers, tests[test].response).andCallFake(function(){ ctx.succeed(tests[test].response); });
+			if(test.handlerType === 'event'){
+				spyOn(eventHandlers.statelessHandlers, test.response).andCallFake(function(){ console.log(JSON.stringify(this));ctx.succeed(test.response); });
 			} else {
-				spyOn(speechHandlers, tests[test].response).andCallFake(function(){ ctx.succeed(tests[test].response); });
+				spyOn(speechHandlers.statelessHandlers, test.response).andCallFake(function(){ ctx.succeed(test.response); });
 			}
 			
 			index.handler(intent, ctx, response);
@@ -60,67 +60,68 @@ describe('statelessHandlers - positive tests', function() {
     it('testLaunchIntent - get newSession intent', function() {
 		expect(testNames[i]).toBe(testNames[0]);
 		expect(response).not.toBeUndefined();
-		expect(response).toBe(tests[test].response);
+		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
     });
 	
 	it('testRepeatIntent - get repeatSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[1]);
 		expect(response).not.toBeUndefined();
-		expect(response).toBe(tests[test].response);
+		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
     });
 	
 	it('testHelpIntent - get helpSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[2]);
 		expect(response).not.toBeUndefined();
-		expect(response).toBe(tests[test].response);
+		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
     });
 	
 	it('testNoScoreStopIntent - get goodbyeSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[3]);
 		expect(response).not.toBeUndefined();
-		expect(response).toBe(tests[test].response);
+		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
     });
 	
 	it('testZeroScoreStopIntent - get goodbyeSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[4]);
 		expect(response).not.toBeUndefined();
-		expect(response).toBe(tests[test].response);
+		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
     });
 	
 	it('testScoreStopIntent - get scoreSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[5]);
 		expect(response).not.toBeUndefined();
-		expect(response).toBe(tests[test].response);
+		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
     });
 	
 	it('testNoScoreCancelIntent - get goodbyeSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[6]);
 		expect(response).not.toBeUndefined();
-		expect(response).toBe(tests[test].response);
+		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
     });
 	
 	it('testZeroScoreCancelIntent - get goodbyeSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[7]);
 		expect(response).not.toBeUndefined();
-		expect(response).toBe(tests[test].response);
+		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
     });
 	
 	it('testScoreCancelIntent - get scoreSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[8]);
 		expect(response).not.toBeUndefined();
-		expect(response).toBe(tests[test].response);
+		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
     });
 	
 	afterEach(function(){
+		this.removeAllSpies();
 		response = undefined;
 		error = undefined;
 		i++;
@@ -141,7 +142,7 @@ describe('statelessHandlers - unhandled intent test', function() {
     framework.beforeEachMatchers();
 	
 	beforeEach(function(done){
-			test = testNames[i];
+			test = tests[testNames[i]];
 			var ctx = context();
 			ctx.Promise
 				.then(resp => {
@@ -154,13 +155,13 @@ describe('statelessHandlers - unhandled intent test', function() {
 					error = err;
 					done();
 				});
-			intent = tests[test].request;
+			intent = test.request;
 			spyOn(statelessHandlers, 'Unhandled').andCallThrough();
 			
-			if(tests[test].handlerType === 'event'){
-				spyOn(eventHandlers, tests[test].response).andCallFake(function(){ ctx.succeed(tests[test].response); });
+			if(test.handlerType === 'event'){
+				spyOn(eventHandlers.statelessHandlers, test.response).andCallFake(function(){ ctx.succeed(test.response); });
 			} else {
-				spyOn(speechHandlers, tests[test].response).andCallFake(function(){ ctx.succeed(tests[test].response); });
+				spyOn(speechHandlers.statelessHandlers, test.response).andCallFake(function(){ ctx.succeed(test.response); });
 			}
 			
 			index.handler(intent, ctx, response);
@@ -169,7 +170,7 @@ describe('statelessHandlers - unhandled intent test', function() {
 	it('testBadIntent - should return unhandledSpeech', function() {
 		expect(testNames[i]).toBe(testNames[0]);
 		expect(response).not.toBeUndefined();
-		expect(response).toBe(tests[test].response);
+		expect(response).toBe(test.response);
 		expect(statelessHandlers.Unhandled).toHaveBeenCalled();
 		expect(error).toBeUndefined();
     });
@@ -177,7 +178,7 @@ describe('statelessHandlers - unhandled intent test', function() {
 	it('testAttemptIntent - should return unhandledSpeech', function() {
 		expect(testNames[i]).toBe(testNames[1]);
 		expect(response).not.toBeUndefined();
-		expect(response).toBe(tests[test].response);
+		expect(response).toBe(test.response);
 		expect(statelessHandlers.Unhandled).not.toHaveBeenCalled();
 		expect(error).toBeUndefined();
     });
@@ -185,7 +186,7 @@ describe('statelessHandlers - unhandled intent test', function() {
 	it('testYesIntent - should return unhandledSpeech', function() {
 		expect(testNames[i]).toBe(testNames[2]);
 		expect(response).not.toBeUndefined();
-		expect(response).toBe(tests[test].response);
+		expect(response).toBe(test.response);
 		expect(statelessHandlers.Unhandled).not.toHaveBeenCalled();
 		expect(error).toBeUndefined();
     });
@@ -193,7 +194,7 @@ describe('statelessHandlers - unhandled intent test', function() {
 	it('testNoIntent - should return unhandledSpeech', function() {
 		expect(testNames[i]).toBe(testNames[3]);
 		expect(response).not.toBeUndefined();
-		expect(response).toBe(tests[test].response);
+		expect(response).toBe(test.response);
 		expect(statelessHandlers.Unhandled).not.toHaveBeenCalled();
 		expect(error).toBeUndefined();
     });
@@ -201,7 +202,7 @@ describe('statelessHandlers - unhandled intent test', function() {
 	it('testBadRepeatIntent - should return unhandledSpeech', function() {
 		expect(testNames[i]).toBe(testNames[4]);
 		expect(response).not.toBeUndefined();
-		expect(response).toBe(tests[test].response);
+		expect(response).toBe(test.response);
 		expect(statelessHandlers.Unhandled).not.toHaveBeenCalled();
 		expect(error).toBeUndefined();
     });
@@ -209,12 +210,13 @@ describe('statelessHandlers - unhandled intent test', function() {
 	it('testEmptyRepeatIntent - should return unhandledSpeech', function() {
 		expect(testNames[i]).toBe(testNames[5]);
 		expect(response).not.toBeUndefined();
-		expect(response).toBe(tests[test].response);
+		expect(response).toBe(test.response);
 		expect(statelessHandlers.Unhandled).not.toHaveBeenCalled();
 		expect(error).toBeUndefined();
     });
 	
 	afterEach(function(){
+		this.removeAllSpies();
 		response = undefined;
 		error = undefined;
 		i++;
