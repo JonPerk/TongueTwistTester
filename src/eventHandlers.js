@@ -26,15 +26,16 @@ eventHandlers[constants.events.NEW_SESSION] = function(){
 	}
 	
 	var getTwister = function(context){
-		twisterHelper.getNewTwister().then(function(twister){
+		twisterHelper.getNewTwister(context.attributes.completed, context.attributes.skipped).then(function(twister){
 			if(twister){
 				context.attributes.score = 0;
 				context.attributes.twister = twister;
+				context.attributes.completed = [];
+				context.attributes.skipped = [];
 				context.handler.state = constants.states.GAME_MODE;
 				context.emitWithState(constants.speeches.WELCOME_SPEECH);
 			} else {
-				console.error('GetNewTwister failed in event ' + constants.events.NEW_SESSION + ' for ' + context.event.session.sessionId + ' State: ' + context.handler.state);
-				context.emit(constants.speeches.FATAL_SPEECH);
+				throw 'No tongue twisters found';
 			}
 		})
 		.catch(function(err){
@@ -42,6 +43,7 @@ eventHandlers[constants.events.NEW_SESSION] = function(){
 			context.emit(constants.speeches.FATAL_SPEECH);
 		});
 	};
+	
 	getTwister(this);
 };
 

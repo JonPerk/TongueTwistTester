@@ -33,7 +33,9 @@
 				"intent": "welcomeSpeech",
 				"state": "_GAME_MODE",
 				"twister": "She sells sea shells by the seashore",
-				"score": 0
+				"score": 0,
+				"completed": [],
+				"skipped": []
 			}
 		},
 		"testNewSessionGameMode": {

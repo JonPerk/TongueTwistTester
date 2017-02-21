@@ -10,7 +10,7 @@
  */
 
 var twisterHelper = {
-	getNewTwister : function(){
+	getNewTwister : function(completed, skipped){
 		return new Promise(function(resolve, reject){
 			if(false){
 				resolve('some tongue twister');
