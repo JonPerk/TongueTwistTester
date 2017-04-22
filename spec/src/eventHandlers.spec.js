@@ -147,23 +147,23 @@ describe('eventHandlers - tests', function() {
 		index.handler(intent, ctx, null);
 	});
 	
-	it('testNewSession - get welcomeSpeech intent', function() {
+	it('testNewSession - get welcomeSpeech intent - positive case', function() {
 		validate(testNames, i, 0, test, response, error);
     });
 	
-	it('testNewSessionGameMode - get unhandled intent', function() {
+	it('testNewSessionGameMode - get unhandled intent - negative case', function() {
 		validate(testNames, i, 1, test, response, error);
     });
 	
-	it('testNewSessionRepeatMode - get unhandled intent', function() {
+	it('testNewSessionRepeatMode - get unhandled intent - negative case', function() {
 		validate(testNames, i, 2, test, response, error);
     });
 	
-	it('testNewSessionContinueMode - get unhandled intent', function() {
+	it('testNewSessionContinueMode - get unhandled intent - negative case', function() {
 		validate(testNames, i, 3, test, response, error);
     });
 	
-	it('testNewSessionTwisterError - get fatalSpeech intent', function() {
+	it('testNewSessionTwisterError - get fatalSpeech intent - negative case', function() {
 		validate(testNames, i, 4, test, response, error);
     });
 	

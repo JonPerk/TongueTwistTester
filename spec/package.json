@@ -1,5 +1,5 @@
 {
-  "name": "simple-calculator-test",
+  "name": "tongue-twist-tester-test",
   "version": "1.0.0",
   "author": {
     "name": "Jon Perkowski",
@@ -11,6 +11,7 @@
     "aws-lambda-mock-context": "3.0.x",
     "htmlparser2": "3.9.x",
     "jasmine-node": "1.14.x",
-    "underscore": "1.8.x"
+    "underscore": "1.8.x",
+    "proxyquire": "1.7.x"
   }
 }
