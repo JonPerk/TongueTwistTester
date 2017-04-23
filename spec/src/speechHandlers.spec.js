@@ -23,7 +23,7 @@ var terminateRequest = {
 		"session": {
 			"sessionId": "terminate",
 			"application": {
-				"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+				"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 			},
 			"attributes": {},
 			"user": {

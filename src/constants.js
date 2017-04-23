@@ -74,7 +74,9 @@ module.exports = Object.freeze({
 	},
 	
 	cardTitles: {
-		TTT: "Tongue Twist Tester"
+		TTT: "Tongue Twist Tester",
+		LETS_PLAY: "Let's Play",
+		FATAL: "Sorry, something went wrong"
 	},
 	
 	cards: {

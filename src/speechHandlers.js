@@ -32,7 +32,7 @@ speechHandlers[constants.speeches.WELCOME_SPEECH] = function(){
 	this.emit(":askWithCard", 
 			constants.speechOutputs.WELCOME_SPEECH + this.attributes.twister, 
 			constants.reprompts.REPEAT_TWISTER_SPEECH + this.attributes.twister,
-			constants.cardTitles.TTT,
+			constants.cardTitles.LETS_PLAY,
 			constants.cards.WELCOME_CARD + this.attributes.twister);
 };
 
@@ -55,12 +55,12 @@ speechHandlers[constants.speeches.FATAL_SPEECH] = function(){
 	if(!this.attributes.score || this.attributes.score <= 0){
 		this.emit(":tellWithCard", 
 				constants.speechOutputs.FATAL_NO_SCORE_SPEECH, 
-				constants.cardTitles.TTT,
+				constants.cardTitles.FATAL,
 				constants.cards.FATAL_NO_SCORE_CARD);
 	} else {
 		this.emit(":tellWithCard", 
 				constants.speechOutputs.FATAL_SCORE_SPEECH.replace('%d', this.attributes.score), 
-				constants.cardTitles.TTT,
+				constants.cardTitles.FATAL,
 				constants.cards.FATAL_SCORE_CARD.replace('%d', this.attributes.score));
 	}
 };

@@ -5,7 +5,7 @@
 				"session": {
 					"sessionId": "speechHandlers-testWelcomeSpeech",
 					"application": {
-						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
 					"attributes": {},
 					"user": {
@@ -50,7 +50,7 @@
 				"session": {
 					"sessionId": "speechHandlers-testWelcomeSpeechGameMode",
 					"application": {
-						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
 					"attributes": {
 						"score": 0,
@@ -92,7 +92,7 @@
 					},
 					"card": {
 						"type": "Simple",
-						"title": "Tongue Twist Tester",
+						"title": "Let's Play",
 						"content": "Welcome! Here's your twister: she sells seashells by the seashore"
 					}
 				},
@@ -110,7 +110,7 @@
 				"session": {
 					"sessionId": "speechHandlers-testWelcomeSpeechRepeatMode",
 					"application": {
-						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
 					"attributes": {},
 					"user": {
@@ -156,7 +156,7 @@
 				"session": {
 					"sessionId": "speechHandlers-testWelcomeSpeechContinueMode",
 					"application": {
-						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
 					"attributes": {},
 					"user": {
@@ -202,7 +202,7 @@
 				"session": {
 					"sessionId": "speechHandlers-testWelcomeSpeechTwisterError",
 					"application": {
-						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
 					"attributes": {},
 					"user": {
@@ -233,7 +233,7 @@
 					"shouldEndSession": true,
 					"card": {
 						"type": "Simple",
-						"title": "Tongue Twist Tester",
+						"title": "Sorry, something went wrong",
 						"content": "An error occured and we had to stop playing, sorry! Please play again soon!"
 					}
 				},

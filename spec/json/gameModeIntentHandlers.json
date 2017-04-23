@@ -1,9 +1,9 @@
 {
 	"tests": {
-		"testLaunchIntent": {
+		"testAttemptIntent": {
 			"request": {
 				"session": {
-					"sessionId": "stateLessHandlers-testLaunchIntent",
+					"sessionId": "gameModeIntentHandlers-testLaunchIntent",
 					"application": {
 						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
@@ -17,23 +17,28 @@
 					"type": "IntentRequest",
 					"locale": "en-US",
 					"intent": {
-						"name": "LaunchIntent"
+						"name": "AttemptIntent",
+						"slots": {
+							"name": "Twister",
+							"value": "She sells seashells by the seashore"
+						}
 					}
 				},
 				"version": "1.0"
 			},
 			"handlerType":"event",
-			"response":"newSession"
+			"response":"validateAttempt"
 		},
 		"testRepeatIntent": {
 			"request": {
 				"session": {
-					"sessionId": "stateLessHandlers-testRepeatIntent",
+					"sessionId": "gameModeIntentHandlers-testRepeatIntent",
 					"application": {
 						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
 					"attributes": {
-						"lastSpeech": "Some output"
+						"lastSpeech": "Some output",
+						"twister": "she sells seashells by the seashore"
 					},
 					"user": {
 						"userId": "testAccount"
@@ -50,12 +55,12 @@
 				"version": "1.0"
 			},
 			"handlerType":"speech",
-			"response":"repeatSpeech"
+			"response":"sayTwisterSpeech"
 		},
 		"testHelpIntent": {
 			"request": {
 				"session": {
-					"sessionId": "stateLessHandlers-testHelpIntent",
+					"sessionId": "gameModeIntentHandlers-testHelpIntent",
 					"application": {
 						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
@@ -80,7 +85,7 @@
 		"testNoScoreStopIntent": {
 			"request": {
 				"session": {
-					"sessionId": "stateLessHandlers-testNoScoreStopIntent",
+					"sessionId": "gameModeIntentHandlers-testNoScoreStopIntent",
 					"application": {
 						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
@@ -105,7 +110,7 @@
 		"testZeroScoreStopIntent": {
 			"request": {
 				"session": {
-					"sessionId": "stateLessHandlers-testZeroScoreStopIntent",
+					"sessionId": "gameModeIntentHandlers-testZeroScoreStopIntent",
 					"application": {
 						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
@@ -132,7 +137,7 @@
 		"testScoreStopIntent": {
 			"request": {
 				"session": {
-					"sessionId": "stateLessHandlers-testScoreStopIntent",
+					"sessionId": "gameModeIntentHandlers-testScoreStopIntent",
 					"application": {
 						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
@@ -159,7 +164,7 @@
 		"testNoScoreCancelIntent": {
 			"request": {
 				"session": {
-					"sessionId": "stateLessHandlers-testNoScoreCancelIntent",
+					"sessionId": "gameModeIntentHandlers-testNoScoreCancelIntent",
 					"application": {
 						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
@@ -184,7 +189,7 @@
 		"testZeroScoreCancelIntent": {
 			"request": {
 				"session": {
-					"sessionId": "stateLessHandlers-testZeroScoreCancelIntent",
+					"sessionId": "gameModeIntentHandlers-testZeroScoreCancelIntent",
 					"application": {
 						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
@@ -211,7 +216,7 @@
 		"testScoreCancelIntent": {
 			"request": {
 				"session": {
-					"sessionId": "stateLessHandlers-testScoreCancelIntent",
+					"sessionId": "gameModeIntentHandlers-testScoreCancelIntent",
 					"application": {
 						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
@@ -235,10 +240,10 @@
 			"handlerType":"speech",
 			"response":"scoreSpeech"
 		},
-		"testBadIntent": {
+		"testLaunchIntent": {
 			"request": {
 				"session": {
-					"sessionId": "stateLessHandlers-testBadIntent",
+					"sessionId": "gameModeIntentHandlers-testAttemptIntent",
 					"application": {
 						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
@@ -252,36 +257,7 @@
 					"type": "IntentRequest",
 					"locale": "en-US",
 					"intent": {
-						"name": "BadIntent"
-					}
-				},
-				"version": "1.0"
-			},
-			"handlerType":"speech",
-			"response":"unhandledSpeech"
-		},
-		"testAttemptIntent": {
-			"request": {
-				"session": {
-					"sessionId": "stateLessHandlers-testAttemptIntent",
-					"application": {
-						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
-					},
-					"attributes": {},
-					"user": {
-						"userId": "testAccount"
-					},
-					"new": true
-				},
-				"request": {
-					"type": "IntentRequest",
-					"locale": "en-US",
-					"intent": {
-						"name": "AttemptIntent",
-						"slots": {
-							"name": "Twister",
-							"value": "She sells seashells by the seashore"
-						}
+						"name": "LaunchIntent"
 					}
 				},
 				"version": "1.0"
@@ -292,7 +268,7 @@
 		"testYesIntent": {
 			"request": {
 				"session": {
-					"sessionId": "stateLessHandlers-testYesIntent",
+					"sessionId": "gameModeIntentHandlers-testYesIntent",
 					"application": {
 						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
@@ -317,7 +293,7 @@
 		"testNoIntent": {
 			"request": {
 				"session": {
-					"sessionId": "stateLessHandlers-testNoIntent",
+					"sessionId": "gameModeIntentHandlers-testNoIntent",
 					"application": {
 						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
@@ -342,37 +318,12 @@
 		"testBadRepeatIntent": {
 			"request": {
 				"session": {
-					"sessionId": "stateLessHandlers-testBadRepeatIntent",
-					"application": {
-						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
-					},
-					"attributes": {},
-					"user": {
-						"userId": "testAccount"
-					},
-					"new": true
-				},
-				"request": {
-					"type": "IntentRequest",
-					"locale": "en-US",
-					"intent": {
-						"name": "AMAZON.RepeatIntent"
-					}
-				},
-				"version": "1.0"
-			},
-			"handlerType":"speech",
-			"response":"unhandledSpeech"
-		},
-		"testEmptyRepeatIntent": {
-			"request": {
-				"session": {
-					"sessionId": "stateLessHandlers-testEmptyRepeatIntent",
+					"sessionId": "gameModeIntentHandlers-testBadRepeatIntent",
 					"application": {
 						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
 					"attributes": {
-						"lastSpeech": "   "
+						"lastSpeech": "some speech"
 					},
 					"user": {
 						"userId": "testAccount"
@@ -389,7 +340,35 @@
 				"version": "1.0"
 			},
 			"handlerType":"speech",
-			"response":"unhandledSpeech"
+			"response":"fatalSpeech"
+		},
+		"testEmptyRepeatIntent": {
+			"request": {
+				"session": {
+					"sessionId": "gameModeIntentHandlers-testEmptyRepeatIntent",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"lastSpeech": "   ",
+						"twister": ""
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.RepeatIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerType":"speech",
+			"response":"fatalSpeech"
 		}
 	}
 }
