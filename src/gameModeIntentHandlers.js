@@ -39,7 +39,11 @@ intents[constants.intents.NO_INTENT] = function(){
 
 intents[constants.intents.REPEAT_INTENT] = function(){
 	console.info('Intent handler ' + constants.intents.REPEAT_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
-	if(this.attributes.twister && this.attributes.twister.trim() !== ''){
+	console.log(JSON.stringify(this.attributes.twister))
+	if(this.attributes.twister && 
+			(this.attributes.twister.index || this.attributes.twister.index === 0)  && 
+			this.attributes.twister.value && 
+			this.attributes.twister.value.trim() !== ''){
 		this.emitWithState(constants.speeches.SAY_TWISTER_SPEECH);
 	} else {
 		console.error('No twister loaded on repeat request in _GAME_MODE for ' + this.event.session.sessionId);

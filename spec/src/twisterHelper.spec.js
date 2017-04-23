@@ -99,7 +99,7 @@ describe('twisterHelper - getNewTwister positive tests', function() {
 	function validate(testNames, index, expectedIndex, test, response, error){
 		expect(testNames[index]).toBe(testNames[expectedIndex]);
 		expect(response).not.toBeUndefined();
-		expect(test.response.includes(response)).toBe(true);
+		expect(test.response[response.index]).toEqual(response);
 		expect(error).toBeUndefined();
 	}
 });

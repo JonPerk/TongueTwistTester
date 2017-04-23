@@ -56,7 +56,10 @@
 						"score": 0,
 						"completed": [],
 						"skipped": [],
-						"twister": "she sells seashells by the seashore"
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
 					},
 					"user": {
 						"userId": "testAccount"
@@ -100,7 +103,10 @@
 					"score": 0,
 					"completed": [],
 					"skipped": [],
-					"twister": "she sells seashells by the seashore",
+					"twister": {
+						"index": 0,
+						"value": "she sells seashells by the seashore"
+					},
 					"STATE": "_GAME_MODE"
 				}
 			}

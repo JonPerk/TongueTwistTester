@@ -3,35 +3,86 @@
 		"initialTwister": {
 			"completed": [],
 			"skipped": [],
-			"response": ["She sells seashells by the seashore", "some twister", "another twister", "yet another twister", "a final twisters"]
+			"response": [
+				{
+					"index": 0,
+					"value": "She sells seashells by the seashore"
+				},
+				{
+					"index": 1,
+					"value": "some twister" 
+				},
+				{
+					"index": 2,
+					"value": "another twister"
+				},
+				{
+					"index": 3,
+					"value": "yet another twister"
+				},
+				{
+					"index": 4,
+					"value": "a final twisters"
+				}
+			]
 		},
 		"completedTwister": {
 			"completed": [1, 2, 3, 4],
 			"skipped": [],
-			"response": ["She sells seashells by the seashore"]
+			"response": [
+				{
+					"index": 0,
+					"value": "She sells seashells by the seashore"
+				}
+			]
 		},
 		"skippedTwister": {
 			"completed": [],
 			"skipped": [1, 2, 3, 4],
-			"response": ["She sells seashells by the seashore"]
+			"response": [
+				{
+					"index": 0,
+					"value": "She sells seashells by the seashore"
+				}
+			]
 		},
 		"completedAndSkippedTwister": {
 			"completed": [1, 2],
 			"skipped": [3, 4],
-			"response": ["She sells seashells by the seashore"]
+			"response": [
+				{
+					"index": 0,
+					"value": "She sells seashells by the seashore"
+				}
+			]
 		},
 		"completedNullTwister": {
 			"skipped": [1, 2, 3, 4],
-			"response": ["She sells seashells by the seashore"]
+			"response": [
+				{
+					"index": 0,
+					"value": "She sells seashells by the seashore"
+				}
+			]
 		},
 		"skippedNullTwister": {
 			"completed": [1, 2, 3, 4],
-			"response": ["She sells seashells by the seashore"]
+			"response": [
+				{
+					"index": 0,
+					"value": "She sells seashells by the seashore"
+				}
+			]
 		},
 		"completedAndSkippedFullTwister": {
 			"completed": [1, 2, 3, 4],
 			"skipped": [0],
-			"response": ["She sells seashells by the seashore"]
+			"response": [
+				{
+					"index": 0,
+					"value": "She sells seashells by the seashore"
+				}
+			]
 		},
 		"noMoreTwisters": {
 			"completed": [0, 1, 2, 3, 4],

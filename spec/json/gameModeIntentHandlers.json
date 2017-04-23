@@ -38,7 +38,10 @@
 					},
 					"attributes": {
 						"lastSpeech": "Some output",
-						"twister": "she sells seashells by the seashore"
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
 					},
 					"user": {
 						"userId": "testAccount"
@@ -351,7 +354,7 @@
 					},
 					"attributes": {
 						"lastSpeech": "   ",
-						"twister": ""
+						"twister": {}
 					},
 					"user": {
 						"userId": "testAccount"

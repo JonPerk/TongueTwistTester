@@ -30,10 +30,10 @@ speechHandlers[constants.speeches.WELCOME_SPEECH] = function(){
 	}
 	
 	this.emit(":askWithCard", 
-			constants.speechOutputs.WELCOME_SPEECH + this.attributes.twister, 
-			constants.reprompts.REPEAT_TWISTER_SPEECH + this.attributes.twister,
+			constants.speechOutputs.WELCOME_SPEECH + this.attributes.twister.value, 
+			constants.reprompts.REPEAT_TWISTER_SPEECH + this.attributes.twister.value,
 			constants.cardTitles.LETS_PLAY,
-			constants.cards.WELCOME_CARD + this.attributes.twister);
+			constants.cards.WELCOME_CARD + this.attributes.twister.value);
 };
 
 speechHandlers[constants.speeches.SAY_TWISTER_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
