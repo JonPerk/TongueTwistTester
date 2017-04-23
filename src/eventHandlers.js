@@ -47,10 +47,21 @@ eventHandlers[constants.events.NEW_SESSION] = function(){
 	getTwister(this);
 };
 
-//temp
 eventHandlers[constants.events.NEW_TWISTER] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
-eventHandlers[constants.events.VALIDATE_ATTEMPT] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
-eventHandlers[constants.events.END_SESSION] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
+
+/** validates attempt. 
+ * if correct, goes to continue mode to see if user wants to continue. 
+ * if incorrect, goes to repeat mode to see if user wants to try again */
+eventHandlers[constants.events.VALIDATE_ATTEMPT] = function(){
+	console.info('Temporary. Always correct. Expecting: ' + this.attributes.twister.value + ' Got: ' + this.event.request.intent.slots.Attempt.value + ' Session ' + this.event.session.sessionId);
+	this.emitWithState(':askWithCard', 
+			'I heard ' + this.event.request.intent.slots.Attempt.value, 
+			'I heard ' + this.event.request.intent.slots.Attempt.value, 
+			'Validate test',
+			'Expecting: ' + this.attributes.twister.value + ' Got: ' + this.event.request.intent.slots.Attempt.value)
+};
+
+eventHandlers[constants.events.END_SESSION] = function(){console.warn('Not yet implemented' + JSON.stringify(this)); this.emit(':tell', 'Goodbye')};
 
 var gameMode = Object.assign({}, eventHandlers);
 var repeatMode = Object.assign({}, eventHandlers);

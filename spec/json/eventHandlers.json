@@ -169,6 +169,49 @@
 				"intent": "fatalSpeech",
 				"state": null
 			}
+		},
+		"testValidateAttemptCorrect": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testValidateAttemptCorrect",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"lastSpeech": "Some output",
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AttemptIntent",
+						"slots": {
+							"name": "Twister",
+							"value": "She sells seashells by the seashore"
+						}
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "gameMode",
+			"requestName": "validateAttempt",
+			"requestState": "_GAME_MODE",
+			"eventStateHandler": "gameModeHandlers",
+			"response": {
+				"handlerType": "speech",
+				"stateHandler":"continueModeHandlers",
+				"intent": "correctSpeech",
+				"state": "_CONTINUE_MODE"
+			}
 		}
 	}
 }
