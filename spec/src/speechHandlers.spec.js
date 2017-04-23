@@ -3,7 +3,7 @@
  * @copyright Jon Perkowski 2017
  */
 /**
- * Test module for speechs
+ * Test module for speeches
  * @module speechHandlersHandlers.spec
  *
  */
