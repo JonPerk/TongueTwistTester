@@ -41,6 +41,48 @@ module.exports = Object.freeze({
 		WIN_SPEECH: 'winSpeech'
 	},
 	
+	speechOutputs: {
+		WELCOME_SPEECH: 'Welcome to TongueTwistTester. Try this tongue twister. Repeat after me. ',
+		FATAL_NO_SCORE_SPEECH: 'An error occured and we had to stop playing, sorry! Please play again soon!',
+		FATAL_SCORE_SPEECH: 'An error occured and we had to stop playing, sorry! You got %d tongue twisters, thanks for playing!',
+		SAY_TWISTER_SPEECH: 'sayTwisterSpeech',
+		CORRECT_SPEECH: 'correctSpeech',
+		INCORRECT_SPEECH: 'incorrectSpeech',
+		REPEAT_SPEECH: 'repeatSpeech',
+		HELP_SPEECH: 'helpSpeech',
+		CONTINUE_SPEECH: 'continueSpeech',
+		SCORE_SPEECH: 'scoreSpeech',
+		GOODBYE_SPEECH: 'goodbyeSpeech',
+		UNHANDLED_SPEECH: 'I\'m sorry I couldn\'t understand that',
+		FATAL_SPEECH: 'fatalSpeech',
+		WIN_SPEECH: 'winSpeech'
+	},
+	
+	reprompts: {
+		REPEAT_TWISTER_SPEECH: 'Here\'s the tongue twister. Repeat after me. ',
+		SAY_TWISTER_SPEECH: 'sayTwisterSpeech',
+		CORRECT_SPEECH: 'correctSpeech',
+		INCORRECT_SPEECH: 'incorrectSpeech',
+		REPEAT_SPEECH: 'repeatSpeech',
+		HELP_SPEECH: 'helpSpeech',
+		CONTINUE_SPEECH: 'continueSpeech',
+		SCORE_SPEECH: 'scoreSpeech',
+		GOODBYE_SPEECH: 'goodbyeSpeech',
+		UNHANDLED_SPEECH: 'I\'m sorry I couldn\'t understand that',
+		FATAL_SPEECH: 'fatalSpeech',
+		WIN_SPEECH: 'winSpeech'
+	},
+	
+	cardTitles: {
+		TTT: "Tongue Twist Tester"
+	},
+	
+	cards: {
+		WELCOME_CARD: 'Welcome! Here\'s your twister: ',
+		FATAL_NO_SCORE_CARD: 'An error occured and we had to stop playing, sorry! Please play again soon!',
+		FATAL_SCORE_CARD: 'An error occured and we had to stop playing, sorry! You got %d tongue twisters, thanks for playing!'
+	},
+	
     //  Custom constants
     terminate: 'TERMINATE',
 });

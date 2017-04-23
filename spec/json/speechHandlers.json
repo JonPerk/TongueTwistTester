@@ -1,0 +1,246 @@
+{
+	"tests": {
+		"testWelcomeSpeech": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testWelcomeSpeech",
+					"application": {
+						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "welcomeSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"resolvePromise": true,
+			"requestHandlerType": "stateless",
+			"requestName": "welcomeSpeech",
+			"requestState": null,
+			"speechStateHandler": "statelessHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+					},
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						}
+					}
+				},
+				"sessionAttributes": {}
+			}
+		},
+		"testWelcomeSpeechGameMode": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testWelcomeSpeechGameMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+					},
+					"attributes": {
+						"score": 0,
+						"completed": [],
+						"skipped": [],
+						"twister": "she sells seashells by the seashore"
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "welcomeSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "gameMode",
+			"requestName": "welcomeSpeech",
+			"requestState": "_GAME_MODE",
+			"speechStateHandler": "gameModeHandlers",
+			"response":  {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> Welcome to TongueTwistTester. Try this tongue twister. Repeat after me. she sells seashells by the seashore </speak>"
+					},
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> Here's the tongue twister. Repeat after me. she sells seashells by the seashore </speak>"
+						}
+					},
+					"card": {
+						"type": "Simple",
+						"title": "Tongue Twist Tester",
+						"content": "Welcome! Here's your twister: she sells seashells by the seashore"
+					}
+				},
+				"sessionAttributes": {
+					"score": 0,
+					"completed": [],
+					"skipped": [],
+					"twister": "she sells seashells by the seashore",
+					"STATE": "_GAME_MODE"
+				}
+			}
+		},
+		"testWelcomeSpeechRepeatMode": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testWelcomeSpeechRepeatMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "welcomeSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "repeatMode",
+			"requestName": "welcomeSpeech",
+			"requestState": "_REPEAT_MODE",
+			"speechStateHandler": "repeatModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+					},
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						}
+					}
+				},
+				"sessionAttributes": {
+					"STATE": "_REPEAT_MODE"
+				}
+			}
+		},
+		"testWelcomeSpeechContinueMode": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testWelcomeSpeechContinueMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "welcomeSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "continueMode",
+			"requestName": "welcomeSpeech",
+			"requestState": "_CONTINUE_MODE",
+			"speechStateHandler": "continueModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+					},
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						}
+					}
+				},
+				"sessionAttributes": {
+					"STATE": "_CONTINUE_MODE"
+				}
+			}
+		},
+		"testWelcomeSpeechTwisterError": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testWelcomeSpeechTwisterError",
+					"application": {
+						"applicationId": "amzn1.ask.skill.d7ecf6a4-0b52-41e1-8727-716b72f2f673"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "welcomeSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "gameMode",
+			"requestName": "welcomeSpeech",
+			"requestState": "_GAME_MODE",
+			"speechStateHandler": "gameModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> An error occured and we had to stop playing, sorry! Please play again soon! </speak>"
+					},
+					"shouldEndSession": true,
+					"card": {
+						"type": "Simple",
+						"title": "Tongue Twist Tester",
+						"content": "An error occured and we had to stop playing, sorry! Please play again soon!"
+					}
+				},
+				"sessionAttributes": {
+					"STATE": "_GAME_MODE"
+				}
+			}
+		}
+	}
+}

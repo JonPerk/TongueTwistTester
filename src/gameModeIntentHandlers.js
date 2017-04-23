@@ -21,7 +21,11 @@ intents[constants.intents.REPEAT_INTENT] = function(){console.error(JSON.stringi
 intents[constants.intents.HELP_INTENT] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
 intents[constants.intents.STOP_INTENT] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
 intents[constants.intents.CANCEL_INTENT] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
-intents[constants.intents.UNHANDLED_INTENT] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
+
+intents[constants.intents.UNHANDLED_INTENT] = function(){
+	console.warn('Intent handler ' + constants.intents.UNHANDLED_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	this.emitWithState(constants.speeches.UNHANDLED_SPEECH);
+};
 
 /** handlers for Intents in GAME_MODE */
 var gameModeIntentHandlers = Alexa.CreateStateHandler(constants.states.GAME_MODE, intents);
