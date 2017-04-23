@@ -26,7 +26,7 @@ describe('eventHandlers - tests', function() {
 	//tests must correspond to the name of the object for the test case in the json file
 	//they must also be in the order of the test cases below
 	var testNames = ['testNewSession', 'testNewSessionGameMode', 'testNewSessionRepeatMode', 'testNewSessionContinueMode', 
-		'testNewSessionTwisterError'];
+		'testNewSessionTwisterError', 'testValidateAttemptCorrect'];
 	var i = 0;
 	var response;
 	var error;
@@ -165,6 +165,10 @@ describe('eventHandlers - tests', function() {
 	
 	it('testNewSessionTwisterError - get fatalSpeech intent - negative case', function() {
 		validate(testNames, i, 4, test, response, error);
+    });
+	
+	it('testValidateAttemptCorrect - get correctSpeech intent - positive case', function() {
+		validate(testNames, i, 5, test, response, error);
     });
 	
 	afterEach(function(){
