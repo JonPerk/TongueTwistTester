@@ -53,12 +53,25 @@ eventHandlers[constants.events.NEW_TWISTER] = function(){console.error(JSON.stri
  * if correct, goes to continue mode to see if user wants to continue. 
  * if incorrect, goes to repeat mode to see if user wants to try again */
 eventHandlers[constants.events.VALIDATE_ATTEMPT] = function(){
-	console.info('Temporary. Always correct. Expecting: ' + this.attributes.twister.value + ' Got: ' + this.event.request.intent.slots.Attempt.value + ' Session ' + this.event.session.sessionId);
-	this.emitWithState(':askWithCard', 
-			'I heard ' + this.event.request.intent.slots.Attempt.value, 
-			'I heard ' + this.event.request.intent.slots.Attempt.value, 
+	console.info('Request: ' + JSON.stringify(this.event.request, null, 2));
+	console.info('Attributes: ' + JSON.stringify(this.attributes, null, 2));
+	if(!this.attributes.twister.value){
+		this.emit(":tell", "can't read current twister attribute");
+		return;
+	}
+	if(!this.event.request.intent.slots.Twister.value){
+		this.emit(":tell", "can't read current twister attempt");
+		return;
+	}
+	console.info('Temporary. Always correct. Expecting: ' + 
+			this.attributes.twister.value + ' Got: ' + 
+			this.event.request.intent.slots.Twister.value + ' Session ' + 
+			this.event.session.sessionId);
+	this.emit(':askWithCard', 
+			'I heard ' + this.event.request.intent.slots.Twister.value, 
+			'I heard ' + this.event.request.intent.slots.Twister.value, 
 			'Validate test',
-			'Expecting: ' + this.attributes.twister.value + ' Got: ' + this.event.request.intent.slots.Attempt.value)
+			'Expecting: ' + this.attributes.twister.value + ' Got: ' + this.event.request.intent.slots.Twister.value)
 };
 
 eventHandlers[constants.events.END_SESSION] = function(){console.warn('Not yet implemented' + JSON.stringify(this)); this.emit(':tell', 'Goodbye')};
