@@ -44,17 +44,18 @@ speechHandlers[constants.speeches.CORRECT_SPEECH] = function(){
 	this.emit(':tellWithCard', 
 			'That\'s correct! I heard ' + this.event.request.intent.slots.Twister.value,  
 			'You got it correct',
-			'Expecting: ' + this.attributes.twister.value + ' Got: ' + this.event.request.intent.slots.Twister.value)
+			this.event.request.intent.slots.Twister.value)
 };
 
 speechHandlers[constants.speeches.INCORRECT_SPEECH] = function(){
-	console.info('Speech handler ' + constants.speeches.CORRECT_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	console.info('Speech handler ' + constants.speeches.INCORRECT_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	this.emit(':tellWithCard', 
 			'Sorry, that didn\'t sound right. I heard ' + this.event.request.intent.slots.Twister.value,  
 			'You didn\'t get it',
 			'Expecting: ' + this.attributes.twister.value + ' Got: ' + this.event.request.intent.slots.Twister.value)
 };
 //end temp
+
 speechHandlers[constants.speeches.REPEAT_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
 speechHandlers[constants.speeches.HELP_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
 speechHandlers[constants.speeches.CONTINUE_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
@@ -63,13 +64,13 @@ speechHandlers[constants.speeches.GOODBYE_SPEECH] = function(){console.error(JSO
 
 /** notifies user of recoverable failure and continues */
 speechHandlers[constants.speeches.UNHANDLED_SPEECH] = function(){
-	console.warn('Speech handler ' + constants.speeches.UNHANDLED_SPEECH + ' called for ' + this.event.session.sessionId);
+	console.warn('Speech handler ' + constants.speeches.UNHANDLED_SPEECH + ' called for ' + this.event.session.sessionId + " context " + JSON.stringify(this));
 	this.emit(":ask", constants.speechOutputs.UNHANDLED_SPEECH, constants.reprompts.UNHANDLED_SPEECH);
 }
 
 /** notifies user of unrecoverable failure and ends session */
 speechHandlers[constants.speeches.FATAL_SPEECH] = function(){
-	console.error('Speech handler ' + constants.speeches.FATAL_SPEECH + ' called for ' + this.event.session.sessionId);
+	console.error('Speech handler ' + constants.speeches.FATAL_SPEECH + ' called for ' + this.event.session.sessionId + " context " + JSON.stringify(this));
 	if(!this.attributes.score || this.attributes.score <= 0){
 		this.emit(":tellWithCard", 
 				constants.speechOutputs.FATAL_NO_SCORE_SPEECH, 

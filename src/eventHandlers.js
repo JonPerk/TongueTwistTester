@@ -78,6 +78,7 @@ eventHandlers[constants.events.VALIDATE_ATTEMPT] = function(){
 	var expected = this.attributes.twister.value.replace(/[^a-zA-z ]/g, "").toLowerCase();
 	var attempt = this.event.request.intent.slots.Twister.value.replace(/[^a-zA-z ]/g, "").toLowerCase();
 	
+	//debug
 	console.info("Expected: " + expected + " Actual attempt: " + attempt + " Match? " + (attempt === expected));
 	if(attempt === expected){
 		this.attributes.score++;
