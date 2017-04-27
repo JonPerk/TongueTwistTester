@@ -179,6 +179,7 @@
 					},
 					"attributes": {
 						"lastSpeech": "Some output",
+						"score": 0,
 						"twister": {
 							"index": 0,
 							"value": "she sells seashells by the seashore"
@@ -195,8 +196,10 @@
 					"intent": {
 						"name": "AttemptIntent",
 						"slots": {
-							"name": "Twister",
-							"value": "She sells seashells by the seashore"
+							"Twister": {
+								"name": "Twister",
+								"value": "she sells seashells by the seashore"
+							}
 						}
 					}
 				},
@@ -210,8 +213,380 @@
 				"handlerType": "speech",
 				"stateHandler":"continueModeHandlers",
 				"intent": "correctSpeech",
-				"state": "_CONTINUE_MODE"
+				"state": "_CONTINUE_MODE",
+				"score": 1,
+				"completed": [0]
+			}
+		},
+		"testValidateAttemptCorrectPunctuation": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testValidateAttemptCorrectPunctuation",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"lastSpeech": "Some output",
+						"score": 1,
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore."
+						},
+						"completed": [1]
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AttemptIntent",
+						"slots": {
+							"Twister": {
+								"name": "Twister",
+								"value": "she sells seashells by the seashore"
+							}
+						}
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "gameMode",
+			"requestName": "validateAttempt",
+			"requestState": "_GAME_MODE",
+			"eventStateHandler": "gameModeHandlers",
+			"response": {
+				"handlerType": "speech",
+				"stateHandler":"continueModeHandlers",
+				"intent": "correctSpeech",
+				"state": "_CONTINUE_MODE",
+				"score": 2,
+				"completed": [1,0]
+			}
+		},
+		"testValidateAttemptCorrectCapitalization": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testValidateAttemptCorrect",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"lastSpeech": "Some output",
+						"score": 3,
+						"twister": {
+							"index": 0,
+							"value": "She sells seashells by the seashore"
+						},
+						"completed": [1,5,3]
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AttemptIntent",
+						"slots": {
+							"Twister": {
+								"name": "Twister",
+								"value": "she sells seashells by the seashore"
+							}
+						}
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "gameMode",
+			"requestName": "validateAttempt",
+			"requestState": "_GAME_MODE",
+			"eventStateHandler": "gameModeHandlers",
+			"response": {
+				"handlerType": "speech",
+				"stateHandler":"continueModeHandlers",
+				"intent": "correctSpeech",
+				"state": "_CONTINUE_MODE",
+				"score": 4,
+				"completed": [1,5,3,0]
+			}
+		},
+		"testValidateAttemptCorrectPuncAndCap": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testValidateAttemptCorrect",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"lastSpeech": "Some output",
+						"score": 10,
+						"twister": {
+							"index": 0,
+							"value": "She sells seashells, by the Seashore."
+						},
+						"completed": [1,2,3,4,5,6,7,8,9,10]
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AttemptIntent",
+						"slots": {
+							"Twister": {
+								"name": "Twister",
+								"value": "she sells seashells by the seashore"
+							}
+						}
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "gameMode",
+			"requestName": "validateAttempt",
+			"requestState": "_GAME_MODE",
+			"eventStateHandler": "gameModeHandlers",
+			"response": {
+				"handlerType": "speech",
+				"stateHandler":"continueModeHandlers",
+				"intent": "correctSpeech",
+				"state": "_CONTINUE_MODE",
+				"score": 11,
+				"completed": [1,2,3,4,5,6,7,8,9,10,0]
+			}
+		},
+		"testValidateAttemptIncorrect": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testValidateAttemptIncorrect",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"lastSpeech": "Some output",
+						"score": 1,
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AttemptIntent",
+						"slots": {
+							"Twister": {
+								"name": "Twister",
+								"value": "see shells seashells by the seashore"
+							}
+						}
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "gameMode",
+			"requestName": "validateAttempt",
+			"requestState": "_GAME_MODE",
+			"eventStateHandler": "gameModeHandlers",
+			"response": {
+				"handlerType": "speech",
+				"stateHandler":"repeatModeHandlers",
+				"intent": "incorrectSpeech",
+				"state": "_REPEAT_MODE",
+				"score": 1,
+				"twister": {
+					"index": 0,
+					"value": "she sells seashells by the seashore"
+				}
+			}
+		},
+		"testValidateAttemptNull": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testValidateAttemptNull",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"lastSpeech": "Some output",
+						"score": 0,
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AttemptIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "gameMode",
+			"requestName": "validateAttempt",
+			"requestState": "_GAME_MODE",
+			"eventStateHandler": "gameModeHandlers",
+			"response": {
+				"handlerType": "speech",
+				"stateHandler":"repeatModeHandlers",
+				"intent": "incorrectSpeech",
+				"state": "_REPEAT_MODE",
+				"score": 0,
+				"twister": {
+					"index": 0,
+					"value": "she sells seashells by the seashore"
+				}
+			}
+		},
+		"testValidateAttemptTwisterNull": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testValidateAttemptTwisterNull",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"lastSpeech": "Some output",
+						"score": 0
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AttemptIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "gameMode",
+			"requestName": "validateAttempt",
+			"requestState": "_GAME_MODE",
+			"eventStateHandler": "gameModeHandlers",
+			"response": {
+				"handlerType": "speech",
+				"stateHandler":"gameModeHandlers",
+				"intent": "fatalSpeech",
+				"state": "_GAME_MODE",
+				"score": 0
+			}
+		},
+		"testValidateAttemptRepeatMode": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testValidateAttemptRepeatMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"lastSpeech": "Some output",
+						"score": 0,
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AttemptIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "repeatMode",
+			"requestName": "validateAttempt",
+			"requestState": "_REPEAT_MODE",
+			"eventStateHandler": "repeatModeHandlers",
+			"response": {
+				"handlerType": "repeatMode",
+				"stateHandler":"repeatModeHandlers",
+				"intent": "Unhandled",
+				"state": "_REPEAT_MODE",
+				"score": 0,
+				"twister": {
+					"index": 0,
+					"value": "she sells seashells by the seashore"
+				}
+			}
+		},"testValidateAttemptStateless": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testValidateAttemptStateless",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"lastSpeech": "Some output",
+						"score": 0,
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AttemptIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "stateless",
+			"requestName": "validateAttempt",
+			"requestState": null,
+			"eventStateHandler": "statelessHandlers",
+			"response": {
+				"handlerType": "stateless",
+				"stateHandler":"statelessHandlers",
+				"intent": "Unhandled",
+				"state": null,
+				"score": 0,
+				"twister": {
+					"index": 0,
+					"value": "she sells seashells by the seashore"
+				}
 			}
 		}
+		
 	}
 }

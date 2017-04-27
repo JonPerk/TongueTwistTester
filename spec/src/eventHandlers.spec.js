@@ -26,7 +26,10 @@ describe('eventHandlers - tests', function() {
 	//tests must correspond to the name of the object for the test case in the json file
 	//they must also be in the order of the test cases below
 	var testNames = ['testNewSession', 'testNewSessionGameMode', 'testNewSessionRepeatMode', 'testNewSessionContinueMode', 
-		'testNewSessionTwisterError', 'testValidateAttemptCorrect'];
+		'testNewSessionTwisterError', 'testValidateAttemptCorrect', 'testValidateAttemptCorrectPunctuation',
+		'testValidateAttemptCorrectCapitalization', 'testValidateAttemptCorrectPuncAndCap','testValidateAttemptIncorrect',
+		'testValidateAttemptNull', 'testValidateAttemptTwisterNull', 'testValidateAttemptRepeatMode',
+		'testValidateAttemptStateless'];
 	var i = 0;
 	var response;
 	var error;
@@ -42,7 +45,6 @@ describe('eventHandlers - tests', function() {
 		var ctx2 = context();
 		ctx.Promise
 			.then(resp => {
-				response = resp;
 				index.handler(intent, ctx2, null);
 			})
 			.catch(err => {
@@ -138,6 +140,10 @@ describe('eventHandlers - tests', function() {
 			spyOn(continueModeIntentHandlers, test.response.intent).andCallFake(function(){ 
 				buildResponse(this, test, response, ctx2); 
 			});
+		} else if(test.response.handlerType === 'stateless'){
+			spyOn(statelessHandlers, test.response.intent).andCallFake(function(){ 
+				buildResponse(this, test, response, ctx2); 
+			});
 		} else {
 			spyOn(speechHandlers[test.response.stateHandler], test.response.intent).andCallFake(function(){
 				buildResponse(this, test, response, ctx2);
@@ -169,6 +175,38 @@ describe('eventHandlers - tests', function() {
 	
 	it('testValidateAttemptCorrect - get correctSpeech intent - positive case', function() {
 		validate(testNames, i, 5, test, response, error);
+    });
+	
+	it('testValidateAttemptCorrectPunctuation - get correctSpeech intent - positive case', function() {
+		validate(testNames, i, 6, test, response, error);
+    });
+	
+	it('testValidateAttemptCorrectCapitalization - get correctSpeech intent - positive case', function() {
+		validate(testNames, i, 7, test, response, error);
+    });
+	
+	it('testValidateAttemptCorrectPuncAndCap - get correctSpeech intent - positive case', function() {
+		validate(testNames, i, 8, test, response, error);
+    });
+	
+	it('testValidateAttemptIncorrect - get incorrectSpeech intent - positive case', function() {
+		validate(testNames, i, 9, test, response, error);
+    });
+	
+	it('testValidateAttemptNull - get incorrectSpeech intent - positive case', function() {
+		validate(testNames, i, 10, test, response, error);
+    });
+	
+	it('testValidateAttemptTwisterNull - get fatalSpeech intent - negative case', function() {
+		validate(testNames, i, 11, test, response, error);
+    });
+	
+	it('testValidateAttemptRepeatMode - get unhandledSpeech intent - negative case', function() {
+		validate(testNames, i, 12, test, response, error);
+    });
+	
+	it('testValidateAttemptStateless - get unhandledSpeech intent - negative case', function() {
+		validate(testNames, i, 13, test, response, error);
     });
 	
 	afterEach(function(){

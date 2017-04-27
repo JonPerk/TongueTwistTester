@@ -4,4 +4,10 @@ LaunchIntent tell Tongue Twist Tester to give me a tongue twister
 LaunchIntent tell Tongue Twist Tester to tell me a tongue twister
 LaunchIntent ask Tongue Twist Tester to give me a tongue twister
 LaunchIntent ask Tongue Twist Tester to tell me a tongue twister
+LaunchIntent open Tongue Twister Tester
+LaunchIntent let's play Tongue Twister Tester
+LaunchIntent tell Tongue Twister Tester to give me a tongue twister
+LaunchIntent tell Tongue Twister Tester to tell me a tongue twister
+LaunchIntent ask Tongue Twister Tester to give me a tongue twister
+LaunchIntent ask Tongue Twister Tester to tell me a tongue twister
 AttemptIntent {Twister}

@@ -76,6 +76,7 @@ describe('index - unhandled intent test', function() {
 					done();
 				});
 			intent = tests[test].request;
+			spyOn(statelessHandlers, 'LaunchIntent').andCallFake(function(){ ctx.succeed(tests[test].response); });
 			spyOn(statelessHandlers, 'Unhandled').andCallFake(function(){ ctx.succeed(tests[test].response); });
 			index.handler(intent, ctx, response);
 	});

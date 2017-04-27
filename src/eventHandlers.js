@@ -53,25 +53,45 @@ eventHandlers[constants.events.NEW_TWISTER] = function(){console.error(JSON.stri
  * if correct, goes to continue mode to see if user wants to continue. 
  * if incorrect, goes to repeat mode to see if user wants to try again */
 eventHandlers[constants.events.VALIDATE_ATTEMPT] = function(){
-	console.info('Request: ' + JSON.stringify(this.event.request, null, 2));
-	console.info('Attributes: ' + JSON.stringify(this.attributes, null, 2));
-	if(!this.attributes.twister.value){
-		this.emit(":tell", "can't read current twister attribute");
+	console.info('Event handler ' + constants.events.VALIDATE_ATTEMPT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	if(!this.handler.state){
+		console.warn('Event handler ' + constants.events.VALIDATE_ATTEMPT + ' state mismatch for ' + this.event.session.sessionId + ' Expected state: null Actual State: ' + this.handler.state);
+		this.emit(constants.intents.UNHANDLED_INTENT);
 		return;
 	}
-	if(!this.event.request.intent.slots.Twister.value){
-		this.emit(":tell", "can't read current twister attempt");
+	if(this.handler.state !== constants.states.GAME_MODE){
+		console.warn('Event handler ' + constants.events.VALIDATE_ATTEMPT + ' state mismatch for ' + this.event.session.sessionId + ' Expected state: _GAME_MODE Actual State: ' + this.handler.state);
+		this.emitWithState(constants.intents.UNHANDLED_INTENT);
 		return;
 	}
-	console.info('Temporary. Always correct. Expecting: ' + 
-			this.attributes.twister.value + ' Got: ' + 
-			this.event.request.intent.slots.Twister.value + ' Session ' + 
-			this.event.session.sessionId);
-	this.emit(':askWithCard', 
-			'I heard ' + this.event.request.intent.slots.Twister.value, 
-			'I heard ' + this.event.request.intent.slots.Twister.value, 
-			'Validate test',
-			'Expecting: ' + this.attributes.twister.value + ' Got: ' + this.event.request.intent.slots.Twister.value)
+	if(!this.attributes.twister || !this.attributes.twister.value){
+		console.warn('Event handler ' + constants.events.VALIDATE_ATTEMPT + ' missing expected twister for ' + this.event.session.sessionId);
+		this.emitWithState(constants.speeches.FATAL_SPEECH);
+		return;
+	}
+	if(!this.event.request.intent.slots || !this.event.request.intent.slots.Twister || !this.event.request.intent.slots.Twister.value){
+		this.handler.state = constants.states.REPEAT_MODE;
+		this.emitWithState(constants.speeches.INCORRECT_SPEECH);
+		return;
+	}
+	
+	var expected = this.attributes.twister.value.replace(/[^a-zA-z ]/g, "").toLowerCase();
+	var attempt = this.event.request.intent.slots.Twister.value.replace(/[^a-zA-z ]/g, "").toLowerCase();
+	
+	console.info("Expected: " + expected + " Actual attempt: " + attempt + " Match? " + (attempt === expected));
+	if(attempt === expected){
+		this.attributes.score++;
+		if(!this.attributes.completed){
+			this.attributes.completed = [];
+		}
+		this.attributes.completed.push(this.attributes.twister.index);
+		this.handler.state = constants.states.CONTINUE_MODE;
+		this.attributes.twister = null;
+		this.emitWithState(constants.speeches.CORRECT_SPEECH);
+	} else {
+		this.handler.state = constants.states.REPEAT_MODE;
+		this.emitWithState(constants.speeches.INCORRECT_SPEECH);
+	}
 };
 
 eventHandlers[constants.events.END_SESSION] = function(){console.warn('Not yet implemented' + JSON.stringify(this)); this.emit(':tell', 'Goodbye')};
