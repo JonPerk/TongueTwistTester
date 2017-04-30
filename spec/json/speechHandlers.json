@@ -1146,6 +1146,216 @@
 					"STATE": "_GAME_MODE"
 				}
 			}
+		},
+		"testGoodbyeSpeech": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testGoodbyeSpeech",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 1,
+						"completed": [1]
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "goodbyeSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"resolvePromise": true,
+			"requestHandlerType": "stateless",
+			"requestName": "goodbyeSpeech",
+			"requestState": null,
+			"speechStateHandler": "statelessHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> Thanks for playing! You got 1 tongue twister right! Goodbye! </speak>"
+					},
+					"shouldEndSession": true,
+					"card": {
+						"type": "Simple",
+						"title": "Great Job!",
+						"content": "Thanks for playing! You got 1 tongue twister! Let's play again soon!"
+					}
+				},
+				"sessionAttributes": {
+					"score": 1,
+					"completed": [1]
+				}
+			}
+		},
+		"testGoodbyeSpeechWithMode": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testGoodbyeSpeechWithMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 0,
+						"completed": [],
+						"skipped": [],
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "goodbyeSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "gameMode",
+			"requestName": "goodbyeSpeech",
+			"requestState": "_GAME_MODE",
+			"speechStateHandler": "gameModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> Thanks for playing! I hope you'll play again soon! Goodbye! </speak>"
+					},
+					"shouldEndSession": true,
+					"card": {
+						"type": "Simple",
+						"title": "Thank You!",
+						"content": "Thanks for trying Tongue Twist Tester! Let's play again soon!"
+					}
+				},
+				"sessionAttributes": {
+					"score": 0,
+					"completed": [],
+					"skipped": [],
+					"twister": {
+						"index": 0,
+						"value": "she sells seashells by the seashore"
+					},
+					"STATE": "_GAME_MODE"
+				}
+			}
+		},
+		"testGoodbyeSpeechSingleScore": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testGoodbyeSpeechSingleScore",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 1,
+						"completed": [9]
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "goodbyeSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "continueMode",
+			"requestName": "goodbyeSpeech",
+			"requestState": "_CONTINUE_MODE",
+			"speechStateHandler": "continueModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> Thanks for playing! You got 1 tongue twister right! Goodbye! </speak>"
+					},
+					"shouldEndSession": true,
+					"card": {
+						"type": "Simple",
+						"title": "Great Job!",
+						"content": "Thanks for playing! You got 1 tongue twister! Let's play again soon!"
+					}
+				},
+				"sessionAttributes": {
+					"score": 1,
+					"completed": [9],
+					"STATE": "_CONTINUE_MODE"
+				}
+			}
+		},
+		"testGoodbyeSpeechMultiscore": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testGoodbyeSpeechMultiscore",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 5,
+						"completed": [1, 9, 3, 8, 4]
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "goodbyeSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "continueMode",
+			"requestName": "goodbyeSpeech",
+			"requestState": "_CONTINUE_MODE",
+			"speechStateHandler": "continueModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> Thanks for playing! You got 5 tongue twisters right! Well done! Goodbye! </speak>"
+					},
+					"shouldEndSession": true,
+					"card": {
+						"type": "Simple",
+						"title": "Awesome Job!",
+						"content": "Thanks for playing! You got 5 tongue twisters! Let's play again soon!"
+					}
+				},
+				"sessionAttributes": {
+					"score": 5,
+					"completed": [1, 9, 3, 8, 4],
+					"STATE": "_CONTINUE_MODE"
+				}
+			}
 		}
 	}
 }

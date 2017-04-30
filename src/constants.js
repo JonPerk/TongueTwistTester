@@ -52,8 +52,9 @@ module.exports = Object.freeze({
 		REPEAT_SPEECH: 'repeatSpeech',
 		HELP_SPEECH: 'helpSpeech',
 		CONTINUE_SPEECH: 'continueSpeech',
-		SCORE_SPEECH: 'scoreSpeech',
-		GOODBYE_SPEECH: 'goodbyeSpeech',
+		GOODBYE_SPEECH: 'Thanks for playing! I hope you\'ll play again soon! Goodbye!',
+		GOODBYE_SINGLE_SCORE_SPEECH: 'Thanks for playing! You got 1 tongue twister right! Goodbye!',
+		GOODBYE_MULTI_SCORE_SPEECH: 'Thanks for playing! You got %d tongue twisters right! Well done! Goodbye!',
 		UNHANDLED_SPEECH: 'I\'m sorry I couldn\'t understand that',
 		FATAL_SPEECH: 'fatalSpeech',
 		WIN_SPEECH: 'winSpeech'
@@ -67,19 +68,20 @@ module.exports = Object.freeze({
 		REPEAT_SPEECH: 'repeatSpeech',
 		HELP_SPEECH: 'helpSpeech',
 		CONTINUE_SPEECH: 'continueSpeech',
-		SCORE_SPEECH: 'scoreSpeech',
-		GOODBYE_SPEECH: 'goodbyeSpeech',
 		UNHANDLED_SPEECH: 'I\'m sorry I couldn\'t understand that',
 		FATAL_SPEECH: 'fatalSpeech',
 		WIN_SPEECH: 'winSpeech'
 	},
 	
 	cardTitles: {
-		TTT: "Tongue Twist Tester",
-		LETS_PLAY: "Let's Play",
-		FATAL: "Sorry, something went wrong",
-		CORRECT: "Way to go!",
-		INCORRECT:"Sorry, that didn't sound right"
+		TTT: 'Tongue Twist Tester',
+		LETS_PLAY: 'Let\'s Play',
+		FATAL: 'Sorry, something went wrong',
+		CORRECT: 'Way to go!',
+		INCORRECT:'Sorry, that didn\'t sound right',
+		THANK_YOU: 'Thank You!',
+		GREAT_JOB: 'Great Job!',
+		AWESOME_JOB: 'Awesome Job!'
 	},
 	
 	cards: {
@@ -91,7 +93,10 @@ module.exports = Object.freeze({
 		CORRECT_MULTI_SCORE_CARD: 'You got the tongue twister correct! %d tongue twisters completed!',
 		INCORRECT: 'I heard ',
 		INCORRECT_NO_ATTEMPT: 'Please try again',
-		SAY_TWISTER_CARD: 'Try this new twister: '
+		SAY_TWISTER_CARD: 'Try this new twister: ',
+		GOODBYE_NO_SCORE_CARD: 'Thanks for trying Tongue Twist Tester! Let\'s play again soon!',
+		GOODBYE_SINGLE_SCORE_CARD: 'Thanks for playing! You got 1 tongue twister! Let\'s play again soon!',
+		GOODBYE_MULTI_SCORE_CARD: 'Thanks for playing! You got 5 tongue twisters! Let\'s play again soon!'
 	},
 	
     //  Custom constants

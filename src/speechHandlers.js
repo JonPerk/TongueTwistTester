@@ -128,7 +128,27 @@ speechHandlers[constants.speeches.INCORRECT_SPEECH] = function(){
 speechHandlers[constants.speeches.REPEAT_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
 speechHandlers[constants.speeches.HELP_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
 speechHandlers[constants.speeches.CONTINUE_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
-speechHandlers[constants.speeches.GOODBYE_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
+
+/** gives score and says goodbye */
+speechHandlers[constants.speeches.GOODBYE_SPEECH] = function(){
+	console.log('Speech handler ' + constants.speeches.GOODBYE_SPEECH + ' called for ' + this.event.session.sessionId + " session ending");
+	if(!this.attributes.score || this.attributes.score <= 0){
+		this.emit(":tellWithCard", 
+				constants.speechOutputs.GOODBYE_SPEECH, 
+				constants.cardTitles.THANK_YOU,
+				constants.cards.GOODBYE_NO_SCORE_CARD);
+	} else if(this.attributes.score === 1){
+		this.emit(":tellWithCard", 
+				constants.speechOutputs.GOODBYE_SINGLE_SCORE_SPEECH, 
+				constants.cardTitles.GREAT_JOB,
+				constants.cards.GOODBYE_SINGLE_SCORE_CARD);
+	} else {
+		this.emit(":tellWithCard", 
+				constants.speechOutputs.GOODBYE_MULTI_SCORE_SPEECH.replace('%d', this.attributes.score), 
+				constants.cardTitles.AWESOME_JOB,
+				constants.cards.GOODBYE_MULTI_SCORE_CARD.replace('%d', this.attributes.score));
+	}
+};
 
 /** notifies user of recoverable failure and continues */
 speechHandlers[constants.speeches.UNHANDLED_SPEECH] = function(){

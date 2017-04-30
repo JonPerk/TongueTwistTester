@@ -52,7 +52,8 @@ describe('speechHandlers - tests', function() {
 		'testCorrectSpeechContinueMode', 'testCorrectSpeechContinueModeMultiscore', 'testCorrectSpeechScoreError',
 		'testIncorrectSpeech', 'testIncorrectSpeechGameMode', 'testIncorrectSpeechRepeatMode', 'testIncorrectSpeechRepeatModeNoAttempt', 
 		'testIncorrectSpeechContinueMode', 'testSayTwisterSpeech', 'testSayTwisterSpeechGameMode', 'testSayTwisterSpeechRepeatMode',
-		'testSayTwisterSpeechContinueMode', 'testSayTwisterSpeechTwisterError'];
+		'testSayTwisterSpeechContinueMode', 'testSayTwisterSpeechTwisterError', 'testGoodbyeSpeech', 'testGoodbyeSpeechWithMode', 
+		'testGoodbyeSpeechSingleScore', 'testGoodbyeSpeechMultiscore'];
 	var i = 0;
 	var response;
 	var error;
@@ -208,6 +209,22 @@ describe('speechHandlers - tests', function() {
 	
 	it('testSayTwisterSpeechTwisterError - get fatalSpeech intent - negative case', function() {
 		validate(testNames, i, 20, test, response, error);
+    });
+	
+	it('testGoodbyeSpeech - get one score speech - positive case', function() {
+		validate(testNames, i, 21, test, response, error);
+    });
+	
+	it('testGoodbyeSpeechWithMode - get zero score speech - positive case', function() {
+		validate(testNames, i, 22, test, response, error);
+    });
+	
+	it('testGoodbyeSpeechSingleScore - get one score speech - positive case', function() {
+		validate(testNames, i, 23, test, response, error);
+    });
+	
+	it('testGoodbyeSpeechMultiscore - get multiscore speech - positive case', function() {
+		validate(testNames, i, 24, test, response, error);
     });
 	
 	afterEach(function(){
