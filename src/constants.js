@@ -44,9 +44,11 @@ module.exports = Object.freeze({
 	speechOutputs: {
 		WELCOME_SPEECH: 'Welcome to TongueTwistTester. Try this tongue twister. Repeat after me. ',
 		FATAL_NO_SCORE_SPEECH: 'An error occured and we had to stop playing, sorry! Please play again soon!',
-		FATAL_SCORE_SPEECH: 'An error occured and we had to stop playing, sorry! You got %d tongue twisters, thanks for playing!',
+		FATAL_SINGLE_SCORE_SPEECH: 'An error occured and we had to stop playing, sorry! You got 1 tongue twister, thanks for playing!',
+		FATAL_MULTI_SCORE_SPEECH: 'An error occured and we had to stop playing, sorry! You got %d tongue twisters, thanks for playing!',
 		SAY_TWISTER_SPEECH: 'sayTwisterSpeech',
-		CORRECT_SPEECH: 'correctSpeech',
+		CORRECT_SINGLE_SCORE_SPEECH: 'Great job! You got it right! That\'s your first tongue twister. Would you like to try another, yes or no?',
+		CORRECT_MULTI_SCORE_SPEECH: 'Great job! You got it right! %d tongue twisters completed so far. Would you like to try another, yes or no?',
 		INCORRECT_SPEECH: 'incorrectSpeech',
 		REPEAT_SPEECH: 'repeatSpeech',
 		HELP_SPEECH: 'helpSpeech',
@@ -61,7 +63,7 @@ module.exports = Object.freeze({
 	reprompts: {
 		REPEAT_TWISTER_SPEECH: 'Here\'s the tongue twister. Repeat after me. ',
 		SAY_TWISTER_SPEECH: 'sayTwisterSpeech',
-		CORRECT_SPEECH: 'correctSpeech',
+		CORRECT_SPEECH: 'Would you like to try another tongue twister, yes or no?',
 		INCORRECT_SPEECH: 'incorrectSpeech',
 		REPEAT_SPEECH: 'repeatSpeech',
 		HELP_SPEECH: 'helpSpeech',
@@ -76,13 +78,17 @@ module.exports = Object.freeze({
 	cardTitles: {
 		TTT: "Tongue Twist Tester",
 		LETS_PLAY: "Let's Play",
-		FATAL: "Sorry, something went wrong"
+		FATAL: "Sorry, something went wrong",
+		CORRECT: "Way to go!"
 	},
 	
 	cards: {
 		WELCOME_CARD: 'Welcome! Here\'s your twister: ',
 		FATAL_NO_SCORE_CARD: 'An error occured and we had to stop playing, sorry! Please play again soon!',
-		FATAL_SCORE_CARD: 'An error occured and we had to stop playing, sorry! You got %d tongue twisters, thanks for playing!'
+		FATAL_SINGLE_SCORE_CARD: 'An error occured and we had to stop playing, sorry! You got 1 tongue twister, thanks for playing!',
+		FATAL_MULTI_SCORE_CARD: 'An error occured and we had to stop playing, sorry! You got %d tongue twisters, thanks for playing!',
+		CORRECT_SINGLE_SCORE_CARD: 'You got the tongue twister correct!',
+		CORRECT_MULTI_SCORE_CARD: 'You got the tongue twister correct! %d tongue twisters completed!'
 	},
 	
     //  Custom constants

@@ -24,9 +24,10 @@ speechHandlers[constants.speeches.WELCOME_SPEECH] = function(){
 		return;
 	}
 	
-	if(!this.attributes.twister){
+	if(!this.attributes || !this.attributes.twister || !this.attributes.twister.value){
 		console.error('Speech handler ' + constants.speeches.WELCOME_SPEECH + ' no twister found for ' + this.event.session.sessionId);
 		this.emitWithState(constants.speeches.FATAL_SPEECH);
+		return;
 	}
 	
 	this.emit(":askWithCard", 
@@ -41,10 +42,33 @@ speechHandlers[constants.speeches.SAY_TWISTER_SPEECH] = function(){console.error
 //temp
 speechHandlers[constants.speeches.CORRECT_SPEECH] = function(){
 	console.info('Speech handler ' + constants.speeches.CORRECT_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
-	this.emit(':tellWithCard', 
-			'That\'s correct! I heard ' + this.event.request.intent.slots.Twister.value,  
-			'You got it correct',
-			this.event.request.intent.slots.Twister.value)
+	
+	if(this.handler.state !== constants.states.CONTINUE_MODE){
+		console.warn('Speech handler ' + constants.speeches.CORRECT_SPEECH + ' state mismatch for ' + this.event.session.sessionId + 
+				' Expected state: ' + constants.states.CONTINUE_MODE + ' Actual State: ' + this.handler.state);
+		this.emitWithState(constants.intents.UNHANDLED_INTENT);
+		return;
+	}
+	
+	if(!this.attributes.score || this.attributes.score <= 0){
+		console.error('Speech handler ' + constants.speeches.CORRECT_SPEECH + ' called with no score for ' + this.event.session.sessionId);
+		this.emitWithState(constants.speeches.FATAL_SPEECH);
+	} else if(this.attributes.score === 1){
+		console.log("Single score")
+		this.emit(':askWithCard', 
+				constants.speechOutputs.CORRECT_SINGLE_SCORE_SPEECH,
+				constants.reprompts.CORRECT_SPEECH,
+				constants.cardTitles.CORRECT,
+				constants.cards.CORRECT_SINGLE_SCORE_CARD);
+	} else {
+		console.log("Multi score")
+		this.emit(":askWithCard", 
+				constants.speechOutputs.CORRECT_MULTI_SCORE_SPEECH.replace('%d', this.attributes.score), 
+				constants.reprompts.CORRECT_SPEECH,
+				constants.cardTitles.CORRECT,
+				constants.cards.CORRECT_MULTI_SCORE_CARD.replace('%d', this.attributes.score));
+	}
+			
 };
 
 speechHandlers[constants.speeches.INCORRECT_SPEECH] = function(){
@@ -76,11 +100,16 @@ speechHandlers[constants.speeches.FATAL_SPEECH] = function(){
 				constants.speechOutputs.FATAL_NO_SCORE_SPEECH, 
 				constants.cardTitles.FATAL,
 				constants.cards.FATAL_NO_SCORE_CARD);
+	} else if(this.attributes.score === 1){
+		this.emit(":tellWithCard", 
+				constants.speechOutputs.FATAL_SINGLE_SCORE_SPEECH, 
+				constants.cardTitles.FATAL,
+				constants.cards.FATAL_SINGLE_SCORE_CARD);
 	} else {
 		this.emit(":tellWithCard", 
-				constants.speechOutputs.FATAL_SCORE_SPEECH.replace('%d', this.attributes.score), 
+				constants.speechOutputs.FATAL_MULTI_SCORE_SPEECH.replace('%d', this.attributes.score), 
 				constants.cardTitles.FATAL,
-				constants.cards.FATAL_SCORE_CARD.replace('%d', this.attributes.score));
+				constants.cards.FATAL_MULTI_SCORE_CARD.replace('%d', this.attributes.score));
 	}
 };
 

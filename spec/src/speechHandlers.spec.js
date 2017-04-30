@@ -48,7 +48,8 @@ describe('speechHandlers - tests', function() {
 	//tests must correspond to the name of the object for the test case in the json file
 	//they must also be in the order of the test cases below
 	var testNames = ['testWelcomeSpeech', 'testWelcomeSpeechGameMode', 'testWelcomeSpeechRepeatMode', 'testWelcomeSpeechContinueMode', 
-		'testWelcomeSpeechTwisterError'];
+		'testWelcomeSpeechTwisterError', 'testCorrectSpeech', 'testCorrectSpeechGameMode', 'testCorrectSpeechRepeatMode',
+		'testCorrectSpeechContinueMode', 'testCorrectSpeechContinueModeMultiscore', 'testCorrectSpeechScoreError'];
 	var i = 0;
 	var response;
 	var error;
@@ -140,6 +141,30 @@ describe('speechHandlers - tests', function() {
 	
 	it('testWelcomeSpeechTwisterError - get fatalSpeech intent - negative case', function() {
 		validate(testNames, i, 4, test, response, error);
+    });
+	
+	it('testCorrectSpeech - get unhandled intent - negative case', function() {
+		validate(testNames, i, 5, test, response, error);
+    });
+	
+	it('testCorrectSpeechGameMode - get unhandled intent - negative case', function() {
+		validate(testNames, i, 6, test, response, error);
+    });
+	
+	it('testCorrectSpeechRepeatMode - get fatalSpeech intent - negative case', function() {
+		validate(testNames, i, 7, test, response, error);
+    });
+	
+	it('testCorrectSpeechContinueMode - get correct intent - positive case', function() {
+		validate(testNames, i, 8, test, response, error);
+    });
+	
+	it('testCorrectSpeechContinueModeMultiscore - get correct intent - positive case', function() {
+		validate(testNames, i, 9, test, response, error);
+    });
+	
+	it('testCorrectSpeechScoreError - get fatalSpeech intent - negative case', function() {
+		validate(testNames, i, 10, test, response, error);
     });
 	
 	afterEach(function(){
