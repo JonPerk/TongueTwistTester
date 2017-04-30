@@ -73,10 +73,32 @@ speechHandlers[constants.speeches.CORRECT_SPEECH] = function(){
 
 speechHandlers[constants.speeches.INCORRECT_SPEECH] = function(){
 	console.info('Speech handler ' + constants.speeches.INCORRECT_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
-	this.emit(':tellWithCard', 
-			'Sorry, that didn\'t sound right. I heard ' + this.event.request.intent.slots.Twister.value,  
-			'You didn\'t get it',
-			'Expecting: ' + this.attributes.twister.value + ' Got: ' + this.event.request.intent.slots.Twister.value)
+	if(this.handler.state !== constants.states.REPEAT_MODE){
+		console.warn('Speech handler ' + constants.speeches.INCORRECT_SPEECH + ' state mismatch for ' + this.event.session.sessionId + 
+				' Expected state: ' + constants.states.REPEAT_MODE + ' Actual State: ' + this.handler.state);
+		this.emitWithState(constants.intents.UNHANDLED_INTENT);
+		return;
+	}
+	
+	if(!this.attributes || !this.attributes.twister || !this.attributes.twister.value){
+		console.error('Speech handler ' + constants.speeches.INCORRECT_SPEECH + ' no twister found for ' + this.event.session.sessionId);
+		this.emitWithState(constants.speeches.FATAL_SPEECH);
+		return;
+	}
+	
+	if(!this.attributes.attempt || this.attributes.attempt.trim() === ''){
+		this.emit(':askWithCard', 
+				constants.speechOutputs.INCORRECT_SPEECH,
+				constants.reprompts.INCORRECT_SPEECH,
+				constants.cardTitles.INCORRECT,
+				constants.cards.INCORRECT_NO_ATTEMPT)
+	} else {
+		this.emit(':askWithCard', 
+				constants.speechOutputs.INCORRECT_SPEECH,
+				constants.reprompts.INCORRECT_SPEECH,
+				constants.cardTitles.INCORRECT,
+				constants.cards.INCORRECT + this.attributes.attempt)
+	}
 };
 //end temp
 

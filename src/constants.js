@@ -49,7 +49,7 @@ module.exports = Object.freeze({
 		SAY_TWISTER_SPEECH: 'sayTwisterSpeech',
 		CORRECT_SINGLE_SCORE_SPEECH: 'Great job! You got it right! That\'s your first tongue twister. Would you like to try another, yes or no?',
 		CORRECT_MULTI_SCORE_SPEECH: 'Great job! You got it right! %d tongue twisters completed so far. Would you like to try another, yes or no?',
-		INCORRECT_SPEECH: 'incorrectSpeech',
+		INCORRECT_SPEECH: 'I\'m sorry, that didn\'t sound quite right. Would you like to try it again, yes or no?',
 		REPEAT_SPEECH: 'repeatSpeech',
 		HELP_SPEECH: 'helpSpeech',
 		CONTINUE_SPEECH: 'continueSpeech',
@@ -64,7 +64,7 @@ module.exports = Object.freeze({
 		REPEAT_TWISTER_SPEECH: 'Here\'s the tongue twister. Repeat after me. ',
 		SAY_TWISTER_SPEECH: 'sayTwisterSpeech',
 		CORRECT_SPEECH: 'Would you like to try another tongue twister, yes or no?',
-		INCORRECT_SPEECH: 'incorrectSpeech',
+		INCORRECT_SPEECH: 'Would you like to try the tongue twister again, yes or no?',
 		REPEAT_SPEECH: 'repeatSpeech',
 		HELP_SPEECH: 'helpSpeech',
 		CONTINUE_SPEECH: 'continueSpeech',
@@ -79,7 +79,8 @@ module.exports = Object.freeze({
 		TTT: "Tongue Twist Tester",
 		LETS_PLAY: "Let's Play",
 		FATAL: "Sorry, something went wrong",
-		CORRECT: "Way to go!"
+		CORRECT: "Way to go!",
+		INCORRECT:"Sorry, that didn't sound right"
 	},
 	
 	cards: {
@@ -88,7 +89,9 @@ module.exports = Object.freeze({
 		FATAL_SINGLE_SCORE_CARD: 'An error occured and we had to stop playing, sorry! You got 1 tongue twister, thanks for playing!',
 		FATAL_MULTI_SCORE_CARD: 'An error occured and we had to stop playing, sorry! You got %d tongue twisters, thanks for playing!',
 		CORRECT_SINGLE_SCORE_CARD: 'You got the tongue twister correct!',
-		CORRECT_MULTI_SCORE_CARD: 'You got the tongue twister correct! %d tongue twisters completed!'
+		CORRECT_MULTI_SCORE_CARD: 'You got the tongue twister correct! %d tongue twisters completed!',
+		INCORRECT: 'I heard ',
+		INCORRECT_NO_ATTEMPT: 'Please try again'
 	},
 	
     //  Custom constants

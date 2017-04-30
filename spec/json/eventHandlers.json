@@ -409,6 +409,7 @@
 				"stateHandler":"repeatModeHandlers",
 				"intent": "incorrectSpeech",
 				"state": "_REPEAT_MODE",
+				"attempt":"see shells seashells by the seashore",
 				"score": 1,
 				"twister": {
 					"index": 0,

@@ -75,8 +75,8 @@ eventHandlers[constants.events.VALIDATE_ATTEMPT] = function(){
 		return;
 	}
 	
-	var expected = this.attributes.twister.value.replace(/[^a-zA-z ]/g, "").toLowerCase();
-	var attempt = this.event.request.intent.slots.Twister.value.replace(/[^a-zA-z ]/g, "").toLowerCase();
+	var expected = this.attributes.twister.value.replace(/[^a-zA-z0-9 ]/g, "").toLowerCase();
+	var attempt = this.event.request.intent.slots.Twister.value.replace(/[^a-zA-z0-9 ]/g, "").toLowerCase();
 	
 	//debug
 	console.info("Expected: " + expected + " Actual attempt: " + attempt + " Match? " + (attempt === expected));
@@ -90,6 +90,7 @@ eventHandlers[constants.events.VALIDATE_ATTEMPT] = function(){
 		this.attributes.twister = null;
 		this.emitWithState(constants.speeches.CORRECT_SPEECH);
 	} else {
+		this.attributes.attempt = this.event.request.intent.slots.Twister.value;
 		this.handler.state = constants.states.REPEAT_MODE;
 		this.emitWithState(constants.speeches.INCORRECT_SPEECH);
 	}

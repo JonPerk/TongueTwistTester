@@ -562,6 +562,342 @@
 					"STATE": "_CONTINUE_MODE"
 				}
 			}
+		},
+		"testIncorrectSpeech": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testIncorrectSpeech",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 1,
+						"completed": [1]
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "incorrectSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"resolvePromise": true,
+			"requestHandlerType": "stateless",
+			"requestName": "incorrectSpeech",
+			"requestState": null,
+			"speechStateHandler": "statelessHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+					},
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						}
+					}
+				},
+				"sessionAttributes": {
+					"score": 1,
+					"completed": [1]
+				}
+			}
+		},
+		"testIncorrectSpeechGameMode": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testIncorrectSpeechGameMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 0,
+						"completed": [],
+						"skipped": [],
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "incorrectSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "gameMode",
+			"requestName": "incorrectSpeech",
+			"requestState": "_GAME_MODE",
+			"speechStateHandler": "gameModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+					},
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						}
+					}
+				},
+				"sessionAttributes": {
+					"score": 0,
+					"completed": [],
+					"skipped": [],
+					"twister": {
+						"index": 0,
+						"value": "she sells seashells by the seashore"
+					},
+					"STATE": "_GAME_MODE"
+				}
+			}
+		},
+		"testIncorrectSpeechRepeatMode": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testIncorrectSpeechRepeatMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"attempt": "she spells she shells by the seashore",
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "incorrectSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "repeatMode",
+			"requestName": "incorrectSpeech",
+			"requestState": "_REPEAT_MODE",
+			"speechStateHandler": "repeatModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> I'm sorry, that didn't sound quite right. Would you like to try it again, yes or no? </speak>"
+					},
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> Would you like to try the tongue twister again, yes or no? </speak>"
+						}
+					},
+					"card": {
+						"type": "Simple",
+						"title": "Sorry, that didn't sound right",
+						"content": "I heard she spells she shells by the seashore"
+					}
+				},
+				"sessionAttributes": {
+					"attempt": "she spells she shells by the seashore",
+					"twister": {
+						"index": 0,
+						"value": "she sells seashells by the seashore"
+					},
+					"STATE": "_REPEAT_MODE"
+				}
+			}
+		},
+		"testIncorrectSpeechRepeatModeNoAttempt": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testIncorrectSpeechRepeatModeNoAttempt",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "incorrectSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "repeatMode",
+			"requestName": "incorrectSpeech",
+			"requestState": "_REPEAT_MODE",
+			"speechStateHandler": "repeatModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> I'm sorry, that didn't sound quite right. Would you like to try it again, yes or no? </speak>"
+					},
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> Would you like to try the tongue twister again, yes or no? </speak>"
+						}
+					},
+					"card": {
+						"type": "Simple",
+						"title": "Sorry, that didn't sound right",
+						"content": "Please try again"
+					}
+				},
+				"sessionAttributes": {
+					"twister": {
+						"index": 0,
+						"value": "she sells seashells by the seashore"
+					},
+					"STATE": "_REPEAT_MODE"
+				}
+			}
+		},
+		"testIncorrectSpeechRepeatModeNoTwister": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testIncorrectSpeechRepeatModeNoTwister",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "incorrectSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "repeatMode",
+			"requestName": "incorrectSpeech",
+			"requestState": "_REPEAT_MODE",
+			"speechStateHandler": "repeatModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> I'm sorry, that didn't sound quite right. Would you like to try it again, yes or no? </speak>"
+					},
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> Would you like to try the tongue twister again, yes or no? </speak>"
+						}
+					},
+					"card": {
+						"type": "Simple",
+						"title": "Sorry, that didn't sound right",
+						"content": "Please try again"
+					}
+				},
+				"sessionAttributes": {
+					"STATE": "_REPEAT_MODE"
+				}
+			}
+		},
+		"testIncorrectSpeechContinueMode": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testWelcomeSpeechContinueMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 1,
+						"completed": [1]
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "incorrectSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "continueMode",
+			"requestName": "incorrectSpeech",
+			"requestState": "_CONTINUE_MODE",
+			"speechStateHandler": "continueModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+					},
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						}
+					}
+				},
+				"sessionAttributes": {
+					"score": 1,
+					"completed": [1],
+					"STATE": "_CONTINUE_MODE"
+				}
+			}
 		}
 	}
 }

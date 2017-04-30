@@ -230,6 +230,8 @@ describe('eventHandlers - tests', function() {
 			response.completed = context.attributes.completed;
 		if(context.attributes.skipped)
 			response.skipped = context.attributes.skipped;
+		if(context.attributes.attempt)
+			response.attempt = context.attributes.attempt;
 		callback.succeed(response); 
 	}
 	
