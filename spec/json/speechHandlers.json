@@ -898,6 +898,254 @@
 					"STATE": "_CONTINUE_MODE"
 				}
 			}
+		},
+		"testSayTwisterSpeech": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testSayTwisterSpeech",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "sayTwisterSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"resolvePromise": true,
+			"requestHandlerType": "stateless",
+			"requestName": "sayTwisterSpeech",
+			"requestState": null,
+			"speechStateHandler": "statelessHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+					},
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						}
+					}
+				},
+				"sessionAttributes": {}
+			}
+		},
+		"testSayTwisterSpeechGameMode": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testSayTwisterSpeechGameMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 0,
+						"completed": [],
+						"skipped": [],
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "sayTwisterSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "gameMode",
+			"requestName": "sayTwisterSpeech",
+			"requestState": "_GAME_MODE",
+			"speechStateHandler": "gameModeHandlers",
+			"response":  {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> Here's a new tongue twister. Repeat after me. she sells seashells by the seashore </speak>"
+					},
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> Here's the tongue twister. Repeat after me. she sells seashells by the seashore </speak>"
+						}
+					},
+					"card": {
+						"type": "Simple",
+						"title": "Let's Play",
+						"content": "Try this new twister: she sells seashells by the seashore"
+					}
+				},
+				"sessionAttributes": {
+					"score": 0,
+					"completed": [],
+					"skipped": [],
+					"twister": {
+						"index": 0,
+						"value": "she sells seashells by the seashore"
+					},
+					"STATE": "_GAME_MODE"
+				}
+			}
+		},
+		"testSayTwisterSpeechRepeatMode": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testSayTwisterSpeechRepeatMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "sayTwisterSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "repeatMode",
+			"requestName": "sayTwisterSpeech",
+			"requestState": "_REPEAT_MODE",
+			"speechStateHandler": "repeatModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+					},
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						}
+					}
+				},
+				"sessionAttributes": {
+					"STATE": "_REPEAT_MODE"
+				}
+			}
+		},
+		"testSayTwisterSpeechContinueMode": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testSayTwisterSpeechContinueMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "sayTwisterSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "continueMode",
+			"requestName": "sayTwisterSpeech",
+			"requestState": "_CONTINUE_MODE",
+			"speechStateHandler": "continueModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+					},
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						}
+					}
+				},
+				"sessionAttributes": {
+					"STATE": "_CONTINUE_MODE"
+				}
+			}
+		},
+		"testSayTwisterSpeechTwisterError": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testSayTwisterSpeechTwisterError",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "sayTwisterSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "gameMode",
+			"requestName": "sayTwisterSpeech",
+			"requestState": "_GAME_MODE",
+			"speechStateHandler": "gameModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> An error occured and we had to stop playing, sorry! Please play again soon! </speak>"
+					},
+					"shouldEndSession": true,
+					"card": {
+						"type": "Simple",
+						"title": "Sorry, something went wrong",
+						"content": "An error occured and we had to stop playing, sorry! Please play again soon!"
+					}
+				},
+				"sessionAttributes": {
+					"STATE": "_GAME_MODE"
+				}
+			}
 		}
 	}
 }

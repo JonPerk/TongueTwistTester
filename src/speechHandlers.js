@@ -14,6 +14,7 @@ var constants = require('./constants');
 
 var speechHandlers = {};
 
+/** welcome speech handler, gives first twister */
 speechHandlers[constants.speeches.WELCOME_SPEECH] = function(){
 	console.info('Speech handler ' + constants.speeches.WELCOME_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	
@@ -37,9 +38,31 @@ speechHandlers[constants.speeches.WELCOME_SPEECH] = function(){
 			constants.cards.WELCOME_CARD + this.attributes.twister.value);
 };
 
-speechHandlers[constants.speeches.SAY_TWISTER_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
+/** say twister speech handler. says twister w/o welcome speech */
+speechHandlers[constants.speeches.SAY_TWISTER_SPEECH] = function(){
+	console.info('Speech handler ' + constants.speeches.SAY_TWISTER_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	
+	if(this.handler.state !== constants.states.GAME_MODE){
+		console.warn('Speech handler ' + constants.speeches.SAY_TWISTER_SPEECH + ' state mismatch for ' + this.event.session.sessionId + 
+				' Expected state: ' + constants.states.GAME_MODE + ' Actual State: ' + this.handler.state);
+		this.emitWithState(constants.intents.UNHANDLED_INTENT);
+		return;
+	}
+	
+	if(!this.attributes || !this.attributes.twister || !this.attributes.twister.value){
+		console.error('Speech handler ' + constants.speeches.SAY_TWISTER_SPEECH + ' no twister found for ' + this.event.session.sessionId);
+		this.emitWithState(constants.speeches.FATAL_SPEECH);
+		return;
+	}
+	
+	this.emit(":askWithCard", 
+			constants.speechOutputs.SAY_TWISTER_SPEECH + this.attributes.twister.value, 
+			constants.reprompts.REPEAT_TWISTER_SPEECH + this.attributes.twister.value,
+			constants.cardTitles.LETS_PLAY,
+			constants.cards.SAY_TWISTER_CARD + this.attributes.twister.value);
+};
 
-//temp
+/** correct speech handler. congratulates and asks if user wants to continue */
 speechHandlers[constants.speeches.CORRECT_SPEECH] = function(){
 	console.info('Speech handler ' + constants.speeches.CORRECT_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	
@@ -71,6 +94,7 @@ speechHandlers[constants.speeches.CORRECT_SPEECH] = function(){
 			
 };
 
+/** incorrect speech handler. informs user and asks if they want to try again */
 speechHandlers[constants.speeches.INCORRECT_SPEECH] = function(){
 	console.info('Speech handler ' + constants.speeches.INCORRECT_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	if(this.handler.state !== constants.states.REPEAT_MODE){
@@ -100,7 +124,6 @@ speechHandlers[constants.speeches.INCORRECT_SPEECH] = function(){
 				constants.cards.INCORRECT + this.attributes.attempt)
 	}
 };
-//end temp
 
 speechHandlers[constants.speeches.REPEAT_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
 speechHandlers[constants.speeches.HELP_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};

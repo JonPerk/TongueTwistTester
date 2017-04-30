@@ -51,7 +51,8 @@ describe('speechHandlers - tests', function() {
 		'testWelcomeSpeechTwisterError', 'testCorrectSpeech', 'testCorrectSpeechGameMode', 'testCorrectSpeechRepeatMode',
 		'testCorrectSpeechContinueMode', 'testCorrectSpeechContinueModeMultiscore', 'testCorrectSpeechScoreError',
 		'testIncorrectSpeech', 'testIncorrectSpeechGameMode', 'testIncorrectSpeechRepeatMode', 'testIncorrectSpeechRepeatModeNoAttempt', 
-		'testIncorrectSpeechContinueMode'];
+		'testIncorrectSpeechContinueMode', 'testSayTwisterSpeech', 'testSayTwisterSpeechGameMode', 'testSayTwisterSpeechRepeatMode',
+		'testSayTwisterSpeechContinueMode', 'testSayTwisterSpeechTwisterError'];
 	var i = 0;
 	var response;
 	var error;
@@ -187,6 +188,26 @@ describe('speechHandlers - tests', function() {
 	
 	it('testIncorrectSpeechContinueMode - get correct intent - negative case', function() {
 		validate(testNames, i, 15, test, response, error);
+    });
+	
+	it('testSayTwisterSpeech - get unhandled intent - negative case', function() {
+		validate(testNames, i, 16, test, response, error);
+    });
+	
+	it('testSayTwisterSpeechGameMode - get sayTwisterSpeech intent - positive case', function() {
+		validate(testNames, i, 17, test, response, error);
+    });
+	
+	it('testSayTwisterSpeechRepeatMode - get unhandled intent - negative case', function() {
+		validate(testNames, i, 18, test, response, error);
+    });
+	
+	it('testSayTwisterSpeechContinueMode - get unhandled intent - negative case', function() {
+		validate(testNames, i, 19, test, response, error);
+    });
+	
+	it('testSayTwisterSpeechTwisterError - get fatalSpeech intent - negative case', function() {
+		validate(testNames, i, 20, test, response, error);
     });
 	
 	afterEach(function(){
