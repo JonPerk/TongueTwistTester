@@ -92,7 +92,7 @@ describe('statelessHandlers - positive tests', function() {
 		expect(error).toBeUndefined();
     });
 	
-	it('testScoreStopIntent - get scoreSpeech intent', function() {
+	it('testScoreStopIntent - get goodbyeSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[5]);
 		expect(response).not.toBeUndefined();
 		expect(response).toBe(test.response);
@@ -113,7 +113,7 @@ describe('statelessHandlers - positive tests', function() {
 		expect(error).toBeUndefined();
     });
 	
-	it('testScoreCancelIntent - get scoreSpeech intent', function() {
+	it('testScoreCancelIntent - get goodbyeSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[8]);
 		expect(response).not.toBeUndefined();
 		expect(response).toBe(test.response);

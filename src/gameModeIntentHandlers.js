@@ -37,6 +37,7 @@ intents[constants.intents.NO_INTENT] = function(){
 	this.emitWithState(constants.speeches.UNHANDLED_SPEECH);
 };
 
+/** game mode handler for repeat intent. repeats twister through sayTwister speechHandler */
 intents[constants.intents.REPEAT_INTENT] = function(){
 	console.info('Intent handler ' + constants.intents.REPEAT_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	console.log(JSON.stringify(this.attributes.twister))
@@ -60,25 +61,16 @@ intents[constants.intents.HELP_INTENT] = function(){
 /** game mode handler for stop intent. Gives score and exits */
 intents[constants.intents.STOP_INTENT] = function(){
 	console.info('Intent handler ' + constants.intents.STOP_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
-	if(this.attributes.score && this.attributes.score > 0){
-		this.emitWithState(constants.speeches.SCORE_SPEECH);
-	}
-	else {
-		this.emitWithState(constants.speeches.GOODBYE_SPEECH);
-	}
+	this.emitWithState(constants.speeches.GOODBYE_SPEECH);
 };
 
 /** game mode handler for cancel intent. Gives score and exits */
 intents[constants.intents.CANCEL_INTENT] = function(){
-	console.info('Intent handler ' + constants.intents.STOP_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
-	if(this.attributes.score && this.attributes.score > 0){
-		this.emitWithState(constants.speeches.SCORE_SPEECH);
-	}
-	else {
-		this.emitWithState(constants.speeches.GOODBYE_SPEECH);
-	}
+	console.info('Intent handler ' + constants.intents.CANCEL_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	this.emitWithState(constants.speeches.GOODBYE_SPEECH);
 };
 
+/** game mode handler for unhandled intent. notifies user */
 intents[constants.intents.UNHANDLED_INTENT] = function(){
 	console.warn('Intent handler ' + constants.intents.UNHANDLED_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	this.emitWithState(constants.speeches.UNHANDLED_SPEECH);

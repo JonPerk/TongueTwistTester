@@ -162,7 +162,7 @@
 				"version": "1.0"
 			},
 			"handlerType":"speech",
-			"response":"scoreSpeech"
+			"response":"goodbyeSpeech"
 		},
 		"testNoScoreCancelIntent": {
 			"request": {
@@ -241,7 +241,7 @@
 				"version": "1.0"
 			},
 			"handlerType":"speech",
-			"response":"scoreSpeech"
+			"response":"goodbyeSpeech"
 		},
 		"testLaunchIntent": {
 			"request": {

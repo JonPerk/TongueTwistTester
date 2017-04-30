@@ -59,23 +59,13 @@ statelessHandlers[constants.intents.HELP_INTENT] = function(){
 /** stateless handler for stop intent. Gives score and exits */
 statelessHandlers[constants.intents.STOP_INTENT] = function(){
 	console.info('Intent handler ' + constants.intents.STOP_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
-	if(this.attributes.score && this.attributes.score > 0){
-		this.emit(constants.speeches.SCORE_SPEECH);
-	}
-	else {
-		this.emit(constants.speeches.GOODBYE_SPEECH);
-	}
+	this.emit(constants.speeches.GOODBYE_SPEECH);
 };
 
 /** stateless handler for cancel intent. Gives score and exits */
 statelessHandlers[constants.intents.CANCEL_INTENT] = function(){
 	console.info('Intent handler ' + constants.intents.STOP_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
-	if(this.attributes.score && this.attributes.score > 0){
-		this.emit(constants.speeches.SCORE_SPEECH);
-	}
-	else {
-		this.emit(constants.speeches.GOODBYE_SPEECH);
-	}
+	this.emit(constants.speeches.GOODBYE_SPEECH);
 };
 
 /** stateless handler for unexpected prompts from user */

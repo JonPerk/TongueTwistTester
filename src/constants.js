@@ -34,7 +34,6 @@ module.exports = Object.freeze({
 		REPEAT_SPEECH: 'repeatSpeech',
 		HELP_SPEECH: 'helpSpeech',
 		CONTINUE_SPEECH: 'continueSpeech',
-		SCORE_SPEECH: 'scoreSpeech',
 		GOODBYE_SPEECH: 'goodbyeSpeech',
 		UNHANDLED_SPEECH: 'unhandledSpeech',
 		FATAL_SPEECH: 'fatalSpeech',
