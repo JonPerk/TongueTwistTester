@@ -77,14 +77,12 @@ speechHandlers[constants.speeches.CORRECT_SPEECH] = function(){
 		console.error('Speech handler ' + constants.speeches.CORRECT_SPEECH + ' called with no score for ' + this.event.session.sessionId);
 		this.emitWithState(constants.speeches.FATAL_SPEECH);
 	} else if(this.attributes.score === 1){
-		console.log("Single score")
 		this.emit(':askWithCard', 
 				constants.speechOutputs.CORRECT_SINGLE_SCORE_SPEECH,
 				constants.reprompts.CORRECT_SPEECH,
 				constants.cardTitles.CORRECT,
 				constants.cards.CORRECT_SINGLE_SCORE_CARD);
 	} else {
-		console.log("Multi score")
 		this.emit(":askWithCard", 
 				constants.speechOutputs.CORRECT_MULTI_SCORE_SPEECH.replace('%d', this.attributes.score), 
 				constants.reprompts.CORRECT_SPEECH,
@@ -127,7 +125,21 @@ speechHandlers[constants.speeches.INCORRECT_SPEECH] = function(){
 
 speechHandlers[constants.speeches.REPEAT_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
 speechHandlers[constants.speeches.HELP_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
-speechHandlers[constants.speeches.CONTINUE_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
+
+/** asks user if they want to continue with a new twister */
+speechHandlers[constants.speeches.CONTINUE_SPEECH] = function(){
+console.info('Speech handler ' + constants.speeches.CONTINUE_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	
+	if(this.handler.state !== constants.states.CONTINUE_MODE){
+		console.warn('Speech handler ' + constants.speeches.CONTINUE_SPEECH + ' state mismatch for ' + this.event.session.sessionId + 
+				' Expected state: ' + constants.states.CONTINUE_MODE + ' Actual State: ' + this.handler.state);
+		this.emitWithState(constants.intents.UNHANDLED_INTENT);
+	} else {
+		this.emit(":ask", 
+				constants.speechOutputs.CONTINUE_SPEECH, 
+				constants.reprompts.CONTINUE_SPEECH);
+	}
+};
 
 /** gives score and says goodbye */
 speechHandlers[constants.speeches.GOODBYE_SPEECH] = function(){

@@ -1466,6 +1466,128 @@
 					"STATE": "_GAME_MODE"
 				}
 			}
+		},
+		"testContinueSpeech": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testContinueSpeech",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 0,
+						"completed": [],
+						"skipped": [],
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "continueSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "continueMode",
+			"requestName": "continueSpeech",
+			"requestState": "_CONTINUE_MODE",
+			"speechStateHandler": "continueModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> Would you like to try a new tongue twister, yes or no? </speak>"
+					},
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> Would you like to try a new tongue twister, yes or no? </speak>"
+						}
+					}
+				},
+				"sessionAttributes": {
+					"score": 0,
+					"completed": [],
+					"skipped": [],
+					"twister": {
+						"index": 0,
+						"value": "she sells seashells by the seashore"
+					},
+					"STATE": "_CONTINUE_MODE"
+				}
+			}
+		},
+		"testContinueSpeechWrongMode": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testContinueSpeechWrongMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 0,
+						"completed": [],
+						"skipped": [],
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "continueSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "gameMode",
+			"requestName": "continueSpeech",
+			"requestState": "_GAME_MODE",
+			"speechStateHandler": "gameModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+					},
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						}
+					}
+				},
+				"sessionAttributes": {
+					"score": 0,
+					"completed": [],
+					"skipped": [],
+					"twister": {
+						"index": 0,
+						"value": "she sells seashells by the seashore"
+					},
+					"STATE": "_GAME_MODE"
+				}
+			}
 		}
 	}
 }
