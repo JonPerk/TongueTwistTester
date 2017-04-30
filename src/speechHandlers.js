@@ -177,6 +177,7 @@ speechHandlers[constants.speeches.FATAL_SPEECH] = function(){
 	}
 };
 
+/** congratulates user on win and exits */
 speechHandlers[constants.speeches.WIN_SPEECH] = function(){
 	console.log('Speech handler ' + constants.speeches.WIN_SPEECH + ' called for ' + this.event.session.sessionId + " session ending");
 	this.emit(":tellWithCard", 

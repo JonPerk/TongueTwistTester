@@ -1,0 +1,464 @@
+{
+	"tests": {
+		"testAttemptIntent": {
+			"request": {
+				"session": {
+					"sessionId": "repeatModeIntentHandlers-testAttemptIntent",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AttemptIntent",
+						"slots": {
+							"name": "Twister",
+							"value": "She sells seashells by the seashore"
+						}
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerType":"speech",
+			"response": {
+				"intent": "unhandledSpeech"
+			}
+		},
+		"testRepeatIntent": {
+			"request": {
+				"session": {
+					"sessionId": "repeatModeIntentHandlers-testRepeatIntent",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"lastSpeech": "Some output",
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.RepeatIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerType":"speech",
+			"response":{
+				"intent": "repeatSpeech"
+			}
+		},
+		"testHelpIntent": {
+			"request": {
+				"session": {
+					"sessionId": "repeatModeIntentHandlers-testHelpIntent",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.HelpIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerType":"speech",
+			"response": {
+				"intent": "helpSpeech"
+			}
+		},
+		"testNoScoreStopIntent": {
+			"request": {
+				"session": {
+					"sessionId": "repeatModeIntentHandlers-testNoScoreStopIntent",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.StopIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerType":"speech",
+			"response": {
+				"intent": "goodbyeSpeech"
+			}
+		},
+		"testZeroScoreStopIntent": {
+			"request": {
+				"session": {
+					"sessionId": "repeatModeIntentHandlers-testZeroScoreStopIntent",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 0
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.StopIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerType":"speech",
+			"response": {
+				"intent": "goodbyeSpeech"
+			}
+		},
+		"testScoreStopIntent": {
+			"request": {
+				"session": {
+					"sessionId": "repeatModeIntentHandlers-testScoreStopIntent",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 1
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.StopIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerType":"speech",
+			"response": {
+				"intent": "goodbyeSpeech"
+			}
+		},
+		"testNoScoreCancelIntent": {
+			"request": {
+				"session": {
+					"sessionId": "repeatModeIntentHandlers-testNoScoreCancelIntent",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.CancelIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerType":"speech",
+			"response": {
+				"intent": "goodbyeSpeech"
+			}
+		},
+		"testZeroScoreCancelIntent": {
+			"request": {
+				"session": {
+					"sessionId": "repeatModeIntentHandlers-testZeroScoreCancelIntent",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 0
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.CancelIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerType":"speech",
+			"response": {
+				"intent": "goodbyeSpeech"
+			}
+		},
+		"testScoreCancelIntent": {
+			"request": {
+				"session": {
+					"sessionId": "repeatModeIntentHandlers-testScoreCancelIntent",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 1
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.CancelIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerType":"speech",
+			"response": {
+				"intent": "goodbyeSpeech"
+			}
+		},
+		"testLaunchIntent": {
+			"request": {
+				"session": {
+					"sessionId": "repeatModeIntentHandlers-testLaunchIntent",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "LaunchIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerType":"speech",
+			"response": {
+				"intent": "unhandledSpeech"
+			}
+		},
+		"testYesIntent": {
+			"request": {
+				"session": {
+					"sessionId": "repeatModeIntentHandlers-testYesIntent",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"completed": [],
+						"skipped": [],
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore",
+							"total": 5
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.YesIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerState": "_GAME_MODE",
+			"handlerType":"speech",
+			"response":{
+				"intent": "sayTwisterSpeech",
+				"skipped": []
+			}
+		},
+		"testYesIntentNoTwister": {
+			"request": {
+				"session": {
+					"sessionId": "repeatModeIntentHandlers-testNoIntentZero",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 0
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.YesIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerType":"speech",
+			"response": {
+				"intent": "fatalSpeech"
+			}
+		},
+		"testNoIntent": {
+			"request": {
+				"session": {
+					"sessionId": "repeatModeIntentHandlers-testNoIntent",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"completed": [],
+						"skipped": [4],
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore",
+							"total": 5
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.NoIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerState": "_CONTINUE_MODE",
+			"handlerType":"speech",
+			"response":{
+				"intent": "continueSpeech",
+				"skipped": [4, 0]
+			}
+		},
+		"testNoIntentNoSkipped": {
+			"request": {
+				"session": {
+					"sessionId": "repeatModeIntentHandlers-testNoIntentScore",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore",
+							"total": 5
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.NoIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerState": "_CONTINUE_MODE",
+			"handlerType":"speech",
+			"response":{
+				"intent": "continueSpeech",
+				"skipped": [0]
+			}
+		},
+		"testNoIntentNoTwister": {
+			"request": {
+				"session": {
+					"sessionId": "repeatModeIntentHandlers-testNoIntentScore",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"skipped": [0],
+						"twister": {
+							"index": 1,
+							"total": 5
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.NoIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerType":"speech",
+			"response":{
+				"intent": "fatalSpeech",
+				"skipped": [0]
+			}
+		}
+	}
+}

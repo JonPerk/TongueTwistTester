@@ -15,13 +15,13 @@ var intents = {};
 
 /** continue mode handler for launch intent. Launch intent is unhandled when in continue mode */
 intents[constants.intents.LAUNCH_INTENT] = function(){
-	console.info('Intent handler ' + constants.intents.LAUNCH_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	console.warn('Intent handler ' + constants.intents.LAUNCH_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	this.emitWithState(constants.speeches.UNHANDLED_SPEECH);
 };
 
 /** continue mode handler for attempt intent. attempt intent is unhandled when in continue mode */
 intents[constants.intents.ATTEMPT_INTENT] = function(){
-	console.info('Intent handler ' + constants.intents.ATTEMPT_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	console.warn('Intent handler ' + constants.intents.ATTEMPT_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	this.emitWithState(constants.speeches.UNHANDLED_SPEECH);
 };
 
@@ -38,7 +38,7 @@ intents[constants.intents.NO_INTENT] = function(){
 
 /** continue mode handler for repeat intent. reprompts user */
 intents[constants.intents.REPEAT_INTENT] = function(){
-	console.info('Intent handler ' + constants.intents.ATTEMPT_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	console.info('Intent handler ' + constants.intents.REPEAT_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	this.emitWithState(constants.speeches.CONTINUE_SPEECH);
 };
 

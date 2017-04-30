@@ -5,3 +5,4 @@ exports.speechHandlers = require("./speechHandlers.json");
 exports.twisterHelper = require("./twisterHelper.json");
 exports.gameModeIntentHandlers = require("./gameModeIntentHandlers.json");
 exports.continueModeIntentHandlers = require("./continueModeIntentHandlers.json");
+exports.repeatModeIntentHandlers = require("./repeatModeIntentHandlers.json");
