@@ -29,7 +29,8 @@ describe('eventHandlers - tests', function() {
 		'testNewSessionTwisterError', 'testValidateAttemptCorrect', 'testValidateAttemptCorrectPunctuation',
 		'testValidateAttemptCorrectCapitalization', 'testValidateAttemptCorrectPuncAndCap','testValidateAttemptIncorrect',
 		'testValidateAttemptNull', 'testValidateAttemptTwisterNull', 'testValidateAttemptRepeatMode',
-		'testValidateAttemptStateless'];
+		'testValidateAttemptStateless', 'testNewTwister', 'testNewTwisterStateless', 'testNewTwisterWrongMode',
+		'testNewTwisterError', 'testValidateAttemptWin'];
 	var i = 0;
 	var response;
 	var error;
@@ -68,7 +69,7 @@ describe('eventHandlers - tests', function() {
 		spyOn(twisterHelper, 'getNewTwister').andCallFake(function(){
 			return new Promise(function(resolve, reject){
 				if(test.resolvePromise){
-					resolve(test.response.twister);
+					resolve(test.twister);
 				} else {
 					reject('Error retrieving twister');
 				}
@@ -207,6 +208,26 @@ describe('eventHandlers - tests', function() {
 	
 	it('testValidateAttemptStateless - get unhandledSpeech intent - negative case', function() {
 		validate(testNames, i, 13, test, response, error);
+    });
+	
+	it('testNewTwister - get sayTwisterSpeech intent - positive case', function() {
+		validate(testNames, i, 14, test, response, error);
+    });
+	
+	it('testNewTwisterStateless - get unhandledSpeech intent - negative case', function() {
+		validate(testNames, i, 15, test, response, error);
+    });
+	
+	it('testNewTwisterWrongMode - get unhandledSpeech intent - negative case', function() {
+		validate(testNames, i, 16, test, response, error);
+    });
+	
+	it('testNewTwisterError - get fatalSpeech intent - negative case', function() {
+		validate(testNames, i, 17, test, response, error);
+    });
+	
+	it('testValidateAttemptWin - get winSpeech intent - positive case', function() {
+		validate(testNames, i, 18, test, response, error);
     });
 	
 	afterEach(function(){

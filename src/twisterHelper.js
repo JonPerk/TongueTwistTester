@@ -49,7 +49,7 @@ var twisterHelper = {
 		         rand = Math.round(Math.random() * (total - 1));
 		    }
 			
-			resolve({"index": rand, "value": twisters[rand]});
+			resolve({"index": rand, "value": twisters[rand], "total": total});
 		});
 	}
 };

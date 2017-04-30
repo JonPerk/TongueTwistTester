@@ -6,23 +6,28 @@
 			"response": [
 				{
 					"index": 0,
-					"value": "She sells seashells by the seashore"
+					"value": "She sells seashells by the seashore",
+					"total": 5
 				},
 				{
 					"index": 1,
-					"value": "some twister" 
+					"value": "some twister",
+					"total": 5
 				},
 				{
 					"index": 2,
-					"value": "another twister"
+					"value": "another twister",
+					"total": 5
 				},
 				{
 					"index": 3,
-					"value": "yet another twister"
+					"value": "yet another twister",
+					"total": 5
 				},
 				{
 					"index": 4,
-					"value": "a final twisters"
+					"value": "a final twisters",
+					"total": 5
 				}
 			]
 		},
@@ -32,7 +37,8 @@
 			"response": [
 				{
 					"index": 0,
-					"value": "She sells seashells by the seashore"
+					"value": "She sells seashells by the seashore",
+					"total": 5
 				}
 			]
 		},
@@ -42,7 +48,8 @@
 			"response": [
 				{
 					"index": 0,
-					"value": "She sells seashells by the seashore"
+					"value": "She sells seashells by the seashore",
+					"total": 5
 				}
 			]
 		},
@@ -52,7 +59,8 @@
 			"response": [
 				{
 					"index": 0,
-					"value": "She sells seashells by the seashore"
+					"value": "She sells seashells by the seashore",
+					"total": 5
 				}
 			]
 		},
@@ -61,7 +69,8 @@
 			"response": [
 				{
 					"index": 0,
-					"value": "She sells seashells by the seashore"
+					"value": "She sells seashells by the seashore",
+					"total": 5
 				}
 			]
 		},
@@ -70,7 +79,8 @@
 			"response": [
 				{
 					"index": 0,
-					"value": "She sells seashells by the seashore"
+					"value": "She sells seashells by the seashore",
+					"total": 5
 				}
 			]
 		},
@@ -80,7 +90,8 @@
 			"response": [
 				{
 					"index": 0,
-					"value": "She sells seashells by the seashore"
+					"value": "She sells seashells by the seashore",
+					"total": 5
 				}
 			]
 		},
