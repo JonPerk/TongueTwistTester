@@ -177,7 +177,13 @@ speechHandlers[constants.speeches.FATAL_SPEECH] = function(){
 	}
 };
 
-speechHandlers[constants.speeches.WIN_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
+speechHandlers[constants.speeches.WIN_SPEECH] = function(){
+	console.log('Speech handler ' + constants.speeches.WIN_SPEECH + ' called for ' + this.event.session.sessionId + " session ending");
+	this.emit(":tellWithCard", 
+			constants.speechOutputs.WIN_SPEECH, 
+			constants.cardTitles.YOU_WIN,
+			constants.cards.WIN_CARD);
+};
  
 var gameMode = Object.assign({}, speechHandlers);
 var repeatMode = Object.assign({}, speechHandlers);

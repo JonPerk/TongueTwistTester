@@ -1356,6 +1356,116 @@
 					"STATE": "_CONTINUE_MODE"
 				}
 			}
+		},
+		"testWinSpeech": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testWinSpeech",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 1,
+						"completed": [1]
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "winSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"resolvePromise": true,
+			"requestHandlerType": "stateless",
+			"requestName": "winSpeech",
+			"requestState": null,
+			"speechStateHandler": "statelessHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> You win! You got all the tongue twisters right! Thanks for playing! Goodbye! </speak>"
+					},
+					"shouldEndSession": true,
+					"card": {
+						"type": "Simple",
+						"title": "You Win!",
+						"content": "You got all the tongue twisters right! Thanks for playing!"
+					}
+				},
+				"sessionAttributes": {
+					"score": 1,
+					"completed": [1]
+				}
+			}
+		},
+		"testWinSpeechWithMode": {
+			"request": {
+				"session": {
+					"sessionId": "speechHandlers-testWinSpeechWithMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 0,
+						"completed": [],
+						"skipped": [],
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "winSpeech"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "gameMode",
+			"requestName": "winSpeech",
+			"requestState": "_GAME_MODE",
+			"speechStateHandler": "gameModeHandlers",
+			"response": {
+				"version": "1.0",
+				"response": {
+					"outputSpeech": {
+						"type": "SSML",
+						"ssml": "<speak> You win! You got all the tongue twisters right! Thanks for playing! Goodbye! </speak>"
+					},
+					"shouldEndSession": true,
+					"card": {
+						"type": "Simple",
+						"title": "You Win!",
+						"content": "You got all the tongue twisters right! Thanks for playing!"
+					}
+				},
+				"sessionAttributes": {
+					"score": 0,
+					"completed": [],
+					"skipped": [],
+					"twister": {
+						"index": 0,
+						"value": "she sells seashells by the seashore"
+					},
+					"STATE": "_GAME_MODE"
+				}
+			}
 		}
 	}
 }

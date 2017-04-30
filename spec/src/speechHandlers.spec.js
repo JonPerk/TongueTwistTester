@@ -53,7 +53,7 @@ describe('speechHandlers - tests', function() {
 		'testIncorrectSpeech', 'testIncorrectSpeechGameMode', 'testIncorrectSpeechRepeatMode', 'testIncorrectSpeechRepeatModeNoAttempt', 
 		'testIncorrectSpeechContinueMode', 'testSayTwisterSpeech', 'testSayTwisterSpeechGameMode', 'testSayTwisterSpeechRepeatMode',
 		'testSayTwisterSpeechContinueMode', 'testSayTwisterSpeechTwisterError', 'testGoodbyeSpeech', 'testGoodbyeSpeechWithMode', 
-		'testGoodbyeSpeechSingleScore', 'testGoodbyeSpeechMultiscore'];
+		'testGoodbyeSpeechSingleScore', 'testGoodbyeSpeechMultiscore', 'testWinSpeech', 'testWinSpeechWithMode'];
 	var i = 0;
 	var response;
 	var error;
@@ -225,6 +225,14 @@ describe('speechHandlers - tests', function() {
 	
 	it('testGoodbyeSpeechMultiscore - get multiscore speech - positive case', function() {
 		validate(testNames, i, 24, test, response, error);
+    });
+	
+	it('testGoodbyeSpeechMultiscore - get win speech - positive case', function() {
+		validate(testNames, i, 25, test, response, error);
+    });
+	
+	it('testWinSpeechWithMode - get win speech - positive case', function() {
+		validate(testNames, i, 26, test, response, error);
     });
 	
 	afterEach(function(){
