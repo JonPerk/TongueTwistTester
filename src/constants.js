@@ -95,7 +95,7 @@ module.exports = Object.freeze({
 		SAY_TWISTER_CARD: 'Try this new twister: ',
 		GOODBYE_NO_SCORE_CARD: 'Thanks for trying Tongue Twist Tester! Let\'s play again soon!',
 		GOODBYE_SINGLE_SCORE_CARD: 'Thanks for playing! You got 1 tongue twister! Let\'s play again soon!',
-		GOODBYE_MULTI_SCORE_CARD: 'Thanks for playing! You got 5 tongue twisters! Let\'s play again soon!',
+		GOODBYE_MULTI_SCORE_CARD: 'Thanks for playing! You got %d tongue twisters! Let\'s play again soon!',
 		WIN_CARD: 'You got all the tongue twisters right! Thanks for playing!'
 	},
 	
