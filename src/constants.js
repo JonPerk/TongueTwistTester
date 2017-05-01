@@ -57,7 +57,7 @@ module.exports = Object.freeze({
 		GOODBYE_SINGLE_SCORE_SPEECH: 'Thanks for playing! You got 1 tongue twister right! Goodbye!',
 		GOODBYE_MULTI_SCORE_SPEECH: 'Thanks for playing! You got %d tongue twisters right! Well done! Goodbye!',
 		UNHANDLED_SPEECH: 'I\'m sorry I couldn\'t understand that',
-		WIN_SPEECH: 'You win! You got all the tongue twisters right! Thanks for playing! Goodbye!'
+		WIN_SPEECH: 'Congratulations, you win! You got all the tongue twisters right! Thanks for playing! Goodbye!'
 	},
 	
 	reprompts: {
@@ -96,7 +96,7 @@ module.exports = Object.freeze({
 		GOODBYE_NO_SCORE_CARD: 'Thanks for trying Tongue Twist Tester! Let\'s play again soon!',
 		GOODBYE_SINGLE_SCORE_CARD: 'Thanks for playing! You got 1 tongue twister! Let\'s play again soon!',
 		GOODBYE_MULTI_SCORE_CARD: 'Thanks for playing! You got %d tongue twisters! Let\'s play again soon!',
-		WIN_CARD: 'You got all the tongue twisters right! Thanks for playing!'
+		WIN_CARD: 'Congratulations! You got all the tongue twisters right! Thanks for playing!'
 	},
 	
     //  Custom constants

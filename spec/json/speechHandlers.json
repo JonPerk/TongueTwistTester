@@ -1392,13 +1392,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> You win! You got all the tongue twisters right! Thanks for playing! Goodbye! </speak>"
+						"ssml": "<speak> Congratulations, you win! You got all the tongue twisters right! Thanks for playing! Goodbye! </speak>"
 					},
 					"shouldEndSession": true,
 					"card": {
 						"type": "Simple",
 						"title": "You Win!",
-						"content": "You got all the tongue twisters right! Thanks for playing!"
+						"content": "Congratulations! You got all the tongue twisters right! Thanks for playing!"
 					}
 				},
 				"sessionAttributes": {
@@ -1446,13 +1446,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> You win! You got all the tongue twisters right! Thanks for playing! Goodbye! </speak>"
+						"ssml": "<speak> Congratulations, you win! You got all the tongue twisters right! Thanks for playing! Goodbye! </speak>"
 					},
 					"shouldEndSession": true,
 					"card": {
 						"type": "Simple",
 						"title": "You Win!",
-						"content": "You got all the tongue twisters right! Thanks for playing!"
+						"content": "Congratulations! You got all the tongue twisters right! Thanks for playing!"
 					}
 				},
 				"sessionAttributes": {
