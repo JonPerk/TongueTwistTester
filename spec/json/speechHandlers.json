@@ -983,7 +983,7 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> Here's a new tongue twister. Repeat after me. she sells seashells by the seashore </speak>"
+						"ssml": "<speak> Try this tongue twister. Repeat after me. she sells seashells by the seashore </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
@@ -995,7 +995,7 @@
 					"card": {
 						"type": "Simple",
 						"title": "Let's Play",
-						"content": "Try this new twister: she sells seashells by the seashore"
+						"content": "Try this tongue twister: she sells seashells by the seashore"
 					}
 				},
 				"sessionAttributes": {
