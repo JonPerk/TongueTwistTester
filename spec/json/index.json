@@ -1,6 +1,7 @@
 {
 	"tests": {
 		"testLaunchIntent": {
+			"requestName": "LaunchIntent",
 			"request": {
 				"session": {
 					"sessionId": "testLaunchIntent",
@@ -37,27 +38,27 @@
 				}
 			}
 		},
-		"testBadIntent": {
+		"testLaunchRequest": {
+			"requestName": "LaunchIntent",
 			"request": {
-				"session": {
-					"sessionId": "testBadIntent",
-					"application": {
-						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
-					},
-					"attributes": {},
-					"user": {
-						"userId": "testAccount"
-					},
-					"new": true
-				},
-				"request": {
-					"type": "IntentRequest",
-					"locale": "en-US",
-					"intent": {
-						"name": "BadIntent"
-					}
-				},
-				"version": "1.0"
+				  "session": {
+					    "sessionId": "testLaunchRequest",
+					    "application": {
+					      "applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					    },
+					    "attributes": {},
+					    "user": {
+					      "userId": "testAccount"
+					    },
+					    "new": true
+					  },
+					  "request": {
+					    "type": "LaunchRequest",
+					    "requestId": "EdwRequestId.e1cc7e11-93d3-493c-81e5-aa37a4662d6b",
+					    "locale": "en-US",
+					    "timestamp": "2017-05-01T00:14:57Z"
+					  },
+					  "version": "1.0"
 			},
 			"response": {
 				"version": "1.0",

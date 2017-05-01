@@ -19,7 +19,7 @@ jasmine.getEnv().addReporter(new jasmine.ConsoleReporter(console.log));
 describe('index - connectivity test', function() {
 	//tests must correspond to the name of the object for the test case in the json file
 	//they must also be in the order of the test cases below
-	var testNames = ['testLaunchIntent'];
+	var testNames = ['testLaunchIntent', 'testLaunchRequest'];
 	var i = 0;
 	var response;
 	var error;
@@ -38,54 +38,24 @@ describe('index - connectivity test', function() {
 					done();
 				});
 			intent = tests[test].request;
-			spyOn(statelessHandlers, tests[test].request.request.intent.name).andCallFake(function(){ ctx.succeed(tests[test].response); });
+			spyOn(statelessHandlers, tests[test].requestName).andCallFake(function(){ ctx.succeed(tests[test].response); });
+			spyOn(statelessHandlers, 'Unhandled').andCallThrough();
 			index.handler(intent, ctx, response);
 	});
     it('testLaunchIntent - get any response', function() {
 		expect(response).not.toBeUndefined();
 		expect(response.response.outputSpeech.ssml).not.toBeNull();
+		expect(statelessHandlers.Unhandled).not.toHaveBeenCalled();
 		expect(error).toBeUndefined();
     });
-	afterEach(function(){
-		response = undefined;
-		error = undefined;
-		i++;
-	});
-});
-
-/** Test Alexa skill handler negative case */
-describe('index - unhandled intent test', function() {
-	//tests must correspond to the name of the object for the test case in the json file
-	//they must also be in the order of the test cases below
-	var testNames = ['testBadIntent'];
-	var i = 0;
-	var response;
-	var error;
-    framework.beforeEachMatchers();
-	beforeEach(function(done){
-			var test = testNames[i];
-			var ctx = context();
-			ctx.Promise
-				.then(resp => {
-					response = resp;
-					done();
-				})
-				.catch(err => {
-					console.log("failed: " + err);
-					error = err;
-					done();
-				});
-			intent = tests[test].request;
-			spyOn(statelessHandlers, 'LaunchIntent').andCallFake(function(){ ctx.succeed(tests[test].response); });
-			spyOn(statelessHandlers, 'Unhandled').andCallFake(function(){ ctx.succeed(tests[test].response); });
-			index.handler(intent, ctx, response);
-	});
-	it('testBadIntent - should return speech output', function() {
+    it('testLaunchRequest - get any response', function() {
 		expect(response).not.toBeUndefined();
 		expect(response.response.outputSpeech.ssml).not.toBeNull();
+		expect(statelessHandlers.Unhandled).not.toHaveBeenCalled();
 		expect(error).toBeUndefined();
     });
 	afterEach(function(){
+		this.removeAllSpies();
 		response = undefined;
 		error = undefined;
 		i++;

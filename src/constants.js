@@ -23,7 +23,8 @@ module.exports = Object.freeze({
 		NEW_SESSION: 'newSession',
 		NEW_TWISTER: 'newTwister',
 		VALIDATE_ATTEMPT: 'validateAttempt',
-		END_SESSION: 'endSession'
+		END_SESSION: 'endSession',
+		LAUNCH_REQUEST: 'LaunchRequest'
 	},
 	
 	speeches: {
