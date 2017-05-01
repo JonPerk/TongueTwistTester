@@ -122,6 +122,14 @@ eventHandlers[constants.events.VALIDATE_ATTEMPT] = function(){
 			if(!this.attributes.completed){
 				this.attributes.completed = [];
 			}
+			if(!this.attributes.skipped){
+				this.attributes.skipped = [];
+			}
+			var index = this.attributes.skipped.indexOf(this.attributes.twister.index);
+			
+			if(index > -1){
+				this.attributes.skipped.splice(index,1);
+			}
 			
 			this.attributes.completed.push(this.attributes.twister.index);
 			this.handler.state = constants.states.CONTINUE_MODE;

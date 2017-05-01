@@ -225,7 +225,8 @@
 				"intent": "correctSpeech",
 				"state": "_CONTINUE_MODE",
 				"score": 1,
-				"completed": [0]
+				"completed": [0],
+				"skipped": []
 			}
 		},
 		"testValidateAttemptCorrectPunctuation": {
@@ -275,7 +276,8 @@
 				"intent": "correctSpeech",
 				"state": "_CONTINUE_MODE",
 				"score": 2,
-				"completed": [1,0]
+				"completed": [1,0],
+				"skipped": []
 			}
 		},
 		"testValidateAttemptCorrectCapitalization": {
@@ -325,7 +327,8 @@
 				"intent": "correctSpeech",
 				"state": "_CONTINUE_MODE",
 				"score": 4,
-				"completed": [1,5,3,0]
+				"completed": [1,5,3,0],
+				"skipped": []
 			}
 		},
 		"testValidateAttemptCorrectPuncAndCap": {
@@ -375,7 +378,8 @@
 				"intent": "correctSpeech",
 				"state": "_CONTINUE_MODE",
 				"score": 11,
-				"completed": [1,2,3,4,5,6,7,8,9,10,0]
+				"completed": [1,2,3,4,5,6,7,8,9,10,0],
+				"skipped": []
 			}
 		},
 		"testValidateAttemptIncorrect": {
