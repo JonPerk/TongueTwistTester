@@ -29,7 +29,7 @@ var twisterHelper = {
 				skipped = [];
 			}
 			
-			var combined;
+			let combined;
 			
 			if(completed.length >= total){
 				resolve();
@@ -43,7 +43,7 @@ var twisterHelper = {
 				combined = completed.concat(skipped);
 			}
 			
-			var rand = null;
+			let rand = null;
 			
 			while(rand === null || combined.includes(rand)){
 		         rand = Math.round(Math.random() * (total - 1));

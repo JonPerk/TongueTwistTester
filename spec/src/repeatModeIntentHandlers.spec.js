@@ -81,7 +81,7 @@ describe('repeatModeIntentHandlers tests', function() {
     	validateNegative(testNames, i, 0, test, response, error);
     });
 	
-	it('testRepeatIntent - get repeatSpeech intent', function() {
+	it('testRepeatIntent - get retrySpeech intent', function() {
 		validate(testNames, i, 1, test, response, error);
     });
 	

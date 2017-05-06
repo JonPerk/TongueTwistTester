@@ -23,20 +23,20 @@ jasmine.getEnv().addReporter(new jasmine.ConsoleReporter(console.log));
 describe('continueModeIntentHandlers tests', function() {
 	//tests must correspond to the name of the object for the test case in the json file
 	//they must also be in the order of the test cases below
-	var testNames = ['testAttemptIntent', 'testRepeatIntent', 'testHelpIntent', 
+	let testNames = ['testAttemptIntent', 'testRepeatIntent', 'testHelpIntent', 
 		'testNoScoreStopIntent', 'testZeroScoreStopIntent', 'testScoreStopIntent', 
 		'testNoScoreCancelIntent', 'testZeroScoreCancelIntent', 'testScoreCancelIntent',
 		'testLaunchIntent', 'testYesIntent', 'testNoIntent', 'testNoIntentZero', 'testNoIntentScore'];
-	var i = 0;
-	var response;
-	var error;
-	var test;
+	let i = 0;
+	let response;
+	let error;
+	let test;
 	
     framework.beforeEachMatchers();
 	
     beforeEach(function(done){
 		test = tests[testNames[i]];
-		var ctx = context();
+		let ctx = context();
 		ctx.Promise
 			.then(resp => {
 				console.log("succeeded: " + JSON.stringify(resp, null, 2));

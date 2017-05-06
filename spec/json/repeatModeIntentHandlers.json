@@ -61,7 +61,7 @@
 			},
 			"handlerType":"speech",
 			"response":{
-				"intent": "repeatSpeech"
+				"intent": "retrySpeech"
 			}
 		},
 		"testHelpIntent": {

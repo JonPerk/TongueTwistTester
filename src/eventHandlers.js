@@ -25,7 +25,7 @@ eventHandlers[constants.events.NEW_SESSION] = function(){
 		return;
 	}
 	
-	var getTwister = function(context){
+	let getTwister = function(context){
 		twisterHelper.getNewTwister(context.attributes.completed, context.attributes.skipped).then(function(twister){
 			if(twister){
 				context.attributes.score = 0;
@@ -63,7 +63,7 @@ console.info('Event handler ' + constants.events.NEW_TWISTER + ' for ' + this.ev
 		return;
 	}
 	
-	var getTwister = function(context){
+	let getTwister = function(context){
 		twisterHelper.getNewTwister(context.attributes.completed, context.attributes.skipped).then(function(twister){
 			if(twister){
 				context.attributes.twister = twister;
@@ -108,8 +108,8 @@ eventHandlers[constants.events.VALIDATE_ATTEMPT] = function(){
 		return;
 	}
 	
-	var expected = this.attributes.twister.value.replace(/[^a-zA-z0-9 ]/g, "").toLowerCase();
-	var attempt = this.event.request.intent.slots.Twister.value.replace(/[^a-zA-z0-9 ]/g, "").toLowerCase();
+	let expected = this.attributes.twister.value.replace(/[^a-zA-z0-9 ]/g, "").toLowerCase();
+	let attempt = this.event.request.intent.slots.Twister.value.replace(/[^a-zA-z0-9 ]/g, "").toLowerCase();
 	
 	//debug
 	console.info("Expected: " + expected + " Actual attempt: " + attempt + " Match? " + (attempt === expected));
@@ -125,7 +125,7 @@ eventHandlers[constants.events.VALIDATE_ATTEMPT] = function(){
 			if(!this.attributes.skipped){
 				this.attributes.skipped = [];
 			}
-			var index = this.attributes.skipped.indexOf(this.attributes.twister.index);
+			let index = this.attributes.skipped.indexOf(this.attributes.twister.index);
 			
 			if(index > -1){
 				this.attributes.skipped.splice(index,1);

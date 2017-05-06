@@ -22,7 +22,7 @@ var constants = require('./constants');
 /** Alexa skill handler */
 exports.handler = function(event, context, callback){
 	console.info("new session: " + JSON.stringify(event.session.sessionId));
-    var alexa = Alexa.handler(event, context);
+    let alexa = Alexa.handler(event, context);
     alexa.appId = config.appId;
     
     alexa.registerHandlers(

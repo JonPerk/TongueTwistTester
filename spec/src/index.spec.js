@@ -19,14 +19,14 @@ jasmine.getEnv().addReporter(new jasmine.ConsoleReporter(console.log));
 describe('index - connectivity test', function() {
 	//tests must correspond to the name of the object for the test case in the json file
 	//they must also be in the order of the test cases below
-	var testNames = ['testLaunchIntent', 'testLaunchRequest'];
-	var i = 0;
-	var response;
-	var error;
+	let testNames = ['testLaunchIntent', 'testLaunchRequest'];
+	let i = 0;
+	let response;
+	let error;
     framework.beforeEachMatchers();
 	beforeEach(function(done){
-			var test = testNames[i];
-			var ctx = context();
+			let test = testNames[i];
+			let ctx = context();
 			ctx.Promise
 				.then(resp => {
 					response = resp;

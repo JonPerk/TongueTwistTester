@@ -124,6 +124,7 @@ speechHandlers[constants.speeches.INCORRECT_SPEECH] = function(){
 };
 
 speechHandlers[constants.speeches.REPEAT_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
+speechHandlers[constants.speeches.RETRY_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
 speechHandlers[constants.speeches.HELP_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
 
 /** asks user if they want to continue with a new twister */

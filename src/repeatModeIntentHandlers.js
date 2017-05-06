@@ -57,7 +57,7 @@ intents[constants.intents.NO_INTENT] = function(){
 /** repeat mode handler for repeat attempt. Asks again if user wants to try again */
 intents[constants.intents.REPEAT_INTENT] = function(){
 	console.info('Intent handler ' + constants.intents.REPEAT_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
-	this.emitWithState(constants.speeches.REPEAT_SPEECH);
+	this.emitWithState(constants.speeches.RETRY_SPEECH);
 };
 
 /** repeat mode handler for help intent. Gives help and hints */

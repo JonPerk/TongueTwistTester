@@ -47,7 +47,7 @@ jasmine.getEnv().addReporter(new jasmine.ConsoleReporter(console.log));
 describe('speechHandlers - tests', function() {
 	//tests must correspond to the name of the object for the test case in the json file
 	//they must also be in the order of the test cases below
-	var testNames = ['testWelcomeSpeech', 'testWelcomeSpeechGameMode', 'testWelcomeSpeechRepeatMode', 'testWelcomeSpeechContinueMode', 
+	let testNames = ['testWelcomeSpeech', 'testWelcomeSpeechGameMode', 'testWelcomeSpeechRepeatMode', 'testWelcomeSpeechContinueMode', 
 		'testWelcomeSpeechTwisterError', 'testCorrectSpeech', 'testCorrectSpeechGameMode', 'testCorrectSpeechRepeatMode',
 		'testCorrectSpeechContinueMode', 'testCorrectSpeechContinueModeMultiscore', 'testCorrectSpeechScoreError',
 		'testIncorrectSpeech', 'testIncorrectSpeechGameMode', 'testIncorrectSpeechRepeatMode', 'testIncorrectSpeechRepeatModeNoAttempt', 
@@ -55,18 +55,18 @@ describe('speechHandlers - tests', function() {
 		'testSayTwisterSpeechContinueMode', 'testSayTwisterSpeechTwisterError', 'testGoodbyeSpeech', 'testGoodbyeSpeechWithMode', 
 		'testGoodbyeSpeechSingleScore', 'testGoodbyeSpeechMultiscore', 'testWinSpeech', 'testWinSpeechWithMode',
 		'testContinueSpeech', 'testContinueSpeechWrongMode'];
-	var i = 0;
-	var response;
-	var error;
-	var test;
+	let i = 0;
+	let response;
+	let error;
+	let test;
 	
     framework.beforeEachMatchers();
 	
 	beforeEach(function(done){
 		test = tests[testNames[i]];
 		// context for call to speechHandler
-		var ctx = context();
-		var ctx2 = context();
+		let ctx = context();
+		let ctx2 = context();
 
 		ctx.Promise
 			.then(resp => {
