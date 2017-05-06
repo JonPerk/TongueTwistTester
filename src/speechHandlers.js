@@ -124,12 +124,27 @@ speechHandlers[constants.speeches.INCORRECT_SPEECH] = function(){
 };
 
 speechHandlers[constants.speeches.REPEAT_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
-speechHandlers[constants.speeches.RETRY_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
+
+/** asks the user if they want to retry a twister they got wrong */
+speechHandlers[constants.speeches.RETRY_SPEECH] = function(){
+	console.info('Speech handler ' + constants.speeches.RETRY_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	
+	if(this.handler.state !== constants.states.REPEAT_MODE){
+		console.warn('Speech handler ' + constants.speeches.RETRY_SPEECH + ' state mismatch for ' + this.event.session.sessionId + 
+				' Expected state: ' + constants.states.REPEAT_MODE + ' Actual State: ' + this.handler.state);
+		this.emitWithState(constants.intents.UNHANDLED_INTENT);
+	} else {
+		this.emit(":ask", 
+				constants.speechOutputs.RETRY_SPEECH, 
+				constants.reprompts.RETRY_SPEECH);
+	}
+};
+
 speechHandlers[constants.speeches.HELP_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
 
 /** asks user if they want to continue with a new twister */
 speechHandlers[constants.speeches.CONTINUE_SPEECH] = function(){
-console.info('Speech handler ' + constants.speeches.CONTINUE_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	console.info('Speech handler ' + constants.speeches.CONTINUE_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	
 	if(this.handler.state !== constants.states.CONTINUE_MODE){
 		console.warn('Speech handler ' + constants.speeches.CONTINUE_SPEECH + ' state mismatch for ' + this.event.session.sessionId + 

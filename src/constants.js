@@ -52,6 +52,7 @@ module.exports = Object.freeze({
 		CORRECT_MULTI_SCORE_SPEECH: 'Great job! You got it right! %d tongue twisters completed so far. Would you like to try another, yes or no?',
 		INCORRECT_SPEECH: 'I\'m sorry, that didn\'t sound quite right. Would you like to try it again, yes or no?',
 		REPEAT_SPEECH: 'repeatSpeech',
+		RETRY_SPEECH: 'Would you like to try the tongue twister again, yes or no?',
 		HELP_SPEECH: 'helpSpeech',
 		CONTINUE_SPEECH: 'Would you like to try a new tongue twister, yes or no?',
 		GOODBYE_SPEECH: 'Thanks for playing! I hope you\'ll play again soon! Goodbye!',
@@ -67,6 +68,7 @@ module.exports = Object.freeze({
 		CORRECT_SPEECH: 'Would you like to try another tongue twister, yes or no?',
 		INCORRECT_SPEECH: 'Would you like to try the tongue twister again, yes or no?',
 		REPEAT_SPEECH: 'repeatSpeech',
+		RETRY_SPEECH: 'Would you like to try the tongue twister again, yes or no?',
 		HELP_SPEECH: 'helpSpeech',
 		CONTINUE_SPEECH: 'Would you like to try a new tongue twister, yes or no?',
 		UNHANDLED_SPEECH: 'I\'m sorry I couldn\'t understand that'

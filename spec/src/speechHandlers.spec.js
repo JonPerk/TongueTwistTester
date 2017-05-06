@@ -54,7 +54,7 @@ describe('speechHandlers - tests', function() {
 		'testIncorrectSpeechContinueMode', 'testSayTwisterSpeech', 'testSayTwisterSpeechGameMode', 'testSayTwisterSpeechRepeatMode',
 		'testSayTwisterSpeechContinueMode', 'testSayTwisterSpeechTwisterError', 'testGoodbyeSpeech', 'testGoodbyeSpeechWithMode', 
 		'testGoodbyeSpeechSingleScore', 'testGoodbyeSpeechMultiscore', 'testWinSpeech', 'testWinSpeechWithMode',
-		'testContinueSpeech', 'testContinueSpeechWrongMode'];
+		'testContinueSpeech', 'testContinueSpeechWrongMode', 'testRetrySpeech', 'testRetrySpeechWrongMode'];
 	let i = 0;
 	let response;
 	let error;
@@ -242,6 +242,14 @@ describe('speechHandlers - tests', function() {
 	
 	it('testContinueSpeechWrongMode - get unhandled intent - negative case', function() {
 		validate(testNames, i, 28, test, response, error);
+    });
+	
+	it('testRetrySpeech - get retry speech - positive case', function() {
+		validate(testNames, i, 29, test, response, error);
+    });
+	
+	it('testRetrySpeechWrongMode - get unhandled intent - negative case', function() {
+		validate(testNames, i, 30, test, response, error);
     });
 	
 	afterEach(function(){
