@@ -69,7 +69,7 @@ statelessHandlers[constants.intents.CANCEL_INTENT] = function(){
 
 /** stateless handler for unexpected prompts from user */
 statelessHandlers[constants.intents.UNHANDLED_INTENT] = function(){
-	console.warn('Intent handler ' + constants.intents.UNHANDLED_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	console.warn('WARNING Intent handler ' + constants.intents.UNHANDLED_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	this.emit(constants.speeches.UNHANDLED_SPEECH);
 };
 

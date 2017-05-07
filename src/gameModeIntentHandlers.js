@@ -47,7 +47,7 @@ intents[constants.intents.REPEAT_INTENT] = function(){
 			this.attributes.twister.value.trim() !== ''){
 		this.emitWithState(constants.speeches.SAY_TWISTER_SPEECH);
 	} else {
-		console.error('No twister loaded on repeat request in _GAME_MODE for ' + this.event.session.sessionId);
+		console.error('ERROR No twister loaded on repeat request in _GAME_MODE for ' + this.event.session.sessionId);
 		this.emitWithState(constants.speeches.FATAL_SPEECH);
 	}
 };
@@ -73,7 +73,7 @@ intents[constants.intents.CANCEL_INTENT] = function(){
 
 /** game mode handler for unhandled intent. notifies user */
 intents[constants.intents.UNHANDLED_INTENT] = function(){
-	console.warn('Intent handler ' + constants.intents.UNHANDLED_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	console.warn('WARNING Intent handler ' + constants.intents.UNHANDLED_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	this.emitWithState(constants.speeches.UNHANDLED_SPEECH);
 };
 

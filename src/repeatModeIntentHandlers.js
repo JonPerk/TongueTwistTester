@@ -15,13 +15,13 @@ var intents = {};
 
 /** repeat mode handler for launch intent. Launch intent is unhandled when in repeat mode */
 intents[constants.intents.LAUNCH_INTENT] = function(){
-	console.warn('Intent handler ' + constants.intents.LAUNCH_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	console.warn('WARNING Intent handler ' + constants.intents.LAUNCH_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	this.emitWithState(constants.speeches.UNHANDLED_SPEECH);
 };
 
 /** repeat mode handler for attempt intent. Attempt intent is unhandled when in repeat mode */
 intents[constants.intents.ATTEMPT_INTENT] = function(){
-	console.warn('Intent handler ' + constants.intents.ATTEMPT_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	console.warn('WARNING Intent handler ' + constants.intents.ATTEMPT_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	this.emitWithState(constants.speeches.UNHANDLED_SPEECH);
 };
 
@@ -29,7 +29,7 @@ intents[constants.intents.ATTEMPT_INTENT] = function(){
 intents[constants.intents.YES_INTENT] = function(){
 	console.info('Intent handler ' + constants.intents.YES_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	if(!this.attributes.twister || !this.attributes.twister.value || !(this.attributes.twister.index || this.attributes.twister.index === 0)){
-		console.error('Intent handler in REPEAT_MODE_ ' + constants.intents.YES_INTENT + ' called for missing twister ' + this.event.session.sessionId + " " + JSON.stringify(this));
+		console.error('ERROR Intent handler in REPEAT_MODE_ ' + constants.intents.YES_INTENT + ' called for missing twister ' + this.event.session.sessionId + " " + JSON.stringify(this));
 		this.emitWithState(constants.speeches.FATAL_SPEECH);
 	} else {
 		this.handler.state = constants.states.GAME_MODE;
@@ -41,7 +41,7 @@ intents[constants.intents.YES_INTENT] = function(){
 intents[constants.intents.NO_INTENT] = function(){
 	console.info('Intent handler ' + constants.intents.NO_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	if(!this.attributes.twister || !this.attributes.twister.value || !(this.attributes.twister.index || this.attributes.twister.index === 0)){
-		console.error('Intent handler in REPEAT_MODE_ ' + constants.intents.NO_INTENT + ' called for missing twister ' + this.event.session.sessionId + " " + JSON.stringify(this));
+		console.error('ERROR Intent handler in REPEAT_MODE_ ' + constants.intents.NO_INTENT + ' called for missing twister ' + this.event.session.sessionId + " " + JSON.stringify(this));
 		this.emitWithState(constants.speeches.FATAL_SPEECH);
 	} else {
 		console.log("wrong place")
@@ -80,7 +80,7 @@ intents[constants.intents.CANCEL_INTENT] = function(){
 
 /** continue mode handler for unhandled intent. notifies user */
 intents[constants.intents.UNHANDLED_INTENT] = function(){
-	console.warn('Intent handler ' + constants.intents.UNHANDLED_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	console.warn('WARNING Intent handler ' + constants.intents.UNHANDLED_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	this.emitWithState(constants.speeches.UNHANDLED_SPEECH);
 };
 
