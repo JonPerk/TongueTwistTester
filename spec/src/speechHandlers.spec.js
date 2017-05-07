@@ -50,7 +50,7 @@ describe('speechHandlers - tests', function() {
 	let testNames = ['testWelcomeSpeech', 'testWelcomeSpeechGameMode', 'testWelcomeSpeechRepeatMode', 'testWelcomeSpeechContinueMode', 
 		'testWelcomeSpeechTwisterError', 'testCorrectSpeech', 'testCorrectSpeechGameMode', 'testCorrectSpeechRepeatMode',
 		'testCorrectSpeechContinueMode', 'testCorrectSpeechContinueModeMultiscore', 'testCorrectSpeechScoreError',
-		'testIncorrectSpeech', 'testIncorrectSpeechGameMode', 'testIncorrectSpeechRepeatMode', 'testIncorrectSpeechRepeatModeNoAttempt', 
+		'testIncorrectSpeech', 'testIncorrectSpeechGameModeNoTwister', 'testIncorrectSpeechRepeatMode', 'testIncorrectSpeechRepeatModeNoAttempt', 
 		'testIncorrectSpeechContinueMode', 'testSayTwisterSpeech', 'testSayTwisterSpeechGameMode', 'testSayTwisterSpeechRepeatMode',
 		'testSayTwisterSpeechContinueMode', 'testSayTwisterSpeechTwisterError', 'testGoodbyeSpeech', 'testGoodbyeSpeechWithMode', 
 		'testGoodbyeSpeechSingleScore', 'testGoodbyeSpeechMultiscore', 'testWinSpeech', 'testWinSpeechWithMode',
@@ -171,7 +171,7 @@ describe('speechHandlers - tests', function() {
 		validate(testNames, i, 11, test, response, error);
     });
 	
-	it('testIncorrectSpeechGameMode - get unhandled intent - negative case', function() {
+	it('testIncorrectSpeechGameModeNoTwister - get unhandled intent - negative case', function() {
 		validate(testNames, i, 12, test, response, error);
     });
 	

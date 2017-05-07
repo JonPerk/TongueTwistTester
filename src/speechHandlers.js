@@ -174,12 +174,6 @@ speechHandlers[constants.speeches.GOODBYE_SPEECH] = function(){
 	}
 };
 
-/** notifies user of recoverable failure and continues */
-speechHandlers[constants.speeches.UNHANDLED_SPEECH] = function(){
-	console.warn('Speech handler ' + constants.speeches.UNHANDLED_SPEECH + ' called for ' + this.event.session.sessionId + " context " + JSON.stringify(this));
-	this.emit(":ask", constants.speechOutputs.UNHANDLED_SPEECH, constants.reprompts.UNHANDLED_SPEECH);
-}
-
 /** notifies user of unrecoverable failure and ends session */
 speechHandlers[constants.speeches.FATAL_SPEECH] = function(){
 	console.error('Speech handler ' + constants.speeches.FATAL_SPEECH + ' called for ' + this.event.session.sessionId + " context " + JSON.stringify(this));
@@ -211,11 +205,12 @@ speechHandlers[constants.speeches.WIN_SPEECH] = function(){
 };
 
 
-/** when help asked in stateless mode, it should be in game mode, so re-emit in game mode */
+/** gives the user tips and asks if they want to play */
 var statelessHelp = function(){
 	console.info('Speech handler ' + constants.speeches.HELP_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
-	this.handler.state = constants.states.GAME_MODE;
-	this.emitWithState(constants.intents.HELP_INTENT);
+	this.emit(':ask',
+			constants.speechOutputs.HELP_SPEECH,
+			constants.speechOutputs.HELP_SPEECH);
 };
 
 /** gives the user tips and asks twister */
@@ -248,6 +243,49 @@ var continueModeHelp = function(){
 			constants.speechOutputs.HELP_CONTINUE_MODE_SPEECH,
 			constants.reprompts.CONTINUE_SPEECH);
 };
+
+/*/** notifies user of recoverable failure and continues 
+speechHandlers[constants.speeches.UNHANDLED_SPEECH] = function(){
+	console.warn('Speech handler ' + constants.speeches.UNHANDLED_SPEECH + ' called for ' + this.event.session.sessionId + " context " + JSON.stringify(this));
+	this.emit(":ask", constants.speechOutputs.UNHANDLED_SPEECH, constants.reprompts.UNHANDLED_SPEECH);
+}
+/** notifies user of recoverable failure and asks if they want to play */
+var statelessUnhandled = function(){
+	console.warn('Speech handler ' + constants.speeches.UNHANDLED_SPEECH + ' called for ' + this.event.session.sessionId + " context " + JSON.stringify(this));
+	this.emit(":ask", 
+			constants.speechOutputs.UNHANDLED_SPEECH + constants.speechOutputs.HELP_SPEECH, 
+			constants.reprompts.UNHANDLED_SPEECH + constants.speechOutputs.HELP_SPEECH);
+};
+
+/** notifies user of recoverable failure and asks twister */
+var gameModeUnhandled = function(){
+	if(!this.attributes || !this.attributes.twister || !this.attributes.twister.value){
+		console.error('Speech handler ' + constants.speeches.HELP_SPEECH + ' no twister found for ' + this.event.session.sessionId);
+		this.emitWithState(constants.speeches.FATAL_SPEECH);
+		return;
+	} else {
+		console.warn('Speech handler ' + constants.speeches.UNHANDLED_SPEECH + ' called for ' + this.event.session.sessionId + " context " + JSON.stringify(this));
+		this.emit(":ask", 
+				constants.speechOutputs.UNHANDLED_SPEECH + constants.speechOutputs.HELP_GAME_MODE_SPEECH + this.attributes.twister.value, 
+				constants.reprompts.UNHANDLED_SPEECH + constants.speechOutputs.HELP_GAME_MODE_SPEECH + this.attributes.twister.value);
+	}
+};
+
+/** notifies user of recoverable failure and asks if they want to retry the twister */
+var repeatModeUnhandled = function(){
+	console.warn('Speech handler ' + constants.speeches.UNHANDLED_SPEECH + ' called for ' + this.event.session.sessionId + " context " + JSON.stringify(this));
+	this.emit(":ask", 
+			constants.speechOutputs.UNHANDLED_SPEECH + constants.speechOutputs.HELP_REPEAT_MODE_SPEECH, 
+			constants.reprompts.UNHANDLED_SPEECH + constants.speechOutputs.HELP_REPEAT_MODE_SPEECH);
+};
+
+/** notifies user of recoverable failure and asks if they want to try a new twister */
+var continueModeUnhandled = function(){
+	console.warn('Speech handler ' + constants.speeches.UNHANDLED_SPEECH + ' called for ' + this.event.session.sessionId + " context " + JSON.stringify(this));
+	this.emit(":ask", 
+			constants.speechOutputs.UNHANDLED_SPEECH + constants.speechOutputs.HELP_CONTINUE_MODE_SPEECH, 
+			constants.reprompts.UNHANDLED_SPEECH + constants.speechOutputs.HELP_CONTINUE_MODE_SPEECH);
+};
  
 var gameMode = Object.assign({}, speechHandlers);
 var repeatMode = Object.assign({}, speechHandlers);
@@ -257,6 +295,11 @@ speechHandlers[constants.speeches.HELP_SPEECH] = statelessHelp;
 gameMode[constants.speeches.HELP_SPEECH] = gameModeHelp;
 repeatMode[constants.speeches.HELP_SPEECH] = repeatModeHelp;
 continueMode[constants.speeches.HELP_SPEECH] = continueModeHelp;
+
+speechHandlers[constants.speeches.UNHANDLED_SPEECH] = statelessUnhandled;
+gameMode[constants.speeches.UNHANDLED_SPEECH] = gameModeUnhandled;
+repeatMode[constants.speeches.UNHANDLED_SPEECH] = repeatModeUnhandled;
+continueMode[constants.speeches.UNHANDLED_SPEECH] = continueModeUnhandled;
  
 module.exports = {
 	statelessHandlers : speechHandlers,

@@ -32,13 +32,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						"ssml": "<speak> I'm sorry I couldn't understand that. Say give me a tongue twister to start playing. </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+							"ssml": "<speak> I'm sorry I couldn't understand that. Say give me a tongue twister to start playing. </speak>"
 						}
 					}
 				},
@@ -142,13 +142,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						"ssml": "<speak> I'm sorry I couldn't understand that. You didn't get the tongue twister correct, but you can try it again. If you would like to try again, say yes. If not, say no. </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+							"ssml": "<speak> I'm sorry I couldn't understand that. You didn't get the tongue twister correct, but you can try it again. If you would like to try again, say yes. If not, say no. </speak>"
 						}
 					}
 				},
@@ -188,13 +188,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						"ssml": "<speak> I'm sorry I couldn't understand that. If you would like to keep playing with a new tongue twister, say yes. If you would like to stop playing, say no or stop. </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+							"ssml": "<speak> I'm sorry I couldn't understand that. If you would like to keep playing with a new tongue twister, say yes. If you would like to stop playing, say no or stop. </speak>"
 						}
 					}
 				},
@@ -283,13 +283,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						"ssml": "<speak> I'm sorry I couldn't understand that. Say give me a tongue twister to start playing. </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+							"ssml": "<speak> I'm sorry I couldn't understand that. Say give me a tongue twister to start playing. </speak>"
 						}
 					}
 				},
@@ -338,13 +338,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						"ssml": "<speak> I'm sorry I couldn't understand that. I'll give you a tongue twister, and you try to repeat it as best you can. Here's the tongue twister. Repeat after me. she sells seashells by the seashore </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+							"ssml": "<speak> I'm sorry I couldn't understand that. I'll give you a tongue twister, and you try to repeat it as best you can. Here's the tongue twister. Repeat after me. she sells seashells by the seashore </speak>"
 						}
 					}
 				},
@@ -391,13 +391,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						"ssml": "<speak> I'm sorry I couldn't understand that. You didn't get the tongue twister correct, but you can try it again. If you would like to try again, say yes. If not, say no. </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+							"ssml": "<speak> I'm sorry I couldn't understand that. You didn't get the tongue twister correct, but you can try it again. If you would like to try again, say yes. If not, say no. </speak>"
 						}
 					}
 				},
@@ -598,13 +598,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						"ssml": "<speak> I'm sorry I couldn't understand that. Say give me a tongue twister to start playing. </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+							"ssml": "<speak> I'm sorry I couldn't understand that. Say give me a tongue twister to start playing. </speak>"
 						}
 					}
 				},
@@ -614,21 +614,17 @@
 				}
 			}
 		},
-		"testIncorrectSpeechGameMode": {
+		"testIncorrectSpeechGameModeNoTwister": {
 			"request": {
 				"session": {
-					"sessionId": "speechHandlers-testIncorrectSpeechGameMode",
+					"sessionId": "speechHandlers-testIncorrectSpeechGameModeNoTwister",
 					"application": {
 						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
 					"attributes": {
 						"score": 0,
 						"completed": [],
-						"skipped": [],
-						"twister": {
-							"index": 0,
-							"value": "she sells seashells by the seashore"
-						}
+						"skipped": []
 					},
 					"user": {
 						"userId": "testAccount"
@@ -653,24 +649,19 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						"ssml": "<speak> An error occured and we had to stop playing, sorry! Please play again soon! </speak>"
 					},
-					"shouldEndSession": false,
-					"reprompt": {
-						"outputSpeech": {
-							"type": "SSML",
-							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
-						}
+					"shouldEndSession": true,
+					"card": {
+						"type": "Simple",
+						"title": "Sorry, something went wrong",
+						"content": "An error occured and we had to stop playing, sorry! Please play again soon!"
 					}
 				},
 				"sessionAttributes": {
 					"score": 0,
 					"completed": [],
 					"skipped": [],
-					"twister": {
-						"index": 0,
-						"value": "she sells seashells by the seashore"
-					},
 					"STATE": "_GAME_MODE"
 				}
 			}
@@ -882,13 +873,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						"ssml": "<speak> I'm sorry I couldn't understand that. If you would like to keep playing with a new tongue twister, say yes. If you would like to stop playing, say no or stop. </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+							"ssml": "<speak> I'm sorry I couldn't understand that. If you would like to keep playing with a new tongue twister, say yes. If you would like to stop playing, say no or stop. </speak>"
 						}
 					}
 				},
@@ -931,13 +922,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						"ssml": "<speak> I'm sorry I couldn't understand that. Say give me a tongue twister to start playing. </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+							"ssml": "<speak> I'm sorry I couldn't understand that. Say give me a tongue twister to start playing. </speak>"
 						}
 					}
 				},
@@ -1041,13 +1032,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						"ssml": "<speak> I'm sorry I couldn't understand that. You didn't get the tongue twister correct, but you can try it again. If you would like to try again, say yes. If not, say no. </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+							"ssml": "<speak> I'm sorry I couldn't understand that. You didn't get the tongue twister correct, but you can try it again. If you would like to try again, say yes. If not, say no. </speak>"
 						}
 					}
 				},
@@ -1087,13 +1078,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						"ssml": "<speak> I'm sorry I couldn't understand that. If you would like to keep playing with a new tongue twister, say yes. If you would like to stop playing, say no or stop. </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+							"ssml": "<speak> I'm sorry I couldn't understand that. If you would like to keep playing with a new tongue twister, say yes. If you would like to stop playing, say no or stop. </speak>"
 						}
 					}
 				},
@@ -1567,13 +1558,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						"ssml": "<speak> I'm sorry I couldn't understand that. I'll give you a tongue twister, and you try to repeat it as best you can. Here's the tongue twister. Repeat after me. she sells seashells by the seashore </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+							"ssml": "<speak> I'm sorry I couldn't understand that. I'll give you a tongue twister, and you try to repeat it as best you can. Here's the tongue twister. Repeat after me. she sells seashells by the seashore </speak>"
 						}
 					}
 				},
@@ -1689,13 +1680,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+						"ssml": "<speak> I'm sorry I couldn't understand that. I'll give you a tongue twister, and you try to repeat it as best you can. Here's the tongue twister. Repeat after me. she sells seashells by the seashore </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> I'm sorry I couldn't understand that </speak>"
+							"ssml": "<speak> I'm sorry I couldn't understand that. I'll give you a tongue twister, and you try to repeat it as best you can. Here's the tongue twister. Repeat after me. she sells seashells by the seashore </speak>"
 						}
 					}
 				},
@@ -1746,14 +1737,19 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> session ended </speak>"
+						"ssml": "<speak> Say give me a tongue twister to start playing. </speak>"
 					},
-					"shouldEndSession": true
+					"shouldEndSession": false,
+					"reprompt": {
+						"outputSpeech": {
+							"type": "SSML",
+							"ssml": "<speak> Say give me a tongue twister to start playing. </speak>"
+						}
+					}
 				},
 				"sessionAttributes": {
 					"score": 1,
-					"completed": [1],
-					"STATE": "_GAME_MODE"
+					"completed": [1]
 				}
 			}
 		},
@@ -1796,7 +1792,7 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'll give you a tongue twister, and you try to repeat it. If you get it correct, you can try a new one. If you get it wrong you can try again. Here's the tongue twister. Repeat after me. she sells seashells by the seashore </speak>"
+						"ssml": "<speak> I'll give you a tongue twister, and you try to repeat it as best you can. Here's the tongue twister. Repeat after me. she sells seashells by the seashore </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {

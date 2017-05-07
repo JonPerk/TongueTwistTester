@@ -1,13 +1,14 @@
-LaunchIntent open Tongue Twist Tester
-LaunchIntent let's play Tongue Twist Tester
-LaunchIntent tell Tongue Twist Tester to give me a tongue twister
-LaunchIntent tell Tongue Twist Tester to tell me a tongue twister
-LaunchIntent ask Tongue Twist Tester to give me a tongue twister
-LaunchIntent ask Tongue Twist Tester to tell me a tongue twister
-LaunchIntent open Tongue Twister Tester
-LaunchIntent let's play Tongue Twister Tester
-LaunchIntent tell Tongue Twister Tester to give me a tongue twister
-LaunchIntent tell Tongue Twister Tester to tell me a tongue twister
-LaunchIntent ask Tongue Twister Tester to give me a tongue twister
-LaunchIntent ask Tongue Twister Tester to tell me a tongue twister
+LaunchIntent let's play tongue twist tester
+LaunchIntent tell tongue twist tester to give me a tongue twister
+LaunchIntent tell tongue twist tester to tell me a tongue twister
+LaunchIntent ask tongue twist tester to give me a tongue twister
+LaunchIntent ask tongue twist tester to tell me a tongue twister
+LaunchIntent ask tongue twist tester for a tongue twister
+LaunchIntent give me a tongue twister
+LaunchIntent tell tongue twist tester to give me a twister
+LaunchIntent tell tongue twist tester to tell me a twister
+LaunchIntent ask tongue twist tester to give me a twister
+LaunchIntent ask tongue twist tester to tell me a twister
+LaunchIntent ask tongue twist tester for a tongue twister
+LaunchIntent give me a twister
 AttemptIntent {Twister}
