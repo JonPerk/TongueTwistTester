@@ -440,13 +440,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> Great job! You got it right! That's your first tongue twister. Would you like to try another, yes or no? </speak>"
+						"ssml": "<speak> Great job! You got it right! That's your first tongue twister. Would you like to try another? </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> Would you like to try another tongue twister, yes or no? </speak>"
+							"ssml": "<speak> Would you like to try another tongue twister? </speak>"
 						}
 					},
 					"card": {
@@ -496,13 +496,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> Great job! You got it right! 5 tongue twisters completed so far. Would you like to try another, yes or no? </speak>"
+						"ssml": "<speak> Great job! You got it right! 5 tongue twisters completed so far. Would you like to try another? </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> Would you like to try another tongue twister, yes or no? </speak>"
+							"ssml": "<speak> Would you like to try another tongue twister? </speak>"
 						}
 					},
 					"card": {
@@ -712,13 +712,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry, that didn't sound quite right. Would you like to try it again, yes or no? </speak>"
+						"ssml": "<speak> I'm sorry, that didn't sound quite right. Would you like to try it again? </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> Would you like to try the tongue twister again, yes or no? </speak>"
+							"ssml": "<speak> Would you like to try the tongue twister again? </speak>"
 						}
 					},
 					"card": {
@@ -773,13 +773,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry, that didn't sound quite right. Would you like to try it again, yes or no? </speak>"
+						"ssml": "<speak> I'm sorry, that didn't sound quite right. Would you like to try it again? </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> Would you like to try the tongue twister again, yes or no? </speak>"
+							"ssml": "<speak> Would you like to try the tongue twister again? </speak>"
 						}
 					},
 					"card": {
@@ -828,13 +828,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> I'm sorry, that didn't sound quite right. Would you like to try it again, yes or no? </speak>"
+						"ssml": "<speak> I'm sorry, that didn't sound quite right. Would you like to try it again? </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> Would you like to try the tongue twister again, yes or no? </speak>"
+							"ssml": "<speak> Would you like to try the tongue twister again? </speak>"
 						}
 					},
 					"card": {
@@ -1506,13 +1506,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> Would you like to try a new tongue twister, yes or no? </speak>"
+						"ssml": "<speak> Would you like to try a new tongue twister? </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> Would you like to try a new tongue twister, yes or no? </speak>"
+							"ssml": "<speak> Would you like to try a new tongue twister? </speak>"
 						}
 					}
 				},
@@ -1628,13 +1628,13 @@
 				"response": {
 					"outputSpeech": {
 						"type": "SSML",
-						"ssml": "<speak> Would you like to try the tongue twister again, yes or no? </speak>"
+						"ssml": "<speak> Would you like to try the tongue twister again? </speak>"
 					},
 					"shouldEndSession": false,
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> Would you like to try the tongue twister again, yes or no? </speak>"
+							"ssml": "<speak> Would you like to try the tongue twister again? </speak>"
 						}
 					}
 				},
@@ -1908,7 +1908,7 @@
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> Would you like to try the tongue twister again, yes or no? </speak>"
+							"ssml": "<speak> Would you like to try the tongue twister again? </speak>"
 						}
 					}
 				},
@@ -1969,7 +1969,7 @@
 					"reprompt": {
 						"outputSpeech": {
 							"type": "SSML",
-							"ssml": "<speak> Would you like to try a new tongue twister, yes or no? </speak>"
+							"ssml": "<speak> Would you like to try a new tongue twister? </speak>"
 						}
 					}
 				},
