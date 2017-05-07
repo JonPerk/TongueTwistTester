@@ -25,7 +25,32 @@
 			"handlerType":"event",
 			"response":"newSession"
 		},
-		"testRepeatIntent": {
+		"testRepeatIntentNoTwister": {
+			"request": {
+				"session": {
+					"sessionId": "stateLessHandlers-testRepeatIntent",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.RepeatIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"handlerType":"event",
+			"response":"newSession"
+		},
+		"testRepeatIntentWithTwister": {
 			"request": {
 				"session": {
 					"sessionId": "stateLessHandlers-testRepeatIntent",
@@ -33,7 +58,13 @@
 						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
 					},
 					"attributes": {
-						"lastSpeech": "Some output"
+						"score": 0,
+						"completed": [],
+						"skipped": [],
+						"twister": {
+							"index": 0,
+							"value": "she sells seashells by the seashore"
+						}
 					},
 					"user": {
 						"userId": "testAccount"
@@ -50,7 +81,7 @@
 				"version": "1.0"
 			},
 			"handlerType":"speech",
-			"response":"repeatSpeech"
+			"response":"sayTwisterSpeech"
 		},
 		"testHelpIntent": {
 			"request": {
@@ -74,8 +105,8 @@
 				},
 				"version": "1.0"
 			},
-			"handlerType":"speech",
-			"response":"helpSpeech"
+			"handlerType":"event",
+			"response":"helpTwister"
 		},
 		"testNoScoreStopIntent": {
 			"request": {
@@ -332,58 +363,6 @@
 					"locale": "en-US",
 					"intent": {
 						"name": "AMAZON.NoIntent"
-					}
-				},
-				"version": "1.0"
-			},
-			"handlerType":"speech",
-			"response":"unhandledSpeech"
-		},
-		"testBadRepeatIntent": {
-			"request": {
-				"session": {
-					"sessionId": "stateLessHandlers-testBadRepeatIntent",
-					"application": {
-						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
-					},
-					"attributes": {},
-					"user": {
-						"userId": "testAccount"
-					},
-					"new": true
-				},
-				"request": {
-					"type": "IntentRequest",
-					"locale": "en-US",
-					"intent": {
-						"name": "AMAZON.RepeatIntent"
-					}
-				},
-				"version": "1.0"
-			},
-			"handlerType":"speech",
-			"response":"unhandledSpeech"
-		},
-		"testEmptyRepeatIntent": {
-			"request": {
-				"session": {
-					"sessionId": "stateLessHandlers-testEmptyRepeatIntent",
-					"application": {
-						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
-					},
-					"attributes": {
-						"lastSpeech": "   "
-					},
-					"user": {
-						"userId": "testAccount"
-					},
-					"new": true
-				},
-				"request": {
-					"type": "IntentRequest",
-					"locale": "en-US",
-					"intent": {
-						"name": "AMAZON.RepeatIntent"
 					}
 				},
 				"version": "1.0"

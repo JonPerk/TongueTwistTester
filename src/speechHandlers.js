@@ -123,8 +123,6 @@ speechHandlers[constants.speeches.INCORRECT_SPEECH] = function(){
 	}
 };
 
-speechHandlers[constants.speeches.REPEAT_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
-
 /** asks the user if they want to retry a twister they got wrong */
 speechHandlers[constants.speeches.RETRY_SPEECH] = function(){
 	console.info('Speech handler ' + constants.speeches.RETRY_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
@@ -139,8 +137,6 @@ speechHandlers[constants.speeches.RETRY_SPEECH] = function(){
 				constants.reprompts.RETRY_SPEECH);
 	}
 };
-
-speechHandlers[constants.speeches.HELP_SPEECH] = function(){console.error(JSON.stringify(this)); throw 'Not yet implemented' + JSON.stringify(this);};
 
 /** asks user if they want to continue with a new twister */
 speechHandlers[constants.speeches.CONTINUE_SPEECH] = function(){
@@ -213,10 +209,54 @@ speechHandlers[constants.speeches.WIN_SPEECH] = function(){
 			constants.cardTitles.YOU_WIN,
 			constants.cards.WIN_CARD);
 };
+
+
+/** when help asked in stateless mode, it should be in game mode, so re-emit in game mode */
+var statelessHelp = function(){
+	console.info('Speech handler ' + constants.speeches.HELP_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	this.handler.state = constants.states.GAME_MODE;
+	this.emitWithState(constants.intents.HELP_INTENT);
+};
+
+/** gives the user tips and asks twister */
+var gameModeHelp = function(){
+	console.info('Speech handler ' + constants.speeches.HELP_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	
+	if(!this.attributes || !this.attributes.twister || !this.attributes.twister.value){
+		console.error('Speech handler ' + constants.speeches.HELP_SPEECH + ' no twister found for ' + this.event.session.sessionId);
+		this.emitWithState(constants.speeches.FATAL_SPEECH);
+		return;
+	} else {
+		this.emit(':ask',
+				constants.speechOutputs.HELP_GAME_MODE_SPEECH + this.attributes.twister.value,
+				constants.reprompts.REPEAT_TWISTER_SPEECH + this.attributes.twister.value);
+	}
+};
+
+/** gives the user tips and asks if they want to retry the twister */
+var repeatModeHelp = function(){
+	console.info('Speech handler ' + constants.speeches.HELP_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	this.emit(':ask',
+			constants.speechOutputs.HELP_REPEAT_MODE_SPEECH,
+			constants.reprompts.RETRY_SPEECH);
+};
+
+/** gives the user tips and asks if they want to try a new twister */
+var continueModeHelp = function(){
+	console.info('Speech handler ' + constants.speeches.HELP_SPEECH + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	this.emit(':ask',
+			constants.speechOutputs.HELP_CONTINUE_MODE_SPEECH,
+			constants.reprompts.CONTINUE_SPEECH);
+};
  
 var gameMode = Object.assign({}, speechHandlers);
 var repeatMode = Object.assign({}, speechHandlers);
 var continueMode = Object.assign({}, speechHandlers);
+
+speechHandlers[constants.speeches.HELP_SPEECH] = statelessHelp;
+gameMode[constants.speeches.HELP_SPEECH] = gameModeHelp;
+repeatMode[constants.speeches.HELP_SPEECH] = repeatModeHelp;
+continueMode[constants.speeches.HELP_SPEECH] = continueModeHelp;
  
 module.exports = {
 	statelessHandlers : speechHandlers,

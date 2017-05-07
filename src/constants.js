@@ -23,7 +23,7 @@ module.exports = Object.freeze({
 		NEW_SESSION: 'newSession',
 		NEW_TWISTER: 'newTwister',
 		VALIDATE_ATTEMPT: 'validateAttempt',
-		END_SESSION: 'endSession',
+		HELP_TWISTER: 'helpTwister',
 		LAUNCH_REQUEST: 'LaunchRequest'
 	},
 	
@@ -53,7 +53,9 @@ module.exports = Object.freeze({
 		INCORRECT_SPEECH: 'I\'m sorry, that didn\'t sound quite right. Would you like to try it again, yes or no?',
 		REPEAT_SPEECH: 'repeatSpeech',
 		RETRY_SPEECH: 'Would you like to try the tongue twister again, yes or no?',
-		HELP_SPEECH: 'helpSpeech',
+		HELP_GAME_MODE_SPEECH: 'I\'ll give you a tongue twister, and you try to repeat it. If you get it correct, you can try a new one. If you get it wrong you can try again. Here\'s the tongue twister. Repeat after me. ',
+		HELP_REPEAT_MODE_SPEECH: 'You didn\'t get the tongue twister correct, but you can try it again. If you would like to try again, say yes. If not, say no.',
+		HELP_CONTINUE_MODE_SPEECH: 'If you would like to keep playing with a new tongue twister, say yes. If you would like to stop playing, say no or stop.',
 		CONTINUE_SPEECH: 'Would you like to try a new tongue twister, yes or no?',
 		GOODBYE_SPEECH: 'Thanks for playing! I hope you\'ll play again soon! Goodbye!',
 		GOODBYE_SINGLE_SCORE_SPEECH: 'Thanks for playing! You got 1 tongue twister right! Goodbye!',
@@ -64,12 +66,9 @@ module.exports = Object.freeze({
 	
 	reprompts: {
 		REPEAT_TWISTER_SPEECH: 'Here\'s the tongue twister. Repeat after me. ',
-		SAY_TWISTER_SPEECH: 'sayTwisterSpeech',
 		CORRECT_SPEECH: 'Would you like to try another tongue twister, yes or no?',
 		INCORRECT_SPEECH: 'Would you like to try the tongue twister again, yes or no?',
-		REPEAT_SPEECH: 'repeatSpeech',
 		RETRY_SPEECH: 'Would you like to try the tongue twister again, yes or no?',
-		HELP_SPEECH: 'helpSpeech',
 		CONTINUE_SPEECH: 'Would you like to try a new tongue twister, yes or no?',
 		UNHANDLED_SPEECH: 'I\'m sorry I couldn\'t understand that'
 	},

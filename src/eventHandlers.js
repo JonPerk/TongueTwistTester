@@ -49,7 +49,7 @@ eventHandlers[constants.events.NEW_SESSION] = function(){
 
 /** fetches tongue twister */
 eventHandlers[constants.events.NEW_TWISTER] = function(){
-console.info('Event handler ' + constants.events.NEW_TWISTER + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	console.info('Event handler ' + constants.events.NEW_TWISTER + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	
 	if(!this.handler.state){
 		console.warn('Event handler ' + constants.events.NEW_TWISTER + ' state mismatch for ' + this.event.session.sessionId + ' Expected state: null Actual State: ' + this.handler.state);
@@ -74,7 +74,7 @@ console.info('Event handler ' + constants.events.NEW_TWISTER + ' for ' + this.ev
 			}
 		})
 		.catch(function(err){
-			console.error('GetNewTwister failed in event ' + constants.events.NEW_SESSION + ' for ' + context.event.session.sessionId + ' State: ' + context.handler.state + ' Error: ' + err);
+			console.error('GetNewTwister failed in event ' + constants.events.NEW_TWISTER + ' for ' + context.event.session.sessionId + ' State: ' + context.handler.state + ' Error: ' + err);
 			context.emit(constants.speeches.FATAL_SPEECH);
 		});
 	};
@@ -88,7 +88,7 @@ console.info('Event handler ' + constants.events.NEW_TWISTER + ' for ' + this.ev
 eventHandlers[constants.events.VALIDATE_ATTEMPT] = function(){
 	console.info('Event handler ' + constants.events.VALIDATE_ATTEMPT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	if(!this.handler.state){
-		console.warn('Event handler ' + constants.events.VALIDATE_ATTEMPT + ' state mismatch for ' + this.event.session.sessionId + ' Expected state: null Actual State: ' + this.handler.state);
+		console.warn('Event handler ' + constants.events.VALIDATE_ATTEMPT + ' state mismatch for ' + this.event.session.sessionId + ' Expected state: _GAME_MODE Actual State: ' + this.handler.state);
 		this.emit(constants.intents.UNHANDLED_INTENT);
 		return;
 	}
@@ -143,7 +143,39 @@ eventHandlers[constants.events.VALIDATE_ATTEMPT] = function(){
 	}
 };
 
-eventHandlers[constants.events.END_SESSION] = function(){console.warn('Not yet implemented' + JSON.stringify(this)); this.emit(':tell', 'Goodbye')};
+/** explains game in depth and gives twister */
+eventHandlers[constants.events.HELP_TWISTER] = function(){
+	console.info('Event handler ' + constants.events.HELP_TWISTER + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
+	
+	if(this.handler.state){
+		console.warn('Event handler ' + constants.events.HELP_TWISTER + ' state mismatch for ' + this.event.session.sessionId + ' Expected state: null Actual State: ' + this.handler.state);
+		this.emitWithState(constants.intents.UNHANDLED_INTENT);
+		return;
+	}
+	
+	this.handler.state = constants.states.GAME_MODE;
+	
+	if(!this.attributes.twister || !this.attributes.twister.value || (!this.attributes.twister.total && this.attributes.twister.total != 0)){
+		let getTwister = function(context){
+			twisterHelper.getNewTwister(context.attributes.completed, context.attributes.skipped).then(function(twister){
+				if(twister){
+					context.attributes.twister = twister;
+					context.emitWithState(constants.speeches.HELP_SPEECH);
+				} else {
+					throw 'No tongue twisters found';
+				}
+			})
+			.catch(function(err){
+				console.error('GetNewTwister failed in event ' + constants.events.HELP_TWISTER + ' for ' + context.event.session.sessionId + ' State: ' + context.handler.state + ' Error: ' + err);
+				context.emitWithState(constants.speeches.FATAL_SPEECH);
+			});
+		};
+		
+		getTwister(this);
+	} else {
+		this.emitWithState(constants.speeches.HELP_SPEECH);
+	}
+};
 
 var gameMode = Object.assign({}, eventHandlers);
 var repeatMode = Object.assign({}, eventHandlers);

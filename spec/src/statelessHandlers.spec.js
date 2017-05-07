@@ -21,19 +21,20 @@ jasmine.getEnv().addReporter(new jasmine.ConsoleReporter(console.log));
 describe('statelessHandlers - positive tests', function() {
 	//tests must correspond to the name of the object for the test case in the json file
 	//they must also be in the order of the test cases below
-	var testNames = ['testLaunchIntent', 'testRepeatIntent', 'testHelpIntent', 
-		'testNoScoreStopIntent', 'testZeroScoreStopIntent', 'testScoreStopIntent', 
-		'testNoScoreCancelIntent', 'testZeroScoreCancelIntent', 'testScoreCancelIntent'];
-	var i = 0;
-	var response;
-	var error;
-	var test;
+	let testNames = ['testLaunchIntent', 'testRepeatIntentNoTwister', 
+		'testRepeatIntentWithTwister', 'testHelpIntent', 'testNoScoreStopIntent', 
+		'testZeroScoreStopIntent', 'testScoreStopIntent', 'testNoScoreCancelIntent', 
+		'testZeroScoreCancelIntent', 'testScoreCancelIntent'];
+	let i = 0;
+	let response;
+	let error;
+	let test;
 	
     framework.beforeEachMatchers();
 	
 	beforeEach(function(done){
 			test = tests[testNames[i]];
-			var ctx = context();
+			let ctx = context();
 			ctx.Promise
 				.then(resp => {
 					console.log("success: " + resp);
@@ -52,6 +53,7 @@ describe('statelessHandlers - positive tests', function() {
 				spyOn(eventHandlers.statelessHandlers, test.response).andCallFake(function(){ console.log(JSON.stringify(this));ctx.succeed(test.response); });
 			} else {
 				spyOn(speechHandlers.statelessHandlers, test.response).andCallFake(function(){ ctx.succeed(test.response); });
+				spyOn(speechHandlers.gameModeHandlers, test.response).andCallFake(function(){ ctx.succeed(test.response); });
 			}
 			
 			index.handler(intent, ctx, response);
@@ -64,57 +66,64 @@ describe('statelessHandlers - positive tests', function() {
 		expect(error).toBeUndefined();
     });
 	
-	it('testRepeatIntent - get repeatSpeech intent', function() {
+	it('testRepeatIntentWithTwister - get repeatSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[1]);
 		expect(response).not.toBeUndefined();
 		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
     });
 	
-	it('testHelpIntent - get helpSpeech intent', function() {
+	it('testRepeatIntentNoTwister - get repeatSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[2]);
 		expect(response).not.toBeUndefined();
 		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
     });
 	
-	it('testNoScoreStopIntent - get goodbyeSpeech intent', function() {
+	it('testHelpIntent - get helpSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[3]);
 		expect(response).not.toBeUndefined();
 		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
     });
 	
-	it('testZeroScoreStopIntent - get goodbyeSpeech intent', function() {
+	it('testNoScoreStopIntent - get goodbyeSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[4]);
 		expect(response).not.toBeUndefined();
 		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
     });
 	
-	it('testScoreStopIntent - get goodbyeSpeech intent', function() {
+	it('testZeroScoreStopIntent - get goodbyeSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[5]);
 		expect(response).not.toBeUndefined();
 		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
     });
 	
-	it('testNoScoreCancelIntent - get goodbyeSpeech intent', function() {
+	it('testScoreStopIntent - get goodbyeSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[6]);
 		expect(response).not.toBeUndefined();
 		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
     });
 	
-	it('testZeroScoreCancelIntent - get goodbyeSpeech intent', function() {
+	it('testNoScoreCancelIntent - get goodbyeSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[7]);
 		expect(response).not.toBeUndefined();
 		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
     });
 	
-	it('testScoreCancelIntent - get goodbyeSpeech intent', function() {
+	it('testZeroScoreCancelIntent - get goodbyeSpeech intent', function() {
 		expect(testNames[i]).toBe(testNames[8]);
+		expect(response).not.toBeUndefined();
+		expect(response).toBe(test.response);
+		expect(error).toBeUndefined();
+    });
+	
+	it('testScoreCancelIntent - get goodbyeSpeech intent', function() {
+		expect(testNames[i]).toBe(testNames[9]);
 		expect(response).not.toBeUndefined();
 		expect(response).toBe(test.response);
 		expect(error).toBeUndefined();
@@ -132,18 +141,17 @@ describe('statelessHandlers - positive tests', function() {
 describe('statelessHandlers - unhandled intent test', function() {
 	//tests must correspond to the name of the object for the test case in the json file
 	//they must also be in the order of the test cases below
-	var testNames = ['testBadIntent', 'testAttemptIntent', 'testYesIntent',
-		'testNoIntent', 'testBadRepeatIntent', 'testEmptyRepeatIntent'];
-	var i = 0;
-	var response;
-	var error;
-	var test;
+	let testNames = ['testBadIntent', 'testAttemptIntent', 'testYesIntent', 'testNoIntent'];
+	let i = 0;
+	let response;
+	let error;
+	let test;
 	
     framework.beforeEachMatchers();
 	
 	beforeEach(function(done){
 			test = tests[testNames[i]];
-			var ctx = context();
+			let ctx = context();
 			ctx.Promise
 				.then(resp => {
 					console.log("succeeded: " + resp);
@@ -193,22 +201,6 @@ describe('statelessHandlers - unhandled intent test', function() {
 	
 	it('testNoIntent - should return unhandledSpeech', function() {
 		expect(testNames[i]).toBe(testNames[3]);
-		expect(response).not.toBeUndefined();
-		expect(response).toBe(test.response);
-		expect(statelessHandlers.Unhandled).not.toHaveBeenCalled();
-		expect(error).toBeUndefined();
-    });
-	
-	it('testBadRepeatIntent - should return unhandledSpeech', function() {
-		expect(testNames[i]).toBe(testNames[4]);
-		expect(response).not.toBeUndefined();
-		expect(response).toBe(test.response);
-		expect(statelessHandlers.Unhandled).not.toHaveBeenCalled();
-		expect(error).toBeUndefined();
-    });
-	
-	it('testEmptyRepeatIntent - should return unhandledSpeech', function() {
-		expect(testNames[i]).toBe(testNames[5]);
 		expect(response).not.toBeUndefined();
 		expect(response).toBe(test.response);
 		expect(statelessHandlers.Unhandled).not.toHaveBeenCalled();

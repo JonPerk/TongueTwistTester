@@ -35,7 +35,7 @@ var terminateRequest = {
 			"type": "IntentRequest",
 			"locale": "en-US",
 			"intent": {
-				"name": "endSession"
+				"name": "AMAZON.StopIntent"
 			}
 		},
 		"version": "1.0"
@@ -54,7 +54,8 @@ describe('speechHandlers - tests', function() {
 		'testIncorrectSpeechContinueMode', 'testSayTwisterSpeech', 'testSayTwisterSpeechGameMode', 'testSayTwisterSpeechRepeatMode',
 		'testSayTwisterSpeechContinueMode', 'testSayTwisterSpeechTwisterError', 'testGoodbyeSpeech', 'testGoodbyeSpeechWithMode', 
 		'testGoodbyeSpeechSingleScore', 'testGoodbyeSpeechMultiscore', 'testWinSpeech', 'testWinSpeechWithMode',
-		'testContinueSpeech', 'testContinueSpeechWrongMode', 'testRetrySpeech', 'testRetrySpeechWrongMode'];
+		'testContinueSpeech', 'testContinueSpeechWrongMode', 'testRetrySpeech', 'testRetrySpeechWrongMode', 'testHelpSpeech',
+		'testHelpSpeechGameMode', 'testHelpSpeechGameModeTwisterError', 'testHelpSpeechRepeatMode', 'testHelpSpeechContinueMode'];
 	let i = 0;
 	let response;
 	let error;
@@ -89,19 +90,9 @@ describe('speechHandlers - tests', function() {
 		
 		intent = test.request;
 		
-		if(test.requestHandlerType === 'gameMode'){
-			// since I haven't found a way to set mock the state in an intent we mock the statelessHandlers and bounce the call to the correct state
-			spyOn(speechHandlers.statelessHandlers, test.request.request.intent.name).andCallFake(function(){ 
-				this.handler.state = test.requestState;
-				this.emitWithState(test.request.request.intent.name);
-			});
-		} else if(test.requestHandlerType === 'repeatMode'){
-			// since I haven't found a way to set mock the state in an intent we mock the statelessHandlers and bounce the call to the correct state
-			spyOn(speechHandlers.statelessHandlers, test.request.request.intent.name).andCallFake(function(){ 
-				this.handler.state = test.requestState;
-				this.emitWithState(test.request.request.intent.name);
-			});
-		} else if(test.requestHandlerType === 'continueMode'){
+		if(test.requestHandlerType === 'gameMode' ||
+				test.requestHandlerType === 'repeatMode' ||
+				test.requestHandlerType === 'continueMode'){
 			// since I haven't found a way to set mock the state in an intent we mock the statelessHandlers and bounce the call to the correct state
 			spyOn(speechHandlers.statelessHandlers, test.request.request.intent.name).andCallFake(function(){ 
 				this.handler.state = test.requestState;
@@ -111,17 +102,21 @@ describe('speechHandlers - tests', function() {
 		
 		spyOn(speechHandlers[test.speechStateHandler], test.request.request.intent.name).andCallThrough();
 		
-		spyOn(eventHandlers.statelessHandlers, 'endSession').andCallFake(function(){ 
+		spyOn(statelessHandlers, 'AMAZON.StopIntent').andCallFake(function(){ 
 			this.emit(":tell", "session ended", "session ended");
 		});
-		spyOn(eventHandlers.gameModeHandlers, 'endSession').andCallFake(function(){ 
+		spyOn(gameModeIntentHandlers, 'AMAZON.StopIntent').andCallFake(function(){ 
 			this.emit(":tell", "session ended", "session ended");
 		});
-		spyOn(eventHandlers.repeatModeHandlers, 'endSession').andCallFake(function(){ 
+		spyOn(repeatModeIntentHandlers, 'AMAZON.StopIntent').andCallFake(function(){ 
 			this.emit(":tell", "session ended", "session ended");
 		});
-		spyOn(eventHandlers.continueModeHandlers, 'endSession').andCallFake(function(){ 
+		spyOn(continueModeIntentHandlers, 'AMAZON.StopIntent').andCallFake(function(){ 
 			this.handler.state = test.requestState;
+			this.emit(":tell", "session ended", "session ended");
+		});
+		
+		spyOn(gameModeIntentHandlers, 'AMAZON.HelpIntent').andCallFake(function(){ 
 			this.emit(":tell", "session ended", "session ended");
 		});
 
@@ -250,6 +245,26 @@ describe('speechHandlers - tests', function() {
 	
 	it('testRetrySpeechWrongMode - get unhandled intent - negative case', function() {
 		validate(testNames, i, 30, test, response, error);
+    });
+	
+	it('testHelpSpeech - get help speech - positive case', function() {
+		validate(testNames, i, 31, test, response, error);
+    });
+	
+	it('testHelpSpeechGameMode - get help speech - positive case', function() {
+		validate(testNames, i, 32, test, response, error);
+    });
+	
+	it('testHelpSpeechGameModeTwisterError - get fatal intent - negative case', function() {
+		validate(testNames, i, 33, test, response, error);
+    });
+	
+	it('testHelpSpeechRepeatMode - get help speech - positive case', function() {
+		validate(testNames, i, 34, test, response, error);
+    });
+	
+	it('testHelpSpeechContinueMode - get help speech - positive case', function() {
+		validate(testNames, i, 35, test, response, error);
     });
 	
 	afterEach(function(){

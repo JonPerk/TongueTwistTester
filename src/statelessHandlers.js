@@ -38,22 +38,21 @@ statelessHandlers[constants.intents.NO_INTENT] = function(){
 	this.emit(constants.speeches.UNHANDLED_SPEECH);
 };
 
-/** stateless handler for repeat intent. Repeats last phrase spoken by Alexa */
+/** stateless handler for repeat intent. Welcomes and gives new twister if no twister found. Repeats twister if found */
 statelessHandlers[constants.intents.REPEAT_INTENT] = function(){
 	console.info('Intent handler ' + constants.intents.REPEAT_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
-	if(this.attributes.lastSpeech && this.attributes.lastSpeech.trim() !== ''){
-		this.emit(constants.speeches.REPEAT_SPEECH);
-	}
-	else {
-		console.warn('RepeatIntent with no prior speech: ' + this.attributes.lastSpeech + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
-		this.emit(constants.speeches.UNHANDLED_SPEECH);
+	if(!this.attributes || !this.attributes.twister || !this.attributes.twister.value){
+		this.emit(constants.events.NEW_SESSION);
+	} else {
+		this.handler.state = constants.states.GAME_MODE;
+		this.emitWithState(constants.speeches.SAY_TWISTER_SPEECH);
 	}
 };
 
 /** stateless handler for help intent. Gives help and hints */
 statelessHandlers[constants.intents.HELP_INTENT] = function(){
 	console.info('Intent handler ' + constants.intents.HELP_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
-	this.emit(constants.speeches.HELP_SPEECH);
+	this.emit(constants.events.HELP_TWISTER);
 };
 
 /** stateless handler for stop intent. Gives score and exits */

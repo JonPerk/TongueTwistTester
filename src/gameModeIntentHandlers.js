@@ -54,6 +54,7 @@ intents[constants.intents.REPEAT_INTENT] = function(){
 
 /** game mode handler for help intent. Gives help and hints */
 intents[constants.intents.HELP_INTENT] = function(){
+	console.log("HELP intent " + JSON.stringify(this.event, null, 2))
 	console.info('Intent handler ' + constants.intents.HELP_INTENT + ' for ' + this.event.session.sessionId + ' State: ' + this.handler.state);
 	this.emitWithState(constants.speeches.HELP_SPEECH);
 };

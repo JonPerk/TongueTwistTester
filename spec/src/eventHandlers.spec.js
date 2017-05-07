@@ -30,7 +30,8 @@ describe('eventHandlers - tests', function() {
 		'testValidateAttemptCorrectCapitalization', 'testValidateAttemptCorrectPuncAndCap','testValidateAttemptIncorrect',
 		'testValidateAttemptNull', 'testValidateAttemptTwisterNull', 'testValidateAttemptRepeatMode',
 		'testValidateAttemptStateless', 'testNewTwister', 'testNewTwisterStateless', 'testNewTwisterWrongMode',
-		'testNewTwisterError', 'testValidateAttemptWin'];
+		'testNewTwisterError', 'testValidateAttemptWin', 'testHelpTwisterNoTwister', 'testHelpTwisterWithTwister',
+		'testHelpTwisterWrongMode', 'testHelpTwisterError'];
 	var i = 0;
 	var response;
 	var error;
@@ -228,6 +229,22 @@ describe('eventHandlers - tests', function() {
 	
 	it('testValidateAttemptWin - get winSpeech intent - positive case', function() {
 		validate(testNames, i, 18, test, response, error);
+    });
+	
+	it('testHelpTwisterNoTwister - get helpTwisterSpeech intent - positive case', function() {
+		validate(testNames, i, 19, test, response, error);
+    });
+	
+	it('testHelpTwisterWithTwister - get helpTwisterSpeech intent - positive case', function() {
+		validate(testNames, i, 20, test, response, error);
+    });
+	
+	it('testHelpTwisterWrongMode - get unhandledSpeech intent - negative case', function() {
+		validate(testNames, i, 21, test, response, error);
+    });
+	
+	it('testHelpTwisterError - get fatalSpeech intent - positive case', function() {
+		validate(testNames, i, 22, test, response, error);
     });
 	
 	afterEach(function(){

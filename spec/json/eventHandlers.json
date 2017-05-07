@@ -855,6 +855,198 @@
 					"total": 5
 				}
 			}
+		},
+		"testHelpTwisterNoTwister": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testHelpTwisterNoTwister",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 1,
+						"completed": [2],
+						"skipped": []
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.HelpIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"resolvePromise": true,
+			"requestHandlerType": "stateless",
+			"requestName": "helpTwister",
+			"requestState": null,
+			"eventStateHandler": "statelessHandlers",
+			"twister": {
+				"index": 0,
+				"value": "She sells sea shells by the seashore",
+				"total": 5
+			},
+			"response": {
+				"handlerType": "speech",
+				"stateHandler":"gameModeHandlers",
+				"intent": "helpSpeech",
+				"state": "_GAME_MODE",
+				"twister": {
+					"index": 0,
+					"value": "She sells sea shells by the seashore",
+					"total": 5
+				},
+				"score": 1,
+				"completed": [2],
+				"skipped": []
+			}
+		},
+		"testHelpTwisterWithTwister": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testHelpTwisterWithTwister",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 1,
+						"completed": [2],
+						"skipped": [],
+						"twister": {
+							"index": 0,
+							"value": "She sells sea shells by the seashore",
+							"total": 5
+						}
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.HelpIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"resolvePromise": true,
+			"requestHandlerType": "stateless",
+			"requestName": "helpTwister",
+			"requestState": null,
+			"eventStateHandler": "statelessHandlers",
+			"twister": {
+				"index": 0,
+				"value": "She sells sea shells by the seashore",
+				"total": 5
+			},
+			"response": {
+				"handlerType": "speech",
+				"stateHandler":"gameModeHandlers",
+				"intent": "helpSpeech",
+				"state": "_GAME_MODE",
+				"twister": {
+					"index": 0,
+					"value": "She sells sea shells by the seashore",
+					"total": 5
+				},
+				"score": 1,
+				"completed": [2],
+				"skipped": []
+			}
+		},
+		"testHelpTwisterWrongMode": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testHelpTwisterWrongMode",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 1,
+						"completed": [2],
+						"skipped": []
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.HelpIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "repeatMode",
+			"requestName": "helpTwister",
+			"requestState": "_REPEAT_MODE",
+			"eventStateHandler": "repeatModeHandlers",
+			"twister": {
+				"index": 0,
+				"value": "She sells sea shells by the seashore",
+				"total": 5
+			},
+			"response": {
+				"handlerType": "repeatMode",
+				"stateHandler":"repeatModeHandlers",
+				"intent": "Unhandled",
+				"state": "_REPEAT_MODE",
+				"score": 1,
+				"completed": [2],
+				"skipped": []
+			}
+		},
+		"testHelpTwisterError": {
+			"request": {
+				"session": {
+					"sessionId": "eventHandlers-testHelpTwisterError",
+					"application": {
+						"applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					},
+					"attributes": {
+						"score": 1,
+						"completed": [2],
+						"skipped": []
+					},
+					"user": {
+						"userId": "testAccount"
+					},
+					"new": true
+				},
+				"request": {
+					"type": "IntentRequest",
+					"locale": "en-US",
+					"intent": {
+						"name": "AMAZON.HelpIntent"
+					}
+				},
+				"version": "1.0"
+			},
+			"requestHandlerType": "stateless",
+			"requestName": "helpTwister",
+			"requestState": null,
+			"eventStateHandler": "statelessHandlers",
+			"response": {
+				"handlerType": "speech",
+				"stateHandler":"gameModeHandlers",
+				"intent": "fatalSpeech",
+				"state": "_GAME_MODE",
+				"score": 1,
+				"completed": [2],
+				"skipped": []
+			}
 		}
 	}
 }
