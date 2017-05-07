@@ -24,7 +24,8 @@ module.exports = Object.freeze({
 		NEW_TWISTER: 'newTwister',
 		VALIDATE_ATTEMPT: 'validateAttempt',
 		HELP_TWISTER: 'helpTwister',
-		LAUNCH_REQUEST: 'LaunchRequest'
+		LAUNCH_REQUEST: 'LaunchRequest',
+		SESSION_ENDED_REQUEST: 'SessionEndedRequest'
 	},
 	
 	speeches: {

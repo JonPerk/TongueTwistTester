@@ -19,7 +19,7 @@ jasmine.getEnv().addReporter(new jasmine.ConsoleReporter(console.log));
 describe('index - connectivity test', function() {
 	//tests must correspond to the name of the object for the test case in the json file
 	//they must also be in the order of the test cases below
-	let testNames = ['testLaunchIntent', 'testLaunchRequest'];
+	let testNames = ['testLaunchIntent', 'testLaunchRequest', 'testSessionEndedRequest'];
 	let i = 0;
 	let response;
 	let error;
@@ -42,18 +42,27 @@ describe('index - connectivity test', function() {
 			spyOn(statelessHandlers, 'Unhandled').andCallThrough();
 			index.handler(intent, ctx, response);
 	});
+	
     it('testLaunchIntent - get any response', function() {
 		expect(response).not.toBeUndefined();
 		expect(response.response.outputSpeech.ssml).not.toBeNull();
 		expect(statelessHandlers.Unhandled).not.toHaveBeenCalled();
 		expect(error).toBeUndefined();
     });
+    
     it('testLaunchRequest - get any response', function() {
 		expect(response).not.toBeUndefined();
 		expect(response.response.outputSpeech.ssml).not.toBeNull();
 		expect(statelessHandlers.Unhandled).not.toHaveBeenCalled();
 		expect(error).toBeUndefined();
     });
+    
+    it('testSessionEndedRequest - get any response', function() {
+		expect(response).toBeUndefined();
+		expect(statelessHandlers.Unhandled).not.toHaveBeenCalled();
+		expect(error).toBeUndefined();
+    });
+    
 	afterEach(function(){
 		this.removeAllSpies();
 		response = undefined;

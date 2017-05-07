@@ -27,6 +27,7 @@ exports.handler = function(event, context, callback){
     
     alexa.registerHandlers(
     	launchRequestHandler,
+    	sessionEndedRequestHandler,
     	statelessHandlers, 
 		gameModeIntentHandlers, 
 		repeatModeIntentHandlers, 
@@ -51,4 +52,12 @@ launchRequestHandler[constants.events.LAUNCH_REQUEST] = function () {
 	} else if(this.attributes.state && this.event.request.type === constants.events.LAUNCH_REQUEST){
 		this.emitWithState(constants.intents.LAUNCH_INTENT);
 	}
+}
+
+var sessionEndedRequestHandler = {};
+
+/** handles SessionEndedRequest */
+launchRequestHandler[constants.events.SESSION_ENDED_REQUEST] = function () {
+	console.info("Session ended " + this.event.session.sessionId);
+	this.context.succeed();
 }

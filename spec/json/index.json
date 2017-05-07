@@ -74,6 +74,29 @@
 					"repromptSpeech": "Try this tongue twister. Repeat after me. She sells seashells by the seashore"
 				}
 			}
+		},
+		"testSessionEndedRequest": {
+			"requestName": "LaunchIntent",
+			"request": {
+				  "session": {
+					    "sessionId": "testSessionEndedRequest",
+					    "application": {
+					      "applicationId": "amzn1.ask.skill.3f0a383b-3e3f-430b-b8cd-34ed3ab5a2b0"
+					    },
+					    "attributes": {},
+					    "user": {
+					      "userId": "testAccount"
+					    },
+					    "new": true
+					  },
+					  "request": {
+					    "type": "SessionEndedRequest",
+					    "requestId": "EdwRequestId.e1cc7e11-93d3-493c-81e5-aa37a4662d6b",
+					    "locale": "en-US",
+					    "timestamp": "2017-05-01T00:14:57Z"
+					  },
+					  "version": "1.0"
+			}
 		}
 	}
 }
